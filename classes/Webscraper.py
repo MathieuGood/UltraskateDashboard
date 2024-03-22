@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 from classes.Utils import Utils
 from classes.Performance import Performance
-from classes.Skater import Skater
+from classes.Athlete import Athlete
 
 
 class Webscraper:
@@ -127,5 +127,5 @@ class Webscraper:
         ]
 
         return Performance(
-            "2013-01-07", "Miami", Skater(name, gender, age, city, state), laps
+            "2013-01-07", "Miami", Athlete(name, gender, age, city, state), laps
         )

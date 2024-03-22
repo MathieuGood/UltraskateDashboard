@@ -1,4 +1,4 @@
-class Skater:
+class Athlete:
 
     def __init__(self, name, gender, age="", city="", state="", country=""):
         self.name = name
