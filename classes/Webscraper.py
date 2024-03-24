@@ -171,5 +171,8 @@ class Webscraper:
     def fetch_several_events_performances(cls, events_urls):
         events_performances = {}
         for event_url in events_urls:
-            print("Key of the event : ", event_url.key())
-            cls.fetch_all_athletes_performances(event_url)
+            print("\n\n>>> URL : " + event_url
+                  )
+            
+            events_performances[event_url] = cls.fetch_all_athletes_performances(events_urls[event_url])
+        return events_performances

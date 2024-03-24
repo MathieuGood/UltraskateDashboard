@@ -1,4 +1,5 @@
 import re
+import json
 
 
 class Utils:
@@ -71,3 +72,14 @@ class Utils:
             return match.group(0)
         else:
             return None
+    
+    @classmethod
+    def write_to_json(cls, data, filename):
+        """
+        Write data to a JSON file.
+
+        :param data: The data to write to the file.
+        :param filename: The name of the file to write the data to.
+        """
+        with open(filename, "w") as file:
+            json.dump(data, file, indent=4)
