@@ -1,14 +1,12 @@
 # Ultraskate Dashboard
 
-## Scrape data
-
-Classes :
--  DataScraper
--  DataParser
-- Data
-- DataStorage
-
-
+### Athlete
+- Get best mileage
+- Get worst mileage
+- Get all events and respective mileage
+- Compare several events performances
+- Total mileage of all events
+- 
 
 ## General ranking
 

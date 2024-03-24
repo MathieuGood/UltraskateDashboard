@@ -1,7 +1,4 @@
 class Performance:
 
-    def __init__(self, date, location, skater, laps):
-        self.date = date
-        self.location = location
-        self.skater = skater
+    def __init__(self, laps):
         self.laps = laps
