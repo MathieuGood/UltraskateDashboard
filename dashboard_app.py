@@ -5,6 +5,8 @@ from classes.Performance import Performance
 from classes.Athlete import Athlete
 from classes.Track import Track
 from classes.Event import Event
+from classes.EventManager import EventManager
+import json
 
 
 events_url = {
@@ -34,22 +36,21 @@ for years in events_url:
 start_time = time.time()
 
 
-# Iterate over events_url dictionary (only Miami for now), and print the url value associated with each key
-# for year, url in events_url["Miami"].items():
-#     Webscraper().fetch_all_athletes_url(events_url["Miami"][2013])
-
-
 # event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
 # for athlete in event:
 #     print(athlete)
 
 
-events = Webscraper.fetch_several_events_performances(events_url)
-print(events)
+# events = Webscraper.fetch_all_events_performances(events_url)
+# print(events)
 
-# Write all the data in events to a JSON file
-Utils.write_to_json(events, "events.json")
+# # Write all the data in events to a JSON file
+# Utils.write_to_json(events, "events.json")
 
+events = EventManager.parse_json_events("events.json")
+
+
+# EventManager.create_new_event(events_url["2013-01-07"])
 
 # End timer
 end_time = time.time()

@@ -152,7 +152,7 @@ class Webscraper:
         # Parse data from the athlete laps table
         laps = cls.parse_athlete_laps(athlete_laps_table)
 
-        return {"athlete_info": athlete_info, "athlete_performance": laps}
+        return {"info": athlete_info, "performance": laps}
 
     @classmethod
     def fetch_all_athletes_performances(cls, url):
@@ -168,11 +168,13 @@ class Webscraper:
         return event_performances
 
     @classmethod
-    def fetch_several_events_performances(cls, events_urls):
+    def fetch_all_events_performances(cls, events_urls):
         events_performances = {}
         for event_url in events_urls:
-            print("\n\n>>> URL : " + event_url
-                  )
-            
-            events_performances[event_url] = cls.fetch_all_athletes_performances(events_urls[event_url])
+            print(
+                "\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url]
+            )
+            events_performances[event_url] = cls.fetch_all_athletes_performances(
+                events_urls[event_url]
+            )
         return events_performances

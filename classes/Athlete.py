@@ -11,5 +11,8 @@ class Athlete:
         self.state = state
         self.country = country
 
+    def __init__(self, gender):
+        self.gender = gender
+
     def add_performance(self, performance):
         self.performances.append(performance)
