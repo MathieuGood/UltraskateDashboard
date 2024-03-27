@@ -1,5 +1,5 @@
 class Performance:
 
-    def __init__(self, laps):
+    def __init__(self, athlete_id, laps):
+        self.athlete_id = athlete_id
         self.laps = laps
-        

@@ -14,5 +14,5 @@ class Athlete:
     def __init__(self, gender):
         self.gender = gender
 
-    def add_performance(self, performance):
-        self.performances.append(performance)
+    def add_performance(self, performance_id):
+        self.performances.append(performance_id)

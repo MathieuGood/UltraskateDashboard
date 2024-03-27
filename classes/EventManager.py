@@ -3,6 +3,9 @@ import json
 
 class EventManager:
 
+    
+
+
     @classmethod
     def create_new_event(cls, event_data):
 
@@ -26,3 +29,4 @@ class EventManager:
                     print("---------\n\n\n\n")
 
             print("Parson JSON data from", events.__len__(), " Ultraskates")
+            return events
