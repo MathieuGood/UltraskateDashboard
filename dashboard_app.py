@@ -6,6 +6,7 @@ from classes.Athlete import Athlete
 from classes.Track import Track
 from classes.Event import Event
 from classes.EventManager import EventManager
+from classes.AthleteRegistry import AthleteRegistry
 import json
 
 
@@ -25,7 +26,6 @@ events_url = {
     # "2023-02-10": "https://my.raceresult.com/204047",
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
-
 
 # Iterate over events_url to print all the content of each entry
 

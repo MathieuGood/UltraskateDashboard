@@ -23,3 +23,8 @@ class Athlete:
         self.city = city
         self.state = state
         self.country = country
+
+    @classmethod
+    def get_Athlete_by_id(self, id):
+        if self.id == id:
+            return self

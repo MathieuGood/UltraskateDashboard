@@ -5,6 +5,7 @@ from classes.Performance import Performance
 from classes.Utils import Utils
 from classes.Track import Track
 from classes.Track import TrackOption
+from classes.AthleteRegistry import AthleteRegistry
 
 
 class EventManager:
@@ -23,11 +24,11 @@ class EventManager:
 
         for event_date, event_content in events.items():
 
-            if 0 < int(event_date[5-7]) < 3:
+            if 0 < int(event_date[5 - 7]) < 3:
                 track_option = TrackOption.MIAMI
             else:
                 track_option = TrackOption.SPAARNDAM
-                
+
             track = Utils.get_track_from_location(track_option)
             # Create new Event instance
             event_instance = Event(event_date, track)
@@ -39,6 +40,8 @@ class EventManager:
                     gender=athlete["info"]["gender"],
                     city=athlete["info"]["city"],
                 )
+
+                AthleteRegistry.add_athlete(athlete_instance)
 
                 # Create new Performance and add it to Event instance
                 performance_instance = Performance(
