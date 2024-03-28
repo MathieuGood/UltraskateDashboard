@@ -1,5 +1,7 @@
 import json
-
+from classes.Event import Event
+from classes.Athlete import Athlete
+from classes.Performance import Performance
 
 class EventManager:
 
@@ -22,10 +24,24 @@ class EventManager:
             events = json.loads(events)
 
             for event in events.values():
+                event_instance = Event('', '')
+
                 print(event)
                 for athlete in event:
+
+                    # athlete_instance = Athlete(athlete["info"]["gender"])
+                    athlete_instance = Athlete(athlete["info"]["gender"])
+                    athlete_instance.name = athlete["info"]["name"]
+                    athlete_instance.city = athlete["info"]["city"]
+
                     print(athlete["info"])
+                    print(athlete_instance.id, athlete_instance.name, athlete_instance.gender, athlete_instance.city)
                     print(athlete["performance"])
+
+                    performance_instance = Performance(athlete_instance.id, athlete["performance"])
+
+                    event_instance.performances.append(performance_instance)
+
                     print("---------\n\n\n\n")
 
             print("Parson JSON data from", events.__len__(), " Ultraskates")
