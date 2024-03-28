@@ -3,6 +3,8 @@ from classes.Event import Event
 from classes.Athlete import Athlete
 from classes.Performance import Performance
 from classes.Utils import Utils
+from classes.Track import Track
+from classes.Track import TrackOption
 
 
 class EventManager:
@@ -19,31 +21,24 @@ class EventManager:
         # Open file and turn it into a dictionary
         events = Utils.parse_json_to_dic(json_file)
 
-        for event in events.values():
+        for event_date, event_content in events.items():
+
+            if 0 < int(event_date[5-7]) < 3:
+                track_option = TrackOption.MIAMI
+            else:
+                track_option = TrackOption.SPAARNDAM
+                
+            track = Utils.get_track_from_location(track_option)
             # Create new Event instance
-            event_instance = Event("", "")
+            event_instance = Event(event_date, track)
 
-            print(event)
-
-            for athlete in event:
-
+            for athlete in event_content:
                 # Create new Athlete instance
                 athlete_instance = Athlete(
                     name=athlete["info"]["name"],
                     gender=athlete["info"]["gender"],
                     city=athlete["info"]["city"],
                 )
-                # athlete_instance.name = athlete["info"]["name"]
-                # athlete_instance.city = athlete["info"]["city"]
-                print(
-                    athlete_instance.id,
-                    athlete_instance.name,
-                    athlete_instance.gender,
-                    athlete_instance.city
-                )
-
-                print(athlete["info"])
-                print(athlete["performance"])
 
                 # Create new Performance and add it to Event instance
                 performance_instance = Performance(
@@ -51,7 +46,15 @@ class EventManager:
                 )
                 event_instance.performances.append(performance_instance)
 
-                print("---------\n")
+                # print(
+                #     athlete_instance.id,
+                #     athlete_instance.name,
+                #     athlete_instance.gender,
+                #     athlete_instance.city,
+                # )
+                # print(athlete["info"])
+                # print(athlete["performance"])
+                # print("---------\n")
 
-        print("Parson JSON data from", events.__len__(), " Ultraskates")
+        print("Parsed JSON data from", events.__len__(), " Ultraskates")
         return events

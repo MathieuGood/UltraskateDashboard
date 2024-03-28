@@ -1,21 +1,13 @@
+from enum import Enum
+
+
+class TrackOption(Enum):
+    MIAMI = {"name": "Homestead Speedway", "location": "Homestead", "length": 1.46}
+    SPAARNDAM = {"name": "Wheelerplanet", "location": "Spaarndam", "length": 2.0}
+
+
 class Track:
-
-    MIAMI = ("Homestead Speedway", "Homestead", 1.46)
-    SPAARNDAM = ("Wheelerplanet", "Spaarndam", 2.0)
-
-    def __init__(self, name, location, length):
-        self.name = name
-        self.location = location
-        self.length = length
-
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def location(self):
-        return self._location
-
-    @property
-    def length(self):
-        return self._length
+    def __init__(self, track_option):
+        self.name = track_option.value["name"]
+        self.location = track_option.value["location"]
+        self.length = track_option.value["length"]

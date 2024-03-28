@@ -1,5 +1,7 @@
 import re
 import json
+from classes.Track import Track
+from classes.Track import TrackOption
 
 
 class Utils:
@@ -96,3 +98,12 @@ class Utils:
         """
         with open(filename, "w") as file:
             json.dump(data, file, indent=4)
+
+
+    @classmethod
+    def get_track_from_location(cls, location):
+        match location:
+            case TrackOption.MIAMI:
+                return Track(TrackOption.MIAMI)
+            case TrackOption.SPAARNDAM:
+                return Track(TrackOption.SPAARNDAM)

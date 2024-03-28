@@ -50,6 +50,8 @@ start_time = time.time()
 events = EventManager.parse_json_events("events.json")
 
 
+
+
 # EventManager.create_new_event(events_url["2013-01-07"])
 
 # End timer
