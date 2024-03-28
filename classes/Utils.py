@@ -30,7 +30,6 @@ class Utils:
         h, m, s = str_time.split(":")
         return int(h) * 3600 + int(m) * 60 + int(s)
 
-
     @classmethod
     # In a '00:08:26 (00:08:26)' string, extract only the time that is not between the parentheses with a regex
     def extract_time(cls, str_time):
@@ -46,7 +45,6 @@ class Utils:
             return match.group(0)
         else:
             return None
-
 
     @classmethod
     def check_url_format(cls, url):
@@ -72,7 +70,22 @@ class Utils:
             return match.group(0)
         else:
             return None
-    
+
+    @classmethod
+    def parse_json_to_dic(cls, json_file):
+        """
+        Parses a JSON file and returns its content as a dictionary.
+
+        Args:
+            json_file (str): The path to the JSON file.
+
+        Returns:
+            dict: The content of the JSON file as a dictionary.
+        """
+        with open(json_file, "r") as file:
+            json_content = file.read()
+            return json.loads(json_content)
+
     @classmethod
     def write_to_json(cls, data, filename):
         """

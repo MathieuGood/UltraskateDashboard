@@ -2,11 +2,10 @@ import json
 from classes.Event import Event
 from classes.Athlete import Athlete
 from classes.Performance import Performance
+from classes.Utils import Utils
+
 
 class EventManager:
-
-    
-
 
     @classmethod
     def create_new_event(cls, event_data):
@@ -16,33 +15,43 @@ class EventManager:
         return event_data
 
     @classmethod
-    def parse_json_events(cls, json_events_file):
-        # Open events.json file
-        with open(json_events_file, "r") as file:
-            events = file.read()
-            # Convert events to a Python dictionary
-            events = json.loads(events)
+    def parse_json_events(cls, json_file):
+        # Open file and turn it into a dictionary
+        events = Utils.parse_json_to_dic(json_file)
 
-            for event in events.values():
-                event_instance = Event('', '')
+        for event in events.values():
+            # Create new Event instance
+            event_instance = Event("", "")
 
-                print(event)
-                for athlete in event:
+            print(event)
 
-                    # athlete_instance = Athlete(athlete["info"]["gender"])
-                    athlete_instance = Athlete(athlete["info"]["gender"])
-                    athlete_instance.name = athlete["info"]["name"]
-                    athlete_instance.city = athlete["info"]["city"]
+            for athlete in event:
 
-                    print(athlete["info"])
-                    print(athlete_instance.id, athlete_instance.name, athlete_instance.gender, athlete_instance.city)
-                    print(athlete["performance"])
+                # Create new Athlete instance
+                athlete_instance = Athlete(
+                    name=athlete["info"]["name"],
+                    gender=athlete["info"]["gender"],
+                    city=athlete["info"]["city"],
+                )
+                # athlete_instance.name = athlete["info"]["name"]
+                # athlete_instance.city = athlete["info"]["city"]
+                print(
+                    athlete_instance.id,
+                    athlete_instance.name,
+                    athlete_instance.gender,
+                    athlete_instance.city
+                )
 
-                    performance_instance = Performance(athlete_instance.id, athlete["performance"])
+                print(athlete["info"])
+                print(athlete["performance"])
 
-                    event_instance.performances.append(performance_instance)
+                # Create new Performance and add it to Event instance
+                performance_instance = Performance(
+                    athlete_instance.id, athlete["performance"]
+                )
+                event_instance.performances.append(performance_instance)
 
-                    print("---------\n\n\n\n")
+                print("---------\n")
 
-            print("Parson JSON data from", events.__len__(), " Ultraskates")
-            return events
+        print("Parson JSON data from", events.__len__(), " Ultraskates")
+        return events
