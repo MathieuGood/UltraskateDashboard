@@ -5,6 +5,7 @@ from classes.Performance import Performance
 from classes.Utils import Utils
 from classes.Track import *
 from classes.AthleteRegistry import AthleteRegistry
+from classes.EventRegistry import EventRegistry
 
 
 class EventManager:
@@ -19,11 +20,13 @@ class EventManager:
     @classmethod
     def parse_json_events(cls, json_file):
         # Open file and turn it into a dictionary
-        events = Utils.parse_json_to_dic(json_file)
+        events_dic = Utils.parse_json_to_dic(json_file)
 
-        for event_date, event_content in events.items():
+        for event_date, event_content in events_dic.items():
 
-            if 0 < int(event_date[5 - 7]) < 3:
+            print(event_date[5:7], event_date)
+
+            if 0 < int(event_date[5:7]) < 3:
                 track_option = TrackOption.MIAMI
             else:
                 track_option = TrackOption.SPAARNDAM
@@ -57,6 +60,5 @@ class EventManager:
                 # print(athlete["info"])
                 # print(athlete["performance"])
                 # print("---------\n")
-
-        print("Parsed JSON data from", events.__len__(), " Ultraskates")
-        return events
+            EventRegistry.add_event(event_instance)
+        print("Parsed JSON data from", EventRegistry.events.__len__(), " Ultraskates")

@@ -7,7 +7,7 @@ from classes.Track import Track
 from classes.Event import Event
 from classes.EventManager import EventManager
 from classes.AthleteRegistry import AthleteRegistry
-import json
+from classes.EventRegistry import EventRegistry
 
 
 events_url = {
@@ -29,9 +29,6 @@ events_url = {
 
 # Iterate over events_url to print all the content of each entry
 
-for years in events_url:
-    print(years)
-    print(events_url[years])
 
 start_time = time.time()
 
@@ -47,12 +44,13 @@ start_time = time.time()
 # # Write all the data in events to a JSON file
 # Utils.write_to_json(events, "events.json")
 
-events = EventManager.parse_json_events("events.json")
+EventManager.parse_json_events("events.json")
 
+events = EventRegistry.get_all_events()
 
-
-
-# EventManager.create_new_event(events_url["2013-01-07"])
+for event in events.values():
+    # print(event.name, event.date, event.track["name"], event.track["location"])
+    print(f"{event.date} {event.track.name}, {event.track.location}")
 
 # End timer
 end_time = time.time()
