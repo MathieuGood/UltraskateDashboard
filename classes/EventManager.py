@@ -3,8 +3,7 @@ from classes.Event import Event
 from classes.Athlete import Athlete
 from classes.Performance import Performance
 from classes.Utils import Utils
-from classes.Track import Track
-from classes.Track import TrackOption
+from classes.Track import *
 from classes.AthleteRegistry import AthleteRegistry
 
 
