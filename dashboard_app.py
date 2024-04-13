@@ -27,22 +27,20 @@ events_url = {
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
 
-# Iterate over events_url to print all the content of each entry
-
 
 start_time = time.time()
 
 
-# event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
-# for athlete in event:
+# one_event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
+# for athlete in one_event:
 #     print(athlete)
 
 
-# events = Webscraper.fetch_all_events_performances(events_url)
-# print(events)
+# scraped_events = Webscraper.fetch_all_events_performances(events_url)
+# print(scraped_events)
 
 # # Write all the data in events to a JSON file
-# Utils.write_to_json(events, "events.json")
+# Utils.write_to_json(scraped_events, "events.json")
 
 EventManager.parse_json_events("events.json")
 

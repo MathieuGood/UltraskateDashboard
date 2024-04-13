@@ -24,9 +24,8 @@ class EventManager:
 
         for event_date, event_content in events_dic.items():
 
-            print(event_date[5:7], event_date)
-
-            if 0 < int(event_date[5:7]) < 3:
+            event_month = int(event_date[5:7])
+            if 0 < event_month < 3:
                 track_option = TrackOption.MIAMI
             else:
                 track_option = TrackOption.SPAARNDAM
