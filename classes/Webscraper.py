@@ -60,8 +60,8 @@ class Webscraper:
 
             # Build the URL for the current page
             url = base_url + "&PageNo=" + str(i)
-            print(">>>>>>>>> Page " + str(i) + " >>>>>>>>>")
-            print(">>>>>>>>> URL : " + url + " >>>>>>>>>")
+            print(">>>>>>>>> Page " + str(i) + " >>>>>>")
+            print(">>>>>>>>> URL : " + url + " >>>>>>")
 
             # Find all the participants in the table
             athletes = soup.find_all("tr")
@@ -148,6 +148,8 @@ class Webscraper:
         # Parse data from the athlete info table
         athlete_info = cls.parse_athlete_info(name, racer_id, athlete_info_table)
         print(athlete_info)
+
+        
 
         # Parse data from the athlete laps table
         laps = cls.parse_athlete_laps(athlete_laps_table)

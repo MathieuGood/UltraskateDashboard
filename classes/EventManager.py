@@ -12,13 +12,31 @@ class EventManager:
 
     @classmethod
     def create_new_event(cls, event_data):
+        """
+        This class method takes a JSON string and converts it into a Python dictionary.
 
+        Args:
+            event_data (str): A JSON string representing event data.
+
+        Returns:
+            dict: A Python dictionary representing the event data.
+        """
         # Event data is a json that needs to be converted to dictionary
         event_data = json.loads(event_data)
         return event_data
 
     @classmethod
     def parse_json_events(cls, json_file):
+        """
+        This class method takes a file path to a JSON file, reads the file, and converts its content into a Python dictionary.
+
+        Args:
+            json_file (str): The file path to a JSON file.
+
+        Returns:
+            dict: A Python dictionary representing the content of the JSON file.
+        """
+        
         # Open file and turn it into a dictionary
         events_dic = Utils.parse_json_to_dic(json_file)
 
