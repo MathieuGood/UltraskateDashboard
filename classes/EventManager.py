@@ -13,7 +13,7 @@ class EventManager:
     @classmethod
     def create_new_event(cls, event_data):
 
-        # Event data is a json that needs to be converted to dicitaonary
+        # Event data is a json that needs to be converted to dictionary
         event_data = json.loads(event_data)
         return event_data
 
