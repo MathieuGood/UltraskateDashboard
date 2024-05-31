@@ -9,7 +9,6 @@ from classes.EventManager import EventManager
 from classes.AthleteRegistry import AthleteRegistry
 from classes.EventRegistry import EventRegistry
 
-
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
     "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
@@ -27,9 +26,7 @@ events_url = {
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
 
-
 start_time = time.time()
-
 
 # one_event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
 # for athlete in one_event:
@@ -49,6 +46,9 @@ events = EventRegistry.get_all_events()
 for event in events.values():
     # print(event.name, event.date, event.track["name"], event.track["location"])
     print(f"{event.date} {event.track.name}, {event.track.location}")
+
+ultra2020 = events[8]
+print(ultra2020)
 
 # End timer
 end_time = time.time()
