@@ -1,12 +1,7 @@
 import time
-from classes.Webscraper import Webscraper
-from classes.Utils import Utils
-from classes.Performance import Performance
-from classes.Athlete import Athlete
-from classes.Track import Track
-from classes.Event import Event
+
+from classes.EventAthleteStats import EventAthleteStats
 from classes.EventManager import EventManager
-from classes.AthleteRegistry import AthleteRegistry
 from classes.EventRegistry import EventRegistry
 
 events_url = {
@@ -48,8 +43,24 @@ for event in events.values():
     print(f"{event.date} {event.track.name}, {event.track.location}")
 
 ultra2020 = events[8]
-print(ultra2020)
+performance = ultra2020.performances[0]
+print(performance)
+
+athlete_stats = EventAthleteStats(performance)
+print(f"Total time : {athlete_stats.get_total_time()}")
+print(f"Lap count : {athlete_stats.get_lap_count()}")
+print(f"Total mileage : {athlete_stats.get_total_mileage()} miles")
+
+# Get first items of ultra2020 dictionary
+
+# total_time = timedelta(seconds=sum(performance.laps.values()))
+# lap_count = len(performance.laps)
+# track_length = ultra2020.track.length
+# print(track_length)
+# total_distance = lap_count * track_length
+# print(f"Total distance: {total_distance} miles")
+# print(total_time)
 
 # End timer
 end_time = time.time()
-print(f"Time elapsed: {end_time - start_time} seconds")
+print(f"\n\nTime elapsed: {end_time - start_time} seconds")

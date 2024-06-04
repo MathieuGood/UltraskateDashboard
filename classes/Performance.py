@@ -1,4 +1,3 @@
-from classes.Athlete import Athlete
 from classes.AthleteRegistry import AthleteRegistry
 
 

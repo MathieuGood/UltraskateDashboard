@@ -1,6 +1,3 @@
-from classes.Athlete import Athlete
-
-
 class AthleteRegistry:
 
     athletes = {}

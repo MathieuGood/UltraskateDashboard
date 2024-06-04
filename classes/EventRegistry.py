@@ -1,6 +1,3 @@
-from classes.Event import Event
-
-
 class EventRegistry:
 
     events = {}

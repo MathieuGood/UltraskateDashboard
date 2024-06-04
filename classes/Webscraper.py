@@ -1,11 +1,9 @@
-import requests
 import re
+
+import requests
 from bs4 import BeautifulSoup
+
 from classes.Utils import Utils
-from classes.Performance import Performance
-from classes.Athlete import Athlete
-from classes.Event import Event
-from classes.Track import Track
 
 
 class Webscraper:
@@ -40,7 +38,7 @@ class Webscraper:
         page_number_info = soup.find_all("span", id="ctl00_Content_Main_lblTopPager")
 
         # Test if the ResultSet number_of_pages is empty
-        if page_number_info == []:
+        if not page_number_info:
             number_of_pages = 1
         else:
             # From the string "Page 1 of 2 (76 items)" extract the number of pages with a regex
@@ -81,7 +79,7 @@ class Webscraper:
                     link = Utils.extract_base_url(base_url) + links[1]["href"]
                     athletes_urls.append(link)
                 except:
-                    # print("- Line with no skater entry -")
+                    print("- Line with no skater entry -")
                     pass
 
         return athletes_urls
@@ -116,11 +114,10 @@ class Webscraper:
                 extracted_time = str(Utils.extract_time(field.text))
 
                 if (
-                    field_count == 2
-                    # and extracted_time is not None
-                    and Utils.check_hhmmss_format(extracted_time)
+                        field_count == 2
+                        # and extracted_time is not None
+                        and Utils.check_hhmmss_format(extracted_time)
                 ):
-
                     lap_number = row_count - 1
                     lap_time = Utils.convert_time_str_to_ss(extracted_time)
                     laps[lap_number] = lap_time
@@ -148,8 +145,6 @@ class Webscraper:
         # Parse data from the athlete info table
         athlete_info = cls.parse_athlete_info(name, racer_id, athlete_info_table)
         print(athlete_info)
-
-        
 
         # Parse data from the athlete laps table
         laps = cls.parse_athlete_laps(athlete_laps_table)

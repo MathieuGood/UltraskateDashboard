@@ -28,7 +28,8 @@ class EventManager:
     @classmethod
     def parse_json_events(cls, json_file):
         """
-        This class method takes a file path to a JSON file, reads the file, and converts its content into a Python dictionary.
+        This class method takes a file path to a JSON file, reads the file,
+         and converts its content into a Python dictionary.
 
         Args:
             json_file (str): The file path to a JSON file.
@@ -36,11 +37,11 @@ class EventManager:
         Returns:
             dict: A Python dictionary representing the content of the JSON file.
         """
-        
-        # Open file and turn it into a dictionary
-        events_dic = Utils.parse_json_to_dic(json_file)
 
-        for event_date, event_content in events_dic.items():
+        # Open file and turn it into a dictionary
+        events_dict = Utils.parse_json_to_dic(json_file)
+
+        for event_date, event_content in events_dict.items():
 
             event_month = int(event_date[5:7])
             if 0 < event_month < 3:
