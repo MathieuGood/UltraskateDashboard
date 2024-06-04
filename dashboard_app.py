@@ -3,6 +3,8 @@ import time
 from classes.EventAthleteStats import EventAthleteStats
 from classes.EventManager import EventManager
 from classes.EventRegistry import EventRegistry
+from classes.Utils import Utils
+from classes.Webscraper import Webscraper
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
