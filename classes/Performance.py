@@ -1,3 +1,4 @@
+from classes.Athlete import Athlete
 from classes.AthleteRegistry import AthleteRegistry
 
 
@@ -7,5 +8,5 @@ class Performance:
         self.athlete_id = athlete_id
         self.laps = laps
 
-    def get_athlete(self):
+    def get_athlete(self) -> Athlete:
         return AthleteRegistry.athletes[self.athlete_id]
