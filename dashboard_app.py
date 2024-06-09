@@ -30,8 +30,8 @@ start_time = time.time()
 #     print(athlete)
 
 
-# scraped_events = Webscraper.fetch_all_events_performances(events_url)
-# print(scraped_events)
+scraped_events = Webscraper.fetch_all_events_performances(events_url)
+print(scraped_events)
 
 # # Write all the data in events to a JSON file
 # Utils.write_to_json(scraped_events, "events.json")

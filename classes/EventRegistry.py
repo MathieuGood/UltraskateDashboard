@@ -14,5 +14,5 @@ class EventRegistry:
         cls.events.remove(event)
 
     @classmethod
-    def get_all_events(cls) -> dict[str, Event]:
+    def get_all_events(cls) -> dict[int, Event]:
         return cls.events
