@@ -11,7 +11,7 @@ class Webscraper:
     """
 
     @classmethod
-    def fetch_html(cls, url):
+    def fetch_html(cls, url: str):
         """
         Fetches the HTML content from the specified URL.
 
@@ -19,11 +19,11 @@ class Webscraper:
         :return: The BeautifulSoup object representing the parsed HTML content.
         """
         page = requests.get(url)
-        html = BeautifulSoup(page.content, "html.parser")
+        html: BeautifulSoup = BeautifulSoup(page.content, "html.parser")
         return html
 
     @classmethod
-    def fetch_all_athletes_urls(cls, url):
+    def fetch_all_athletes_urls(cls, url: str) -> list[str]:
         soup = cls.fetch_html(url)
         base_url = url
 
@@ -51,13 +51,14 @@ class Webscraper:
 
             # Build the URL for the current page
             url = base_url + "&PageNo=" + str(i)
-            print(">>>>>>>>> Page " + str(i) + " >>>>>>")
-            print(">>>>>>>>> URL : " + url + " >>>>>>")
+            print(">> Page " + str(i) + " >>")
+            print(">> URL : " + url + " >>")
 
             # Find all the participants in the table
             athletes = soup.find_all("tr")
 
             for athlete in athletes:
+                # Skip the first two rows containing table headers
                 if athlete == athletes[0] or athlete == athletes[1]:
                     continue
 
@@ -65,8 +66,8 @@ class Webscraper:
                 links = athlete.find_all("a")
                 try:
                     # Extract the link and name of the skater
-                    name = fields[3].text.strip()
-                    link = links[1]["href"]
+                    name: str = fields[3].text.strip()
+                    link: str = links[1]["href"]
                     print(name, link)
                     # Build the complete URL for the skater's personal stats page
                     link = Utils.extract_base_url(base_url) + links[1]["href"]
@@ -78,12 +79,12 @@ class Webscraper:
         return athletes_urls
 
     @classmethod
-    def parse_athlete_info(cls, name, racer_id, athlete_info_table):
-        info_table_fields = athlete_info_table.find_all("td")
-        gender = info_table_fields[1].text.strip()
-        age = info_table_fields[3].text.strip()
-        city = info_table_fields[7].text.strip()
-        state = info_table_fields[9].text.strip()
+    def parse_athlete_info(cls, name: str, racer_id: str, athlete_info_table) -> dict[str, str]:
+        info_table_fields: list = athlete_info_table.find_all("td")
+        gender: str = info_table_fields[1].text.strip()
+        age: str = info_table_fields[3].text.strip()
+        city: str = info_table_fields[7].text.strip()
+        state: str = info_table_fields[9].text.strip()
 
         return {
             "name": name,
@@ -95,8 +96,8 @@ class Webscraper:
         }
 
     @classmethod
-    def parse_athlete_laps(cls, athlete_laps_table):
-        laps_table_rows = athlete_laps_table.find_all("tr")
+    def parse_athlete_laps(cls, athlete_laps_table) -> dict[int, int]:
+        laps_table_rows: list = athlete_laps_table.find_all("tr")
 
         laps = {}
 
@@ -119,17 +120,17 @@ class Webscraper:
         return laps
 
     @classmethod
-    def fetch_athlete_stats(cls, url):
+    def fetch_athlete_stats(cls, url: str) -> dict[str, dict]:
         """
         Fetches the personal stats of an athlete.
 
         :param url: The URL of the skater's personal stats page.
         :return: A list containing the athlete's name, category
         """
-        soup = cls.fetch_html(url)
+        soup: BeautifulSoup = cls.fetch_html(url)
 
-        name = soup.find("span", id="ctl00_Content_Main_lblName").text
-        racer_id = soup.find("span", id="ctl00_Content_Main_lblRaceNo").text
+        name: str = soup.find("span", id="ctl00_Content_Main_lblName").text
+        racer_id: str = soup.find("span", id="ctl00_Content_Main_lblRaceNo").text
 
         # Find all the table tags
         # First table contains athlete info, second table contains lap times
@@ -145,8 +146,8 @@ class Webscraper:
         return {"info": athlete_info, "performance": laps}
 
     @classmethod
-    def fetch_all_athletes_performances(cls, url):
-        urls = cls.fetch_all_athletes_urls(url)
+    def fetch_all_athletes_performances(cls, url: str) -> list[dict[str, dict]]:
+        urls: list[str] = cls.fetch_all_athletes_urls(url)
 
         event_performances = []
         for athlete_url in urls:
@@ -158,13 +159,9 @@ class Webscraper:
         return event_performances
 
     @classmethod
-    def fetch_all_events_performances(cls, events_urls):
+    def fetch_all_events_performances(cls, events_urls: dict[str, str]) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
-            print(
-                "\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url]
-            )
-            events_performances[event_url] = cls.fetch_all_athletes_performances(
-                events_urls[event_url]
-            )
+            print("\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url])
+            events_performances[event_url] = cls.fetch_all_athletes_performances(events_urls[event_url])
         return events_performances

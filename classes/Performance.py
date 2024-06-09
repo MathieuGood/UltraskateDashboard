@@ -4,7 +4,7 @@ from classes.AthleteRegistry import AthleteRegistry
 
 class Performance:
 
-    def __init__(self, athlete_id, laps):
+    def __init__(self, athlete_id : int, laps: dict[int, int]):
         self.athlete_id = athlete_id
         self.laps = laps
 
