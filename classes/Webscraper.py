@@ -2,7 +2,6 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-
 from classes.Utils import Utils
 
 
@@ -25,12 +24,6 @@ class Webscraper:
 
     @classmethod
     def fetch_all_athletes_urls(cls, url):
-        """
-        Fetches the URLs of all skaters' personal stats pages.
-
-        :param url: The URL of the page containing skater information.
-        :return: A list of skater information, including name, category, gender, city, state, field_country, and link.
-        """
         soup = cls.fetch_html(url)
         base_url = url
 
