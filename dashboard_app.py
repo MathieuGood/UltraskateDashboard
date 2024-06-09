@@ -30,6 +30,7 @@ start_time = time.time()
 #     print(athlete)
 
 
+
 scraped_events = Webscraper.fetch_all_events_performances(events_url)
 print(scraped_events)
 
