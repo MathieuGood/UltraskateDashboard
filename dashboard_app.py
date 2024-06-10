@@ -1,5 +1,6 @@
 import time
 
+from classes.Event import Event
 from classes.EventAthleteStats import EventAthleteStats
 from classes.EventManager import EventManager
 from classes.EventRegistry import EventRegistry
@@ -23,53 +24,53 @@ events_url = {
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
 
-def scrape_one_event():
-    event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
-    for athlete in event:
+
+def scrape_one_event(event_url: str):
+    event_performances = Webscraper.fetch_all_athletes_performances(event_url)
+    for athlete in event_performances:
         print(athlete)
 
 
-# scraped_events = Webscraper.fetch_all_events_performances(events_url)
-# print(scraped_events)
-
-# # Write all the data in events to a JSON file
-# Utils.write_to_json(scraped_events, "events.json")
-
-EventManager.parse_json_events("events.json")
-
-events = EventRegistry.get_all_events()
-
-for event in events.values():
-    # print(event.name, event.date, event.track["name"], event.track["location"])
-    print(f"{event.date} {event.track.name}, {event.track.location}")
-
-ultra2020 = events[8]
-performance = ultra2020.performances[0]
-print(performance)
-
-athlete_stats = EventAthleteStats(performance)
-print(f"Total time : {athlete_stats.get_total_time()}")
-print(f"Lap count : {athlete_stats.get_lap_count()}")
-print(f"Total mileage : {athlete_stats.get_total_mileage()} miles")
-
-# Get first items of ultra2020 dictionary
-
-# total_time = timedelta(seconds=sum(performance.laps.values()))
-# lap_count = len(performance.laps)
-# track_length = ultra2020.track.length
-# print(track_length)
-# total_distance = lap_count * track_length
-# print(f"Total distance: {total_distance} miles")
-# print(total_time)
-
-# End timer
+def fetch_events():
+    # Utils.write_to_json(scraped_events, "events.json")
+    EventManager.parse_json_events("events.json")
+    events = EventRegistry.get_all_events()
+    for event in events.values():
+        print(f"{event.date} {event.track.name}, {event.track.location}")
+    return events
 
 
+def manipulate_event(events: dict[int, Event]):
+    ultra2020 = events[8]
+    performance = ultra2020.performances[0]
+    print(performance)
 
+    athlete_stats = EventAthleteStats(performance)
+    print(f"Total time : {athlete_stats.get_total_time()}")
+    print(f"Lap count : {athlete_stats.get_lap_count()}")
+    print(f"Total mileage : {athlete_stats.get_total_mileage()} miles")
+
+    # total_time = timedelta(seconds=sum(performance.laps.values()))
+    # lap_count = len(performance.laps)
+    # track_length = ultra2020.track.length
+    # print(track_length)
+    # total_distance = lap_count * track_length
+    # print(f"Total distance: {total_distance} miles")
+    # print(total_time)
+
+
+def main():
+    scrape_one_event(events_url["2021-01-29"])
+
+    # scraped_events = Webscraper.fetch_all_events_performances(events_url)
+    # print(scraped_events)
+
+    events = fetch_events()
+    manipulate_event(events)
 
 
 if __name__ == "__main__":
     start_time = time.time()
-
+    main()
     end_time = time.time()
     print(f"\n\nTime elapsed: {end_time - start_time} seconds")
