@@ -79,7 +79,9 @@ class Webscraper:
         return athletes_urls
 
     @classmethod
-    def parse_athlete_info(cls, name: str, racer_id: str, athlete_info_table) -> dict[str, str]:
+    def parse_athlete_info(
+        cls, name: str, racer_id: str, athlete_info_table
+    ) -> dict[str, str]:
         info_table_fields: list = athlete_info_table.find_all("td")
         gender: str = info_table_fields[1].text.strip()
         age: str = info_table_fields[3].text.strip()
@@ -108,9 +110,9 @@ class Webscraper:
                 extracted_time = str(Utils.extract_time(field.text))
 
                 if (
-                        field_count == 2
-                        # and extracted_time is not None
-                        and Utils.check_hhmmss_format(extracted_time)
+                    field_count == 2
+                    # and extracted_time is not None
+                    and Utils.check_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = Utils.convert_time_str_to_ss(extracted_time)
@@ -159,9 +161,15 @@ class Webscraper:
         return event_performances
 
     @classmethod
-    def fetch_all_events_performances(cls, events_urls: dict[str, str]) -> dict[str, list[dict[str, dict]]]:
+    def fetch_all_events_performances(
+        cls, events_urls: dict[str, str]
+    ) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
-            print("\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url])
-            events_performances[event_url] = cls.fetch_all_athletes_performances(events_urls[event_url])
+            print(
+                "\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url]
+            )
+            events_performances[event_url] = cls.fetch_all_athletes_performances(
+                events_urls[event_url]
+            )
         return events_performances

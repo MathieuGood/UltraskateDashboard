@@ -23,15 +23,14 @@ events_url = {
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
 
-start_time = time.time()
+def scrape_one_event():
+    event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
+    for athlete in event:
+        print(athlete)
 
-# one_event = Webscraper.fetch_all_athletes_performances(events_url["2020-01-17"])
-# for athlete in one_event:
-#     print(athlete)
 
-
-scraped_events = Webscraper.fetch_all_events_performances(events_url)
-print(scraped_events)
+# scraped_events = Webscraper.fetch_all_events_performances(events_url)
+# print(scraped_events)
 
 # # Write all the data in events to a JSON file
 # Utils.write_to_json(scraped_events, "events.json")
@@ -64,5 +63,13 @@ print(f"Total mileage : {athlete_stats.get_total_mileage()} miles")
 # print(total_time)
 
 # End timer
-end_time = time.time()
-print(f"\n\nTime elapsed: {end_time - start_time} seconds")
+
+
+
+
+
+if __name__ == "__main__":
+    start_time = time.time()
+
+    end_time = time.time()
+    print(f"\n\nTime elapsed: {end_time - start_time} seconds")
