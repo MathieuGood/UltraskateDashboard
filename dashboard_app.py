@@ -9,8 +9,7 @@ from classes.Webscraper import Webscraper
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
-    "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
-    # 2014 Country available
+    "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",  # 2014 Country available
     "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
     "2016-02-26": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
     "2017-01-16": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
@@ -33,11 +32,11 @@ def scrape_one_event(event_url: str):
 def scrape_events(urls: dict[str, str]):
     scraped_events = Webscraper.fetch_all_events_performances(urls)
     print(scraped_events)
-    Utils.write_to_json(scraped_events, "events.json")
+    Utils.write_to_json(scraped_events, "data/events.json")
 
 
 def parse_events() -> dict[int, Event]:
-    EventManager.parse_json_events("events.json")
+    EventManager.parse_json_events("data/events.json")
     events = EventRegistry.get_all_events()
     for event in events.values():
         print(f"{event.date} {event.track.name}, {event.track.location}")
@@ -65,9 +64,9 @@ def manipulate_event(events: dict[int, Event]):
 
 
 def main():
-    # scrape_events(events_url)
-    events = parse_events()
-    manipulate_event(events)
+    scrape_events(events_url)
+    # events = parse_events()
+    # manipulate_event(events)
 
 
 if __name__ == "__main__":
