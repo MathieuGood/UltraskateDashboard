@@ -23,7 +23,7 @@ class Webscraper:
         return html
 
     @classmethod
-    def fetch_all_athletes_urls(cls, url: str) -> list[str]:
+    def fetch_all_athletes_urls(cls, url: str, link_index: int = 1) -> list[str]:
         soup = cls.fetch_html(url)
         base_url = url
 
@@ -67,20 +67,20 @@ class Webscraper:
                 try:
                     # Extract the link and name of the skater
                     name: str = fields[3].text.strip()
-                    link: str = links[1]["href"]
-                    print(name, link)
+                    end_link: str = links[link_index]["href"]
+                    print(name, end_link)
                     # Build the complete URL for the skater's personal stats page
-                    link = Utils.extract_base_url(base_url) + links[1]["href"]
+                    link = Utils.extract_base_url(base_url) + end_link
                     athletes_urls.append(link)
                 except:
                     print("- Line with no skater entry -")
                     pass
-
+        print("--> Returning", athletes_urls.__len__(), "athletes URLs")
         return athletes_urls
 
     @classmethod
     def parse_athlete_info(
-        cls, name: str, racer_id: str, athlete_info_table
+            cls, name: str, racer_id: str, athlete_info_table
     ) -> dict[str, str]:
         info_table_fields: list = athlete_info_table.find_all("td")
         gender: str = info_table_fields[1].text.strip()
@@ -110,9 +110,9 @@ class Webscraper:
                 extracted_time = str(Utils.extract_time(field.text))
 
                 if (
-                    field_count == 2
-                    # and extracted_time is not None
-                    and Utils.check_hhmmss_format(extracted_time)
+                        field_count == 2
+                        # and extracted_time is not None
+                        and Utils.check_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = Utils.convert_time_str_to_ss(extracted_time)
@@ -149,7 +149,11 @@ class Webscraper:
 
     @classmethod
     def fetch_all_athletes_performances(cls, url: str) -> list[dict[str, dict]]:
-        urls: list[str] = cls.fetch_all_athletes_urls(url)
+        if url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
+            urls: list[str] = cls.fetch_all_athletes_urls(url, 2)
+        else:
+            urls: list[str] = cls.fetch_all_athletes_urls(url)
+        print(">>>>>>>>>>>>>>>>>URL :  " + url)
 
         event_performances = []
         for athlete_url in urls:
@@ -162,7 +166,7 @@ class Webscraper:
 
     @classmethod
     def fetch_all_events_performances(
-        cls, events_urls: dict[str, str]
+            cls, events_urls: dict[str, str]
     ) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:

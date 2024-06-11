@@ -17,8 +17,7 @@ events_url = {
     "2018-01-10": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=294",
     "2019-01-18": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=352",
     "2020-01-17": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=400",
-    # "2021-01-29": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413",
-    # # 2021 NOT OK
+    "2021-01-29": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413",
     # "2022-02-19": "https://my.raceresult.com/192607",
     # "2023-02-10": "https://my.raceresult.com/204047",
     # "2024-02-15": "https://my.raceresult.com/259072",
@@ -31,12 +30,18 @@ def scrape_one_event(event_url: str):
         print(athlete)
 
 
-def fetch_events():
-    # Utils.write_to_json(scraped_events, "events.json")
+def scrape_events(urls: dict[str, str]):
+    scraped_events = Webscraper.fetch_all_events_performances(urls)
+    print(scraped_events)
+    Utils.write_to_json(scraped_events, "events.json")
+
+
+def parse_events() -> dict[int, Event]:
     EventManager.parse_json_events("events.json")
     events = EventRegistry.get_all_events()
     for event in events.values():
         print(f"{event.date} {event.track.name}, {event.track.location}")
+    print(f"Total events: {len(events)}")
     return events
 
 
@@ -60,12 +65,8 @@ def manipulate_event(events: dict[int, Event]):
 
 
 def main():
-    scrape_one_event(events_url["2021-01-29"])
-
-    # scraped_events = Webscraper.fetch_all_events_performances(events_url)
-    # print(scraped_events)
-
-    events = fetch_events()
+    # scrape_events(events_url)
+    events = parse_events()
     manipulate_event(events)
 
 
