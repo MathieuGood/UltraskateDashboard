@@ -23,6 +23,27 @@ events_url = {
     # "2024-02-15": "https://my.raceresult.com/259072",
 }
 
+events_fields_indexes = {
+    events_url["2013-01-07"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2014-01-20"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2015-02-12"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2016-02-26"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2017-01-16"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2018-01-10"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2019-01-18"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2020-01-17"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+    events_url["2021-01-29"]:
+        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, }
+}
+
 
 def scrape_one_event(event_url: str):
     event_performances = Webscraper.fetch_all_athletes_performances(event_url)

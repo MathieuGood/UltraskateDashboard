@@ -79,10 +79,10 @@ class Webscraper:
         return athletes_urls
 
     @classmethod
-    def parse_athlete_info(
-            cls, name: str, racer_id: str, athlete_info_table
-    ) -> dict[str, str]:
-        # TODO : Add parameters to specify the fields to extract
+    def parse_athlete_info(cls, name: str, racer_id: str, athlete_info_table, event_url: str) -> dict[str, str]:
+        # TODO : Add parameters to specify the indexes of fields to extract
+        # Layout of the webpage for the athlete is not consistent year by year
+        # The indexes of fields to extract are unique for each event_url
         info_table_fields: list = athlete_info_table.find_all("td")
         gender: str = info_table_fields[1].text.strip()
         age: str = info_table_fields[3].text.strip()
@@ -125,13 +125,7 @@ class Webscraper:
         return laps
 
     @classmethod
-    def fetch_athlete_stats(cls, url: str) -> dict[str, dict]:
-        """
-        Fetches the personal stats of an athlete.
-
-        :param url: The URL of the skater's personal stats page.
-        :return: A list containing the athlete's name, category
-        """
+    def fetch_athlete_stats(cls, url: str, event_url: str) -> dict[str, dict]:
         soup: BeautifulSoup = cls.fetch_html(url)
 
         name: str = soup.find("span", id="ctl00_Content_Main_lblName").text
@@ -142,7 +136,7 @@ class Webscraper:
         athlete_info_table, athlete_laps_table = soup.find_all("table")
 
         # Parse data from the athlete info table
-        athlete_info = cls.parse_athlete_info(name, racer_id, athlete_info_table)
+        athlete_info = cls.parse_athlete_info(name, racer_id, athlete_info_table, event_url)
         print(athlete_info)
 
         # Parse data from the athlete laps table
@@ -162,7 +156,7 @@ class Webscraper:
         for athlete_url in urls:
             print("\n\n>>> URL : " + athlete_url)
             # Add the performance to the event
-            event_performances.append(cls.fetch_athlete_stats(athlete_url))
+            event_performances.append(cls.fetch_athlete_stats(athlete_url, event_url=url))
             print(event_performances.__len__(), "athlete performances fetched")
 
         return event_performances
