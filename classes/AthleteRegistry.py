@@ -16,3 +16,7 @@ class AthleteRegistry:
     @classmethod
     def get_all_athletes(cls) -> dict[int, Athlete]:
         return cls.athletes
+
+    @classmethod
+    def get_athlete(cls, athlete_id: int) -> Athlete:
+        return cls.athletes[athlete_id]

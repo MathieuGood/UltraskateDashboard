@@ -1,5 +1,6 @@
 import time
 
+from classes.AthleteRegistry import AthleteRegistry
 from classes.Event import Event
 from classes.EventAthleteStats import EventAthleteStats
 from classes.EventManager import EventManager
@@ -63,10 +64,16 @@ def manipulate_event(events: dict[int, Event]):
     # print(total_time)
 
 
+def one_skater_info_per_event(events: dict[int, Event]):
+    for event in events.values():
+        print(event.date, AthleteRegistry.get_athlete(event.performances[0].athlete_id))
+
+
 def main():
-    scrape_events(events_url)
-    # events = parse_events()
+    # scrape_events(events_url)
+    events = parse_events()
     # manipulate_event(events)
+    one_skater_info_per_event(events)
 
 
 if __name__ == "__main__":

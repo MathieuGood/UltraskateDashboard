@@ -86,6 +86,8 @@ class Webscraper:
         info_table_fields: list = athlete_info_table.find_all("td")
         gender: str = info_table_fields[1].text.strip()
         age: str = info_table_fields[3].text.strip()
+        category: str
+        age_category: str
         city: str = info_table_fields[7].text.strip()
         state: str = info_table_fields[9].text.strip()
 
@@ -166,15 +168,9 @@ class Webscraper:
         return event_performances
 
     @classmethod
-    def fetch_all_events_performances(
-            cls, events_urls: dict[str, str]
-    ) -> dict[str, list[dict[str, dict]]]:
+    def fetch_all_events_performances(cls, events_urls: dict[str, str]) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
-            print(
-                "\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url]
-            )
-            events_performances[event_url] = cls.fetch_all_athletes_performances(
-                events_urls[event_url]
-            )
+            print("\n\nFetching " + event_url + "   >>> URL : " + events_urls[event_url])
+            events_performances[event_url] = cls.fetch_all_athletes_performances(events_urls[event_url])
         return events_performances
