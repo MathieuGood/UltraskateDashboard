@@ -1,5 +1,6 @@
-import re
 import json
+import re
+
 from classes.Track import Track
 from classes.Track import TrackOption
 
@@ -57,7 +58,7 @@ class Utils:
         :return: True if the URL is in a valid format, False otherwise.
         :rtype: bool
         """
-        return re.match(r"^https?://(?:www\.)?[^/]+/", url)
+        return re.match(r"^https?://(?:www\.)?[^/]+/.*", url)
 
     @classmethod
     def extract_base_url(cls, url: str) -> str:
@@ -67,11 +68,9 @@ class Utils:
         :param url: The URL to extract the base URL from.
         :return: The base URL.
         """
-        match = re.search(r"^https?://(?:www\.)?[^/]+/", url)
+        match: re.Match[str] | None = re.search(r"^https?://(?:www\.)?[^/]+/", url)
         if Utils.check_url_format(url):
             return match.group(0)
-        else:
-            return None
 
     @classmethod
     def parse_json_to_dic(cls, json_file: json) -> dict:
@@ -98,11 +97,3 @@ class Utils:
         """
         with open(filename, "w") as file:
             json.dump(data, file, indent=4)
-
-    @classmethod
-    def get_track_from_location(cls, location: TrackOption) -> Track:
-        match location:
-            case TrackOption.MIAMI:
-                return Track(TrackOption.MIAMI)
-            case TrackOption.SPAARNDAM:
-                return Track(TrackOption.SPAARNDAM)

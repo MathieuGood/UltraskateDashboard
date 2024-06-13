@@ -82,6 +82,7 @@ class Webscraper:
     def parse_athlete_info(
             cls, name: str, racer_id: str, athlete_info_table
     ) -> dict[str, str]:
+        # TODO : Add parameters to specify the fields to extract
         info_table_fields: list = athlete_info_table.find_all("td")
         gender: str = info_table_fields[1].text.strip()
         age: str = info_table_fields[3].text.strip()

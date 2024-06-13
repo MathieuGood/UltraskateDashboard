@@ -42,14 +42,15 @@ class EventManager:
         events_dict = Utils.parse_json_to_dic(json_file)
 
         for event_date, event_content in events_dict.items():
-
+            # Determine track option based on event month
             event_month = int(event_date[5:7])
             if 0 < event_month < 3:
                 track_option = TrackOption.MIAMI
             else:
                 track_option = TrackOption.SPAARNDAM
 
-            track = Utils.get_track_from_location(track_option)
+            track = Track(track_option)
+
             # Create new Event instance
             event_instance = Event(event_date, track)
 
@@ -69,12 +70,12 @@ class EventManager:
                 )
                 event_instance.performances.append(performance_instance)
 
-                # print(
-                #     athlete_instance.id,
-                #     athlete_instance.name,
-                #     athlete_instance.gender,
-                #     athlete_instance.city,
-                # )
+                print(
+                    athlete_instance.id,
+                    athlete_instance.name,
+                    athlete_instance.gender,
+                    athlete_instance.city,
+                )
                 # print(athlete["info"])
                 # print(athlete["performance"])
                 # print("---------\n")
