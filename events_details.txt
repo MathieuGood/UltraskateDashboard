@@ -1,3 +1,17 @@
+| Date       | Name           | Racer ID | Gender | Age             | City          | State  |
+|------------|----------------|----------|--------|-----------------|---------------|--------|
+| 2013-01-07 | Andrew Andras  | 47       | Male   | 36              | Miami Beach   | FL     |
+| 2014-01-20 | Andrew Andras  | 12       | Male   | Individual      | Miami Beach   | FL     |
+| 2015-02-12 | Eric Palmer    | 284      | Male   | Overall         | Germantown    | MD     |
+| 2016-02-26 | Andrew Andras  | 201      | Male   | Ages 30 - 39    | Miami Beach   | FL     |
+| 2017-01-16 | Kyle Yan       | 366      | Male   | Ages 19 - 29    | New York City | NY     |
+| 2018-01-10 | Kyle Yan       | 56       | Male   | Ages 19 - 29    | New York      | NY     |
+| 2019-01-18 | Joe Mazzone    | 35       | Male   | Ages 19 - 29    | Littleton     | CO     |
+| 2020-01-17 | Joseph Mazzone | 49       | Male   | Overall         | Littleton     | NY     |
+| 2021-01-29 | Joseph Mazzone | 49       | Male   | Overall Open    | 30            | Littleton |
+
+
+
 "2013-01-07": "info": {
 "name": "Andrew Andras",
 "racer_id": "47",
@@ -80,8 +94,3 @@
 "city": "30",
 "state": "Littleton"
 },
-
-
-
-
-
