@@ -114,13 +114,13 @@ class Webscraper:
 
                 if (
                         field_count == 2
-                        # and extracted_time is not None
+                        # and extracted_time is valid
                         and Utils.check_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = Utils.convert_time_str_to_ss(extracted_time)
                     laps[lap_number] = lap_time
-                    print("--- Lap  ", lap_number, field.text)
+                    print("---> Lap  ", lap_number, field.text)
 
         return laps
 
