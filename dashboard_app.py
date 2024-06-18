@@ -25,23 +25,23 @@ events_url = {
 
 events_fields_indexes = {
     events_url["2013-01-07"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2014-01-20"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2015-02-12"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2016-02-26"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2017-01-16"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2018-01-10"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2019-01-18"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2020-01-17"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, },
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
     events_url["2021-01-29"]:
-        {"name": 1, "gender": 2, "age": 3, "category": 4, "age_category": 5, "city": 6, "state": 7, }
+        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
 }
 
 
@@ -91,10 +91,10 @@ def one_skater_info_per_event(events: dict[int, Event]):
 
 
 def main():
-    # scrape_events(events_url)
-    events = parse_events()
+    scrape_events(events_url)
+    # events = parse_events()
     # manipulate_event(events)
-    one_skater_info_per_event(events)
+    # one_skater_info_per_event(events)
 
 
 if __name__ == "__main__":

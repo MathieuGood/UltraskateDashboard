@@ -83,13 +83,22 @@ class Webscraper:
         # TODO : Add parameters to specify the indexes of fields to extract
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract are unique for each event_url
+        from dashboard_app import events_fields_indexes
+        index = events_fields_indexes[event_url]
         info_table_fields: list = athlete_info_table.find_all("td")
-        gender: str = info_table_fields[1].text.strip()
-        age: str = info_table_fields[3].text.strip()
+        # gender: str = info_table_fields[1].text.strip()
+        # age: str = info_table_fields[3].text.strip()
+        # category: str
+        # age_category: str
+        # city: str = info_table_fields[7].text.strip()
+        # state: str = info_table_fields[9].text.strip()
+
+        gender: str = info_table_fields[index['gender']].text.strip()
+        age: str = info_table_fields[index['age']].text.strip()
         category: str
         age_category: str
-        city: str = info_table_fields[7].text.strip()
-        state: str = info_table_fields[9].text.strip()
+        city: str = info_table_fields[index['city']].text.strip()
+        state: str = info_table_fields[index['state']].text.strip()
 
         return {
             "name": name,
@@ -150,11 +159,11 @@ class Webscraper:
             urls: list[str] = cls.fetch_all_athletes_urls(url, 2)
         else:
             urls: list[str] = cls.fetch_all_athletes_urls(url)
-        print(">>>>>>>>>>>>>>>>>URL :  " + url)
+        print(f"\n############\nFetchig all athlete performances from URL : {url}\n############")
 
         event_performances = []
         for athlete_url in urls:
-            print("\n\n>>> URL : " + athlete_url)
+            print("\n>>> Athlete URL : " + athlete_url)
             # Add the performance to the event
             event_performances.append(cls.fetch_athlete_stats(athlete_url, event_url=url))
             print(event_performances.__len__(), "athlete performances fetched")
