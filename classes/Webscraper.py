@@ -110,12 +110,12 @@ class Webscraper:
             fields = row.find_all("td")
 
             for field_count, field in enumerate(fields):
-                extracted_time = str(Utils.extract_time(field.text))
+                extracted_time = str(Utils.extract_time_from_str(field.text))
 
                 if (
                         field_count == 2
                         # and extracted_time is valid
-                        and Utils.check_hhmmss_format(extracted_time)
+                        and Utils.str_is_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = Utils.convert_time_str_to_ss(extracted_time)
