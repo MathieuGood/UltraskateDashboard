@@ -11,7 +11,7 @@ class Utils:
     """
 
     @classmethod
-    def check_hhmmss_format(cls, str_time: str) -> bool:
+    def str_is_hhmmss_format(cls, str_time: str) -> bool:
         """
         Check if a string is in HH:MM:SS format.
 
@@ -19,7 +19,10 @@ class Utils:
         :return: True if the string is in HH:MM:SS format, False otherwise.
         :rtype: bool
         """
-        return re.match(r"^\d{2}:\d{2}:\d{2}$", str_time)
+        if re.match(r"^\d{2}:\d{2}:\d{2}$", str_time):
+            return True
+        else:
+            return False
 
     @classmethod
     def convert_time_str_to_ss(cls, str_time: str) -> int:
@@ -35,7 +38,7 @@ class Utils:
 
     @classmethod
     # In a '00:08:26 (00:08:26)' string, extract only the time that is not between the parentheses with a regex
-    def extract_time(cls, str_time: str) -> str:
+    def extract_time_from_str(cls, str_time: str) -> str:
         """
         Extracts a time string from a string that contains a time string.
 
