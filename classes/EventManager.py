@@ -37,18 +37,10 @@ class EventManager:
         Returns:
             dict: A Python dictionary representing the content of the JSON file.
         """
-
-        # Open file and turn it into a dictionary
         events_dict = Utils.parse_json_to_dic(json_file)
 
         for event_date, event_content in events_dict.items():
-            # Determine track option based on event month
-            event_month = int(event_date[5:7])
-            if 0 < event_month < 3:
-                track_option = TrackOption.MIAMI
-            else:
-                track_option = TrackOption.SPAARNDAM
-            track = Track(track_option)
+            track = cls.get_track_from_event_month(event_date)
 
             event_instance = Event(event_date, track)
             for athlete in event_content:
@@ -69,3 +61,21 @@ class EventManager:
                 )
             EventRegistry.add_event(event_instance)
         print("Parsed JSON data from", EventRegistry.events.__len__(), " Ultraskates")
+
+    @classmethod
+    def get_track_from_event_month(cls, event_date: str) -> Track:
+        """
+        This class method determines the track based on the month of the event.
+
+        Args:
+            event_date (str): The date of the event in the format 'YYYY-MM-DD'.
+
+        Returns:
+            Track: An instance of the Track class representing the track for the event.
+        """
+        event_month = int(event_date[5:7])
+        if 0 < event_month < 3:
+            track_option = TrackOption.MIAMI
+        else:
+            track_option = TrackOption.SPAARNDAM
+        return Track(track_option)
