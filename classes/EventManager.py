@@ -48,26 +48,17 @@ class EventManager:
                 track_option = TrackOption.MIAMI
             else:
                 track_option = TrackOption.SPAARNDAM
-
             track = Track(track_option)
 
-            # Create new Event instance
             event_instance = Event(event_date, track)
-
             for athlete in event_content:
-                # Create new Athlete instance
                 athlete_instance = Athlete(
                     name=athlete["info"]["name"],
                     gender=athlete["info"]["gender"],
                     city=athlete["info"]["city"],
                 )
-
                 AthleteRegistry.add_athlete(athlete_instance)
-
-                # Create new Performance and add it to Event instance
-                performance_instance = Performance(
-                    athlete_instance.id, athlete["performance"]
-                )
+                performance_instance = Performance(athlete_instance.id, athlete["performance"])
                 event_instance.performances.append(performance_instance)
 
                 print(
@@ -76,8 +67,5 @@ class EventManager:
                     athlete_instance.gender,
                     athlete_instance.city,
                 )
-                # print(athlete["info"])
-                # print(athlete["performance"])
-                # print("---------\n")
             EventRegistry.add_event(event_instance)
         print("Parsed JSON data from", EventRegistry.events.__len__(), " Ultraskates")
