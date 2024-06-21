@@ -2,10 +2,10 @@ import json
 from classes.Event import Event
 from classes.Athlete import Athlete
 from classes.Performance import Performance
-from classes.Utils import Utils
+from utils.JsonUtils import JsonUtils
 from classes.Track import *
-from classes.AthleteRegistry import AthleteRegistry
-from classes.EventRegistry import EventRegistry
+from registries.AthleteRegistry import AthleteRegistry
+from registries.EventRegistry import EventRegistry
 
 
 class EventManager:
@@ -37,7 +37,7 @@ class EventManager:
         Returns:
             dict: A Python dictionary representing the content of the JSON file.
         """
-        events_dict = Utils.parse_json_to_dic(json_file)
+        events_dict = JsonUtils.parse_json_to_dic(json_file)
 
         for event_date, event_content in events_dict.items():
             track = cls.get_track_from_event_month(event_date)

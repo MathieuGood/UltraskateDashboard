@@ -1,11 +1,7 @@
-import json
 import re
 
-from classes.Track import Track
-from classes.Track import TrackOption
 
-
-class Utils:
+class StringUtils:
     """
     A utility class containing various helper methods.
     """
@@ -72,31 +68,5 @@ class Utils:
         :return: The base URL.
         """
         match: re.Match[str] | None = re.search(r"^https?://(?:www\.)?[^/]+/", url)
-        if Utils.check_url_format(url):
+        if StringUtils.check_url_format(url):
             return match.group(0)
-
-    @classmethod
-    def parse_json_to_dic(cls, json_file: json) -> dict:
-        """
-        Parses a JSON file and returns its content as a dictionary.
-
-        Args:
-            json_file (str): The path to the JSON file.
-
-        Returns:
-            dict: The content of the JSON file as a dictionary.
-        """
-        with open(json_file, "r") as file:
-            json_content = file.read()
-            return json.loads(json_content)
-
-    @classmethod
-    def write_to_json(cls, data, filename: str) -> None:
-        """
-        Write data to a JSON file.
-
-        :param data: The data to write to the file.
-        :param filename: The name of the file to write the data to.
-        """
-        with open(filename, "w") as file:
-            json.dump(data, file, indent=4)

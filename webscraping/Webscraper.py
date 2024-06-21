@@ -2,7 +2,7 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-from classes.Utils import Utils
+from utils.StringUtils import StringUtils
 
 
 class Webscraper:
@@ -70,17 +70,16 @@ class Webscraper:
                     end_link: str = links[link_index]["href"]
                     print(name, end_link)
                     # Build the complete URL for the skater's personal stats page
-                    link = Utils.extract_base_url(base_url) + end_link
+                    link = StringUtils.extract_base_url(base_url) + end_link
                     athletes_urls.append(link)
-                except:
-                    print("- Line with no skater entry -")
+                except Exception as e:
+                    print(f"=> Line with no skater entry\n=> {e}")
                     pass
         print("--> Returning", athletes_urls.__len__(), "athletes URLs")
         return athletes_urls
 
     @classmethod
     def parse_athlete_info(cls, name: str, racer_id: str, athlete_info_table, event_url: str) -> dict[str, str]:
-        # TODO : Add parameters to specify the indexes of fields to extract
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract are unique for each event_url
         from dashboard_app import events_fields_indexes
@@ -92,6 +91,12 @@ class Webscraper:
         # age_category: str
         # city: str = info_table_fields[7].text.strip()
         # state: str = info_table_fields[9].text.strip()
+
+        # Write all the values of info_table_fields to a csv file
+        with open("data/info_table_fields.csv", "a") as file:
+            for field in info_table_fields:
+                file.write(f"{field.text.strip()};")
+            file.write("\n")
 
         gender: str = info_table_fields[index['gender']].text.strip()
         age: str = info_table_fields[index['age']].text.strip()
@@ -119,15 +124,15 @@ class Webscraper:
             fields = row.find_all("td")
 
             for field_count, field in enumerate(fields):
-                extracted_time = str(Utils.extract_time_from_str(field.text))
+                extracted_time = str(StringUtils.extract_time_from_str(field.text))
 
                 if (
                         field_count == 2
                         # and extracted_time is valid
-                        and Utils.str_is_hhmmss_format(extracted_time)
+                        and StringUtils.str_is_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
-                    lap_time = Utils.convert_time_str_to_ss(extracted_time)
+                    lap_time = StringUtils.convert_time_str_to_ss(extracted_time)
                     laps[lap_number] = lap_time
                     print("---> Lap  ", lap_number, field.text)
 

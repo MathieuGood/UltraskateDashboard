@@ -1,5 +1,5 @@
 from classes.Athlete import Athlete
-from classes.AthleteRegistry import AthleteRegistry
+from registries.AthleteRegistry import AthleteRegistry
 
 
 class Performance:

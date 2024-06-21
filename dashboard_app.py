@@ -1,13 +1,12 @@
 import time
 
-from classes.AthleteRegistry import AthleteRegistry
+from registries.AthleteRegistry import AthleteRegistry
 from classes.Event import Event
-from classes.EventAthleteStats import EventAthleteStats
+from classes.AthleteStatsProcessor import AthleteStatsProcessor
 from classes.EventManager import EventManager
-from classes.EventRegistry import EventRegistry
-from classes.Utils import Utils
-from classes.Webscraper import Webscraper
-from properties import Properties
+from registries.EventRegistry import EventRegistry
+from utils.JsonUtils import JsonUtils
+from webscraping.Webscraper import Webscraper
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
@@ -55,7 +54,7 @@ def scrape_one_event(event_url: str):
 def scrape_events(urls: dict[str, str]):
     scraped_events = Webscraper.fetch_all_events_performances(urls)
     print(scraped_events)
-    Utils.write_to_json(scraped_events, "data/events.json")
+    JsonUtils.write_to_json(scraped_events, "data/events.json")
 
 
 def parse_events() -> dict[int, Event]:
@@ -72,7 +71,7 @@ def manipulate_event(events: dict[int, Event]):
     performance = ultra2020.performances[0]
     print(performance)
 
-    athlete_stats = EventAthleteStats(performance)
+    athlete_stats = AthleteStatsProcessor(performance)
     print(f"Total time : {athlete_stats.get_total_time()}")
     print(f"Lap count : {athlete_stats.get_lap_count()}")
     print(f"Total mileage : {athlete_stats.get_total_mileage()} miles")

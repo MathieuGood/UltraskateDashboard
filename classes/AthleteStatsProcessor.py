@@ -4,7 +4,7 @@ from classes.Performance import Performance
 from classes.Track import TrackOption
 
 
-class EventAthleteStats:
+class AthleteStatsProcessor:
 
     def __init__(self, performance: Performance):
         self.performance = performance
