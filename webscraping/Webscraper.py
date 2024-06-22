@@ -88,7 +88,6 @@ class Webscraper:
         # gender: str = info_table_fields[1].text.strip()
         # age: str = info_table_fields[3].text.strip()
         # category: str
-        # age_category: str
         # city: str = info_table_fields[7].text.strip()
         # state: str = info_table_fields[9].text.strip()
 
@@ -101,7 +100,6 @@ class Webscraper:
         gender: str = info_table_fields[index['gender']].text.strip()
         age: str = info_table_fields[index['age']].text.strip()
         category: str
-        age_category: str
         city: str = info_table_fields[index['city']].text.strip()
         state: str = info_table_fields[index['state']].text.strip()
 

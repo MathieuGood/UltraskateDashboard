@@ -25,23 +25,23 @@ events_url = {
 
 events_fields_indexes = {
     events_url["2013-01-07"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 3, "category": 3, "city": 7, "state": 9, },
     events_url["2014-01-20"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2015-02-12"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2016-02-26"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2017-01-16"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2018-01-10"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2019-01-18"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2020-01-17"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 5, "category": 3, "city": 7, "state": 9, },
     events_url["2021-01-29"]:
-        {"name": 1, "gender": 1, "age": 3, "category": 4, "age_category": 5, "city": 7, "state": 9, },
+        {"gender": 1, "age": 7, "category": 5, "city": 7, "state": 9, },
 }
 
 
@@ -85,16 +85,16 @@ def manipulate_event(events: dict[int, Event]):
     # print(total_time)
 
 
-def one_skater_info_per_event(events: dict[int, Event]):
+def one_skater_info_in_each_event(events: dict[int, Event]):
     for event in events.values():
         print(event.date, AthleteRegistry.get_athlete(event.performances[0].athlete_id))
 
 
 def main():
     scrape_events(events_url)
-    # events = parse_events()
+    events = parse_events()
     # manipulate_event(events)
-    # one_skater_info_per_event(events)
+    one_skater_info_in_each_event(events)
 
 
 if __name__ == "__main__":
