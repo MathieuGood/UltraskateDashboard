@@ -3,6 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+from data.events_urls import events_fields_indexes
 from src.utils.StringUtils import StringUtils
 
 
@@ -83,7 +84,6 @@ class Webscraper:
     def parse_athlete_info(cls, name: str, racer_id: str, athlete_info_table, event_url: str) -> dict[str, str]:
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract may differ for each event_url
-        from dashboard_app import events_fields_indexes
         index = events_fields_indexes[event_url]
         info_table_fields: list = athlete_info_table.find_all("td")
         # gender: str = info_table_fields[1].text.strip()
