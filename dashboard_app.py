@@ -1,12 +1,12 @@
 import time
 
-from registries.AthleteRegistry import AthleteRegistry
-from classes.Event import Event
-from classes.AthleteStatsProcessor import AthleteStatsProcessor
-from classes.EventManager import EventManager
-from registries.EventRegistry import EventRegistry
-from utils.JsonUtils import JsonUtils
-from webscraping.Webscraper import Webscraper
+from src.models.Event import Event
+from src.registries.AthleteRegistry import AthleteRegistry
+from src.registries.EventRegistry import EventRegistry
+from src.use_cases.AthleteStatsProcessor import AthleteStatsProcessor
+from src.use_cases.EventManager import EventManager
+from src.utils.JsonUtils import JsonUtils
+from src.webscraping.Webscraper import Webscraper
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
@@ -87,11 +87,14 @@ def manipulate_event(events: dict[int, Event]):
 
 def one_skater_info_in_each_event(events: dict[int, Event]):
     for event in events.values():
+        print(event.performances[0])
+        print(f"Athlete age : {event.performances[0].athlete_age}")
         print(event.date, AthleteRegistry.get_athlete(event.performances[0].athlete_id))
 
 
+
 def main():
-    scrape_events(events_url)
+    # scrape_events(events_url)
     events = parse_events()
     # manipulate_event(events)
     one_skater_info_in_each_event(events)
