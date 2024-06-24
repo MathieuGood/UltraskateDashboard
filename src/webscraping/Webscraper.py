@@ -133,7 +133,7 @@ class Webscraper:
                     lap_number = row_count - 1
                     lap_time = StringUtils.convert_time_str_to_ss(extracted_time)
                     laps[lap_number] = lap_time
-                    print("---> Lap  ", lap_number, field.text)
+                    # print("---> Lap  ", lap_number, field.text)
 
         return laps
 
