@@ -11,8 +11,10 @@ class Performance:
         self.laps = laps
 
     def __str__(self):
-        return f"Performance(Athlete ID: {self.athlete_id}, Age: {self.athlete_age}, Category: {self.category}, Laps: {self.laps})"
+        return (f"Performance(Athlete ID: {self.athlete_id},"
+                f" Age: {self.athlete_age},"
+                f" Category: {self.category},"
+                f" Laps: {self.laps.values().__len__()})")
 
     def get_athlete(self) -> Athlete:
         return AthleteRegistry.athletes[self.athlete_id]
-

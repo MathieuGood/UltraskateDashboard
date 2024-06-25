@@ -6,7 +6,7 @@ from src.models.Track import Track
 from src.models.TrackOption import TrackOption
 from src.registries.AthleteRegistry import AthleteRegistry
 from src.registries.EventRegistry import EventRegistry
-from src.use_cases.Performance import Performance
+from src.models.Performance import Performance
 from src.utils.JsonUtils import JsonUtils
 
 

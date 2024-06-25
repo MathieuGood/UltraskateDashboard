@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from src.models.TrackOption import TrackOption
-from src.use_cases.Performance import Performance
+from src.models.Performance import Performance
 
 
 class AthleteStatsProcessor:

@@ -1,7 +1,7 @@
 from typing import List
 
 from src.models.Track import Track
-from src.use_cases.Performance import Performance
+from src.models.Performance import Performance
 
 
 class Event:

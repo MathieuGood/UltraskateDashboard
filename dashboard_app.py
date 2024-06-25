@@ -6,6 +6,7 @@ from src.registries.AthleteRegistry import AthleteRegistry
 from src.registries.EventRegistry import EventRegistry
 from src.use_cases.AthleteStatsProcessor import AthleteStatsProcessor
 from src.use_cases.EventManager import EventManager
+from src.use_cases.FuzzyWuzzyMatcher import FuzzyWuzzyMatcher
 from src.utils.JsonUtils import JsonUtils
 from src.webscraping.Webscraper import Webscraper
 
@@ -52,16 +53,19 @@ def manipulate_event(events: dict[int, Event]):
 
 def one_skater_info_in_each_event(events: dict[int, Event]):
     for event in events.values():
+        print("")
         print(event.performances[0])
-        print(f"Athlete age : {event.performances[0].athlete_age}")
         print(event.date, AthleteRegistry.get_athlete(event.performances[0].athlete_id))
+        print(f"Athlete age : {event.performances[0].athlete_age}")
 
 
 def main():
-    scrape_events(events_url)
+    # scrape_events(events_url)
     events = parse_events()
     # manipulate_event(events)
     one_skater_info_in_each_event(events)
+    fuzz = FuzzyWuzzyMatcher().match("Andy Andras", "Andrew Andras")
+    print(fuzz)
 
 
 if __name__ == "__main__":
