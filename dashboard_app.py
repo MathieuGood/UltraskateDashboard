@@ -59,13 +59,22 @@ def one_skater_info_in_each_event(events: dict[int, Event]):
         print(f"Athlete age : {event.performances[0].athlete_age}")
 
 
+def fuzzy_test():
+    s1 = "Andrew Andras"
+    s2 = "Andy Andras"
+    fuzz = FuzzyWuzzyMatcher.match(s1, s2)
+    print(f"Fuzzy Matching ratio test between '{s1}' and '{s2}' -> {fuzz}")
+
+
 def main():
     # scrape_events(events_url)
     events = parse_events()
     # manipulate_event(events)
     one_skater_info_in_each_event(events)
-    fuzz = FuzzyWuzzyMatcher().match("Andy Andras", "Andrew Andras")
-    print(fuzz)
+
+    fuzzy_test()
+
+
 
 
 if __name__ == "__main__":

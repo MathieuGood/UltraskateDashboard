@@ -3,3 +3,4 @@ Requests==2.32.3
 fuzzywuzzy~=0.18.0
 bs4~=0.0.2
 selenium~=4.21.0
+python-Levenshtein~=0.25.1
