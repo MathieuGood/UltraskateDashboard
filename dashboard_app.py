@@ -67,7 +67,7 @@ def fuzzy_test():
 
 
 def main():
-    # scrape_events(events_url)
+    scrape_events(events_url)
     events = parse_events()
     # manipulate_event(events)
     one_skater_info_in_each_event(events)

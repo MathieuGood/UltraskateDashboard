@@ -1,8 +1,6 @@
 import re
-
 import requests
 from bs4 import BeautifulSoup
-
 from data.events_urls import events_fields_indexes
 from src.utils.StringUtils import StringUtils
 
