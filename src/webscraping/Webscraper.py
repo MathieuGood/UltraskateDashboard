@@ -37,73 +37,74 @@ class Webscraper:
         return number_of_pages
 
     @classmethod
-    def fetch_all_athletes_urls(cls, url: str, link_index: int = 1) -> list[str]:
-        soup = cls.fetch_html(url)
-        base_url = url
+    def extract_athlete_info_from_html(cls, fields) -> dict[str, str]:
+        name: str = fields[2].text.strip()
+        category: str = fields[5].text.strip()
+        age: int = int(fields[7].text.strip())
+        gender: str = fields[8].text.strip()
+        city: str = fields[10].text.strip()
+        state: str = fields[11].text.strip()
+        print("RESULT :")
+        print(name, category, age, gender, city, state)
+        return {
+            "name": name,
+            "category": category,
+            "age": age,
+            "gender": gender,
+            "city": city,
+            "state": state,
+        }
+
+    @classmethod
+    def check_if_athlete_alrady_exists(cls, athlete_info) -> dict[str, str]:
+        # Implement fuzzy matching to check if the athlete already exists in the registry
+        pass
+
+    @classmethod
+    def format_athlete_urls(cls, athlete_urls: list[str], base_url: str) -> list[str]:
+        return [StringUtils.extract_base_url(base_url) + url for url in athlete_urls]
+
+    @classmethod
+    def fetch_all_athletes_urls_and_info(cls, home_url: str, link_index: int = 1):
+        soup = cls.fetch_html(home_url)
         number_of_pages: int = cls.find_number_of_pages(soup)
 
-        athletes_urls = []
+        athletes_urls_and_infos = []
 
         # Iterate over all the pages
         for page_number in range(1, number_of_pages + 1):
 
             if page_number > 1:
                 # If it's not the first page, update the URL to include the page number
-                url = base_url + "&PageNo=" + str(page_number)
-                soup = cls.fetch_html(url)
+                home_url = home_url + "&PageNo=" + str(page_number)
+                soup = cls.fetch_html(home_url)
 
             # Build the URL for the current page
-            url = base_url + "&PageNo=" + str(page_number)
+            home_url = home_url + "&PageNo=" + str(page_number)
             print(">> Page " + str(page_number) + " >>")
-            print(">> URL : " + url + " >>")
+            print(">> URL : " + home_url + " >>")
 
             # Find all the participants in the table
-            athletes = soup.find_all("tr")
+            athletes_rows = soup.find_all("tr")
 
-            for athlete in athletes:
+            for athlete in athletes_rows:
                 # Skip the first two rows containing table headers
-                if athlete == athletes[0] or athlete == athletes[1]:
+                if athlete == athletes_rows[0] or athlete == athletes_rows[1]:
                     continue
 
-                fields = athlete.find_all("td")
-                links = athlete.find_all("a")
-                try:
+                athlete_info_fields = athlete.find_all("td")
+                athlete_link = athlete.find_all("a")[link_index]
 
-                    # NEW CODE
-                    for i, field in enumerate(fields):
-                        print(i, field.text.strip())
+                athlete_info_fields_cleaned = [field.text.strip() for field in athlete_info_fields]
+                athlete_link_formatted = StringUtils.extract_base_url(home_url) + athlete_link["href"]
 
-                    name: str = fields[2].text.strip()
-                    category: str = fields[5].text.strip()
-                    age: int = int(fields[7].text.strip())
-                    gender: str = fields[8].text.strip()
-                    city: str = fields[10].text.strip()
-                    state: str = fields[11].text.strip()
-                    print("RESULT :")
-                    print(name, category, age, gender, city, state)
+                athletes_urls_and_infos.append((athlete_link_formatted, athlete_info_fields_cleaned))
 
-                    import sys
-
-                    sys.exit()
-                    # END OF NEW CODE
-
-                    # Extract the link and name of the skater
-                    # links_index is provided because the link to the skater's personal stats page is not always in the same column
-                    name: str = fields[3].text.strip()
-                    end_link: str = links[link_index]["href"]
-                    print(name, end_link)
-                    # Build the full URL for the skater's personal stats page
-                    link = StringUtils.extract_base_url(base_url) + end_link
-                    athletes_urls.append(link)
-                except Exception as e:
-                    print(f"=> Line with no skater entry\n=> {e}")
-                    pass
-        print("--> Returning", athletes_urls.__len__(), "athletes URLs")
-        return athletes_urls
+        return athletes_urls_and_infos
 
     @classmethod
     def parse_athlete_info(
-        cls, name: str, racer_id: str, athlete_info_table, event_url: str
+            cls, name: str, racer_id: str, athlete_info_table, event_url: str
     ) -> dict[str, str]:
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract may differ for each event_url
@@ -143,9 +144,9 @@ class Webscraper:
                 extracted_time = str(StringUtils.extract_time_from_str(field.text))
 
                 if (
-                    field_count == 2
-                    # and extracted_time is valid
-                    and StringUtils.str_is_hhmmss_format(extracted_time)
+                        field_count == 2
+                        # and extracted_time is valid
+                        and StringUtils.str_is_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = StringUtils.convert_time_str_to_ss(extracted_time)
@@ -177,22 +178,25 @@ class Webscraper:
         return {"info": athlete_info, "performance": laps}
 
     @classmethod
-    def fetch_all_athletes_performances(cls, url: str) -> list[dict[str, dict]]:
-        # Special case f
-        if url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
-            urls: list[str] = cls.fetch_all_athletes_urls(url, 2)
+    def fetch_all_athletes_performances(cls, home_url: str) -> list[dict[str, dict]]:
+        urls_and_infos: list[tuple[str, list[str]]]
+        # Special case for the 2021 event
+        if home_url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
+            urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url, 2)
         else:
-            urls: list[str] = cls.fetch_all_athletes_urls(url)
+            urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url)
+            print("\n>>> URLS")
+            print(urls_and_infos)
         print(
-            f"\n############\nFetchig all athlete performances from URL : {url}\n############"
+            f"\n############\nFetchig all athlete performances from URL : {home_url}\n############"
         )
 
         event_performances = []
-        for athlete_url in urls:
-            print("\n>>> Athlete URL : " + athlete_url)
+        for athlete_url in urls_and_infos:
+            print("\n>>> Athlete URL : " + athlete_url[0])
             # Add the performance to the event
             event_performances.append(
-                cls.fetch_athlete_stats(athlete_url, event_url=url)
+                cls.fetch_athlete_stats(athlete_url[0], event_url=home_url)
             )
             print(event_performances.__len__(), "athlete performances fetched")
 
@@ -200,7 +204,7 @@ class Webscraper:
 
     @classmethod
     def fetch_all_events_performances(
-        cls, events_urls: dict[str, str]
+            cls, events_urls: dict[str, str]
     ) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
