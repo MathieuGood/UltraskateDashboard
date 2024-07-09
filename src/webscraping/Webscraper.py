@@ -65,11 +65,9 @@ class Webscraper:
         return [StringUtils.extract_base_url(base_url) + url for url in athlete_urls]
 
     @classmethod
-    def fetch_all_athletes_urls_and_info(cls, home_url: str, link_index: int = 1):
+    def fetch_all_athletes_urls_and_info(cls, home_url: str):
         soup = cls.fetch_html(home_url)
         number_of_pages: int = cls.find_number_of_pages(soup)
-
-        athletes_urls_and_infos = []
 
         # Iterate over all the pages
         for page_number in range(1, number_of_pages + 1):
@@ -86,20 +84,40 @@ class Webscraper:
 
             # Find all the participants in the table
             athletes_rows = soup.find_all("tr")
+            athletes_urls_and_infos = cls.parse_athlete_rows(athletes_rows, home_url)
 
-            for athlete in athletes_rows:
-                # Skip the first two rows containing table headers
-                if athlete == athletes_rows[0] or athlete == athletes_rows[1]:
-                    continue
+        return athletes_urls_and_infos
 
-                athlete_info_fields = athlete.find_all("td")
-                athlete_link = athlete.find_all("a")[link_index]
+    @classmethod
+    def get_right_link_index(cls, home_url: str):
+        if home_url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
+            return 2
+        else:
+            return 1
 
-                athlete_info_fields_cleaned = [field.text.strip() for field in athlete_info_fields]
-                athlete_link_formatted = StringUtils.extract_base_url(home_url) + athlete_link["href"]
+    @classmethod
+    def parse_athlete_rows(cls, athletes_rows, home_url: str):
+        athletes_urls_and_infos = []
+        for athlete in athletes_rows:
+            # Skip the first two rows containing table headers
+            if athlete == athletes_rows[0] or athlete == athletes_rows[1]:
+                continue
 
-                athletes_urls_and_infos.append((athlete_link_formatted, athlete_info_fields_cleaned))
+            athlete_info_fields = athlete.find_all("td")
 
+            link_index = cls.get_right_link_index(home_url)
+            athlete_link = athlete.find_all("a")[link_index]
+
+            athlete_info_fields_cleaned = [
+                field.text.strip() for field in athlete_info_fields
+            ]
+            athlete_link_formatted = (
+                    StringUtils.extract_base_url(home_url) + athlete_link["href"]
+            )
+
+            athletes_urls_and_infos.append(
+                (athlete_link_formatted, athlete_info_fields_cleaned)
+            )
         return athletes_urls_and_infos
 
     @classmethod
@@ -180,13 +198,9 @@ class Webscraper:
     @classmethod
     def fetch_all_athletes_performances(cls, home_url: str) -> list[dict[str, dict]]:
         urls_and_infos: list[tuple[str, list[str]]]
-        # Special case for the 2021 event
-        if home_url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
-            urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url, 2)
-        else:
-            urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url)
-            print("\n>>> URLS")
-            print(urls_and_infos)
+        urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url)
+        print("\n>>> URLS AND INFOS :")
+        print(urls_and_infos)
         print(
             f"\n############\nFetchig all athlete performances from URL : {home_url}\n############"
         )
