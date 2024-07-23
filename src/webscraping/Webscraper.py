@@ -56,11 +56,6 @@ class Webscraper:
         }
 
     @classmethod
-    def check_if_athlete_alrady_exists(cls, athlete_info) -> dict[str, str]:
-        # Implement fuzzy matching to check if the athlete already exists in the registry
-        pass
-
-    @classmethod
     def format_athlete_urls(cls, athlete_urls: list[str], base_url: str) -> list[str]:
         return [StringUtils.extract_base_url(base_url) + url for url in athlete_urls]
 
@@ -89,14 +84,13 @@ class Webscraper:
         return athletes_urls_and_infos
 
     @classmethod
-    def get_right_link_index(cls, home_url: str):
+    def get_right_link_index(cls, home_url: str) -> int:
         if home_url == "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413":
             return 2
-        else:
-            return 1
+        return 1
 
     @classmethod
-    def parse_athlete_rows(cls, athletes_rows, home_url: str):
+    def parse_athlete_rows(cls, athletes_rows, home_url: str) -> tuple[str, list[str]]:
         athletes_urls_and_infos = []
         for athlete in athletes_rows:
             # Skip the first two rows containing table headers
@@ -112,7 +106,7 @@ class Webscraper:
                 field.text.strip() for field in athlete_info_fields
             ]
             athlete_link_formatted = (
-                    StringUtils.extract_base_url(home_url) + athlete_link["href"]
+                StringUtils.extract_base_url(home_url) + athlete_link["href"]
             )
 
             athletes_urls_and_infos.append(
@@ -122,7 +116,7 @@ class Webscraper:
 
     @classmethod
     def parse_athlete_info(
-            cls, name: str, racer_id: str, athlete_info_table, event_url: str
+        cls, name: str, racer_id: str, athlete_info_table, event_url: str
     ) -> dict[str, str]:
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract may differ for each event_url
@@ -162,14 +156,14 @@ class Webscraper:
                 extracted_time = str(StringUtils.extract_time_from_str(field.text))
 
                 if (
-                        field_count == 2
-                        # and extracted_time is valid
-                        and StringUtils.str_is_hhmmss_format(extracted_time)
+                    field_count == 2
+                    # and extracted_time is valid
+                    and StringUtils.str_is_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = StringUtils.convert_time_str_to_ss(extracted_time)
                     laps[lap_number] = lap_time
-                    # print("---> Lap  ", lap_number, field.text)
+                    print("---> Lap  ", lap_number, field.text)
 
         return laps
 
@@ -197,16 +191,16 @@ class Webscraper:
 
     @classmethod
     def fetch_all_athletes_performances(cls, home_url: str) -> list[dict[str, dict]]:
-        urls_and_infos: list[tuple[str, list[str]]]
-        urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url)
+        athletes_urls_and_infos: list[tuple[str, list[str]]]
+        athletes_urls_and_infos = cls.fetch_all_athletes_urls_and_info(home_url)
         print("\n>>> URLS AND INFOS :")
-        print(urls_and_infos)
+        print(athletes_urls_and_infos)
         print(
             f"\n############\nFetchig all athlete performances from URL : {home_url}\n############"
         )
 
         event_performances = []
-        for athlete_url in urls_and_infos:
+        for athlete_url in athletes_urls_and_infos:
             print("\n>>> Athlete URL : " + athlete_url[0])
             # Add the performance to the event
             event_performances.append(
@@ -218,7 +212,7 @@ class Webscraper:
 
     @classmethod
     def fetch_all_events_performances(
-            cls, events_urls: dict[str, str]
+        cls, events_urls: dict[str, str]
     ) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
