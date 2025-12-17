@@ -106,7 +106,7 @@ class Webscraper:
                 field.text.strip() for field in athlete_info_fields
             ]
             athlete_link_formatted = (
-                StringUtils.extract_base_url(home_url) + athlete_link["href"]
+                    StringUtils.extract_base_url(home_url) + athlete_link["href"]
             )
 
             athletes_urls_and_infos.append(
@@ -116,7 +116,7 @@ class Webscraper:
 
     @classmethod
     def parse_athlete_info(
-        cls, name: str, racer_id: str, athlete_info_table, event_url: str
+            cls, name: str, racer_id: str, athlete_info_table, event_url: str
     ) -> dict[str, str]:
         # Layout of the webpage for the athlete is not consistent year by year
         # The indexes of fields to extract may differ for each event_url
@@ -156,9 +156,9 @@ class Webscraper:
                 extracted_time = str(StringUtils.extract_time_from_str(field.text))
 
                 if (
-                    field_count == 2
-                    # and extracted_time is valid
-                    and StringUtils.str_is_hhmmss_format(extracted_time)
+                        field_count == 2
+                        # and extracted_time is valid
+                        and StringUtils.str_is_hhmmss_format(extracted_time)
                 ):
                     lap_number = row_count - 1
                     lap_time = StringUtils.convert_time_str_to_ss(extracted_time)
@@ -212,7 +212,7 @@ class Webscraper:
 
     @classmethod
     def fetch_all_events_performances(
-        cls, events_urls: dict[str, str]
+            cls, events_urls: dict[str, str]
     ) -> dict[str, list[dict[str, dict]]]:
         events_performances = {}
         for event_url in events_urls:
