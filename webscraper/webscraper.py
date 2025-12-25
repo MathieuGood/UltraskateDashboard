@@ -2,10 +2,10 @@ import requests
 import re
 from bs4 import BeautifulSoup
 from classes.Utils import Utils
-from classes.Performance import Performance
-from classes.Athlete import Athlete
-from classes.Event import Event
-from classes.Track import Track
+from models.performance import Performance
+from models.athlete import Athlete
+from models.event import Event
+from models.track import Track
 
 
 class Webscraper:
@@ -14,7 +14,7 @@ class Webscraper:
     """
 
     @classmethod
-    def fetch_html(cls, url):
+    def fetch_html(cls, url : str) -> BeautifulSoup:
         """
         Fetches the HTML content from the specified URL.
 

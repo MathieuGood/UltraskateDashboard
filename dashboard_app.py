@@ -1,5 +1,5 @@
 import time
-from classes.Webscraper import Webscraper
+from webscraper.Webscraper import Webscraper
 from classes.Utils import Utils
 from classes.Performance import Performance
 from classes.Athlete import Athlete
