@@ -1,5 +1,5 @@
 from datetime import datetime
-from track import Track
+from models.track import Track
 from models.event_params import EventParams
 
 

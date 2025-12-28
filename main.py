@@ -36,16 +36,21 @@ def main():
     SPAARNDAM = ("Wheelerplanet", "Spaarndam", 2.0)
 
     homestead_track = Track(
-        name="Homestead Speedway", city="Homestead", country="USA", length_km=1.46
+        name="Homestead Speedway", city="Homestead", country="USA", length_miles=1.46
     )
 
-    miami2013 = Event(
-        EventParams(
-            date="2013-01-07",
-            track=homestead_track,
-            url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
-        )
+    miami2013_params = EventParams(
+        date="2013-01-07",
+        track=homestead_track,
+        url=events_url["2013-01-07"],
     )
+
+    miami2014_params = EventParams(
+        date="2015-02-12", track=homestead_track, url=events_url["2015-02-12"]
+    )
+
+    EventScraper.scrape(miami2013_params)
+    EventScraper.scrape(miami2014_params)
 
 
 if __name__ == "__main__":

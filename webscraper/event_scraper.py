@@ -15,6 +15,9 @@ class EventScraper:
 
         # Extrat the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
+        print(
+            f"Number of pages of {event_params.track.name} {event_params.date.year} : {number_of_pages}"
+        )
 
         if number_of_pages > 1:
             pass
@@ -33,10 +36,14 @@ class EventScraper:
         :rtype: int
         """
 
+        print(ranking_home_soup)
+
         # Look for the tag containing the number of pages
         page_number_span = ranking_home_soup.find_all(
             "span", id="ctl00_Content_Main_lblTopPager"
         )
+
+        print(page_number_span)
 
         # When no page number tag found, it means there is only one page
         if len(page_number_span) == 0:
@@ -44,6 +51,7 @@ class EventScraper:
 
         # Convert bs4 tag to text
         page_number_span = page_number_span[0].text
+        print(page_number_span)
 
         # From the string formatted like "Page 1 of 2 (76 items)" extract all the numbers with a regex
         page_number_span = re.findall(r"\d+", page_number_span)
