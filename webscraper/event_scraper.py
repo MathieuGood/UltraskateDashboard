@@ -36,7 +36,7 @@ class EventScraper:
         :rtype: int
         """
 
-        print(ranking_home_soup)
+        # print(ranking_home_soup)
 
         # Look for the tag containing the number of pages
         page_number_span = ranking_home_soup.find_all(

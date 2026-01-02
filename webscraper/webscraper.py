@@ -7,6 +7,8 @@ from models.athlete import Athlete
 from models.event import Event
 from models.track import Track
 
+from playwright.sync_api import sync_playwright
+
 
 class Webscraper:
     """
@@ -14,16 +16,31 @@ class Webscraper:
     """
 
     @classmethod
-    def fetch_html(cls, url : str) -> BeautifulSoup:
+    def fetch_html(cls, url: str) -> BeautifulSoup:
         """
         Fetches the HTML content from the specified URL.
 
         :param url: The URL to fetch the HTML content from.
         :return: The BeautifulSoup object representing the parsed HTML content.
         """
-        page = requests.get(url)
-        html = BeautifulSoup(page.content, "html.parser")
-        return html
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True, args=["--disable-blink-features=AutomationControlled"]
+            )
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                locale="en-US",
+            )
+            page = context.new_page()
+            page.goto(url, timeout=60_000, wait_until="domcontentloaded")
+            page.wait_for_load_state("domcontentloaded")
+            html = BeautifulSoup(page.content(), "html.parser")
+            return html
 
     @classmethod
     def fetch_all_athletes_urls(cls, url):
