@@ -7,7 +7,7 @@ events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
     # 2013 OK
     "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
-    # 2014 OK
+    # 2014 OK ! 2 pages available, but is it returning correctly that it has two pages ?
     # Country available
     "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
     # 2015 OK
@@ -43,14 +43,29 @@ def main():
         date="2013-01-07",
         track=homestead_track,
         url=events_url["2013-01-07"],
+        position_col_index=0,
+        name_col_index=2,
     )
 
     miami2014_params = EventParams(
-        date="2015-02-12", track=homestead_track, url=events_url["2015-02-12"]
+        date="2014-01-20",
+        track=homestead_track,
+        url=events_url["2014-01-20"],
+        position_col_index=0,
+        name_col_index=2,
+    )
+
+    miami2015_params = EventParams(
+        date="2015-02-12",
+        track=homestead_track,
+        url=events_url["2015-02-12"],
+        position_col_index=0,
+        name_col_index=1,
     )
 
     EventScraper.scrape(miami2013_params)
     EventScraper.scrape(miami2014_params)
+    EventScraper.scrape(miami2015_params)
 
 
 if __name__ == "__main__":

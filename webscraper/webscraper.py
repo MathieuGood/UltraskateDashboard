@@ -1,7 +1,6 @@
-import requests
 import re
 from bs4 import BeautifulSoup
-from classes.Utils import Utils
+from utils import Utils
 from models.performance import Performance
 from models.athlete import Athlete
 from models.event import Event
@@ -24,6 +23,7 @@ class Webscraper:
         :return: The BeautifulSoup object representing the parsed HTML content.
         """
 
+        # TODO : Condiser refactoring the Browser session into a singleton class
         with sync_playwright() as p:
             browser = p.chromium.launch(
                 headless=True, args=["--disable-blink-features=AutomationControlled"]
@@ -41,67 +41,6 @@ class Webscraper:
             page.wait_for_load_state("domcontentloaded")
             html = BeautifulSoup(page.content(), "html.parser")
             return html
-
-    @classmethod
-    def fetch_all_athletes_urls(cls, url):
-        """
-        Fetches the URLs of all skaters' personal stats pages.
-
-        :param url: The URL of the page containing skater information.
-        :return: A list of skater information, including name, category, gender, city, state, field_country, and link.
-        """
-        soup = cls.fetch_html(url)
-        base_url = url
-
-        # Find information about the number of pages
-        page_number_info = soup.find_all("span", id="ctl00_Content_Main_lblTopPager")
-
-        # Test if the ResultSet number_of_pages is empty
-        if page_number_info == []:
-            number_of_pages = 1
-        else:
-            # From the string "Page 1 of 2 (76 items)" extract the number of pages with a regex
-            page_number_info = page_number_info[0].text
-            page_number_info = re.findall(r"\d+", page_number_info)
-            number_of_pages = int(page_number_info[1])
-
-        athletes_urls = []
-
-        # Iterate over all the pages
-        for i in range(1, number_of_pages + 1):
-
-            if i > 1:
-                # If it's not the first page, update the URL to include the page number
-                url = base_url + "&PageNo=" + str(i)
-                soup = cls.fetch_html(url)
-
-            # Build the URL for the current page
-            url = base_url + "&PageNo=" + str(i)
-            print(">>>>>>>>> Page " + str(i) + " >>>>>>>>>")
-            print(">>>>>>>>> URL : " + url + " >>>>>>>>>")
-
-            # Find all the participants in the table
-            athletes = soup.find_all("tr")
-
-            for athlete in athletes:
-                if athlete == athletes[0] or athlete == athletes[1]:
-                    continue
-
-                fields = athlete.find_all("td")
-                links = athlete.find_all("a")
-                try:
-                    # Extract the link and name of the skater
-                    name = fields[3].text.strip()
-                    link = links[1]["href"]
-                    print(name, link)
-                    # Build the complete URL for the skater's personal stats page
-                    link = Utils.extract_base_url(base_url) + links[1]["href"]
-                    athletes_urls.append(link)
-                except:
-                    # print("- Line with no skater entry -")
-                    pass
-
-        return athletes_urls
 
     @classmethod
     def parse_athlete_info(cls, name, racer_id, athlete_info_table):
