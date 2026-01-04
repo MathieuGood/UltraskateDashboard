@@ -29,28 +29,3 @@ class Webscraper:
         if title_tag and title_tag.get_text(strip=True) == "Just a moment...":
             print("Encountered Cloudflare protection page : page not scraped.")
         return soup
-
-    @classmethod
-    def parse_athlete_laps(cls, athlete_laps_table):
-        laps_table_rows = athlete_laps_table.find_all("tr")
-
-        laps = {}
-
-        for row_count, row in enumerate(laps_table_rows):
-            fields = row.find_all("td")
-
-            for field_count, field in enumerate(fields):
-                extracted_time = str(Utils.extract_time(field.text))
-
-                if (
-                    field_count == 2
-                    # and extracted_time is not None
-                    and Utils.check_hhmmss_format(extracted_time)
-                ):
-
-                    lap_number = row_count - 1
-                    lap_time = Utils.convert_time_str_to_ss(extracted_time)
-                    laps[lap_number] = lap_time
-                    print("--- Lap  ", lap_number, field.text)
-
-        return laps

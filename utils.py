@@ -20,7 +20,7 @@ class Utils:
         return re.match(r"^\d{2}:\d{2}:\d{2}$", str_time)
 
     @classmethod
-    def convert_time_str_to_ss(cls, str_time):
+    def convert_time_str_to_ss(cls, str_time) -> int | None:
         """
         Converts a time string in HH:MM:SS format to seconds.
 
@@ -30,13 +30,16 @@ class Utils:
         Returns:
             int: The equivalent time in seconds.
         """
-        h, m, s = str_time.split(":")
-        return int(h) * 3600 + int(m) * 60 + int(s)
+        try:
+            h, m, s = str_time.split(":")
+            return int(h) * 3600 + int(m) * 60 + int(s)
+        except ValueError:
+            return None
 
     @classmethod
     # In a '00:08:26 (00:08:26)' string, extract only the time that is not
     # between the parentheses using a regex.
-    def extract_time(cls, str_time):
+    def extract_time(cls, str_time) -> str | None:
         """
         Extracts the first HH:MM:SS time string found in a given string.
 

@@ -8,7 +8,6 @@ from models.athlete_registry import AthleteRegistry
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
     "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
-    # 2014 Country available
     "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
     "2016-02-26": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
     "2017-01-16": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
@@ -108,20 +107,22 @@ def main():
     BrowserManager.start()
 
     try:
-        EventScraper.scrape(miami2013_params)
-        EventScraper.scrape(miami2014_params)
-        EventScraper.scrape(miami2015_params)
-        EventScraper.scrape(miami2016_params)
-        EventScraper.scrape(miami2017_params)
-        EventScraper.scrape(miami2018_params)
-        EventScraper.scrape(miami2019_params)
-        EventScraper.scrape(miami2020_params)
-        EventScraper.scrape(miami2021_params)
+        # miami2013 = EventScraper.scrape(miami2013_params)
+        miami2014 = EventScraper.scrape(miami2014_params)
+        for performance in miami2014.performances:
+            print(performance)
+        # EventScraper.scrape(miami2015_params)
+        # EventScraper.scrape(miami2016_params)
+        # EventScraper.scrape(miami2017_params)
+        # EventScraper.scrape(miami2018_params)
+        # EventScraper.scrape(miami2019_params)
+        # EventScraper.scrape(miami2020_params)
+        # EventScraper.scrape(miami2021_params)
     finally:
         BrowserManager.shutdown()
 
-    for athlete in AthleteRegistry.athletes:
-        print(athlete)
+    # for athlete in AthleteRegistry.athletes:
+    #     print(athlete)
 
 
 if __name__ == "__main__":

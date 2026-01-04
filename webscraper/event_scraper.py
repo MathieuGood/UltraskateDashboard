@@ -103,6 +103,22 @@ class EventScraper:
                 # print(f"Found athlete country: {value}")
                 athlete_country = value
 
+        athlete_laps_table = athlete_performance_soup.find(
+            name="div", id="ctl00_Content_Main_divSplitGrid"
+        )
+        if not athlete_laps_table:
+            print(f"No laps table found for athlete: {athlete_name} at {athlete_url}")
+            return None
+
+        lap_rows = [
+            tr
+            for tr in athlete_laps_table.find_all("tr")
+            if "lap" in tr.get_text(separator=" ", strip=True).lower()
+            and Utils.extract_time(tr.get_text()) is not None
+        ]
+
+        laps = cls.__parse_athlete_lap_rows(lap_rows)
+
         athlete = Athlete(
             name=athlete_name,
             gender=athlete_gender,
@@ -112,9 +128,23 @@ class EventScraper:
         )
 
         AthleteRegistry.add_athlete(athlete)
-        print(f"Created athlete: {athlete}")
 
-        return Performance(athlete=athlete, laps=[])
+        return Performance(athlete=athlete, laps=laps)
+
+    @classmethod
+    def __parse_athlete_lap_rows(cls, lap_rows) -> list[int]:
+        """
+        Parse the lap rows of an athlete's performance table and extract lap times.
+        """
+        laps = []
+        for lap_index, lap_row in enumerate(lap_rows):
+            lap_row_cols = lap_row.find_all("td")
+            lap_time = lap_row_cols[2]
+            extracted_time = str(Utils.extract_time(lap_time.text))
+            lap_time = Utils.convert_time_str_to_ss(extracted_time)
+            laps.append(lap_time)
+            print(f"--- Lap {lap_index+1} -> {extracted_time}")
+        return laps
 
     @classmethod
     def __fetch_all_athlete_performance_urls(
