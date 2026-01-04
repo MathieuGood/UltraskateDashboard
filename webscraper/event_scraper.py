@@ -24,6 +24,7 @@ class EventScraper:
 
         # Extract the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
+        print(f"{event_params.track} {event_params.date.year} {event_params.url}")
         print(
             f"Number of pages of {event_params.track.name} {event_params.date.year} : {number_of_pages}"
         )
@@ -73,12 +74,12 @@ class EventScraper:
             athlete_rows = ranking_table.find_all("tr")
 
             for row_index, athlete_row in enumerate(athlete_rows):
-
                 row_tds = athlete_row.find_all("td")
                 row_links = athlete_row.find_all("a")
 
                 position_col_index = event_params.position_col_index
                 name_col_index = event_params.name_col_index
+                athlete_link_col_index = event_params.athlete_link_col_index
 
                 # Extract the link and name of the skater
                 position = row_tds[position_col_index].text.strip()
@@ -88,18 +89,18 @@ class EventScraper:
                     continue
 
                 name = row_tds[name_col_index].text.strip()
-                athlete_full_url = row_links[1]["href"]
-                print(
-                    f"Row {row_index} -> POS {position} / NAME {name} / URL {athlete_full_url}"
-                )
+
                 # Build the complete URL for the skater's personal stats page
                 base_url = Utils.extract_base_url(event_params.url)
-                athlete_url_end = str(row_links[1]["href"])
+                athlete_url_end = str(row_links[athlete_link_col_index]["href"])
                 if not base_url or not athlete_url_end:
-                    print(f"Skipping {base_url} + {athlete_url_end}")
+                    # print(f"Skipping {base_url} + {athlete_url_end}")
                     continue
                 athlete_full_url = base_url + athlete_url_end
                 athletes_urls.append(athlete_full_url)
+                # print(
+                #     f"Row {row_index} -> POS {position} / NAME {name} / URL {athlete_full_url}"
+                # )
 
         return athletes_urls
 

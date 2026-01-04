@@ -5,24 +5,15 @@ from webscraper.event_scraper import EventScraper
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
-    # 2013 OK
     "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
-    # 2014 OK ! 2 pages available, but is it returning correctly that it has two pages ?
-    # Country available
+    # 2014 Country available
     "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
-    # 2015 OK
     "2016-02-26": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
-    # 2016 OK
     "2017-01-16": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
-    # 2017 OK
     "2018-01-10": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=294",
-    # 2018 OK
     "2019-01-18": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=352",
-    # 2019 OK
     "2020-01-17": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=400",
-    # 2020 OK
     "2021-01-29": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=413",
-    # 2021 NOT OK
     "2022-02-19": "https://my.raceresult.com/192607",
     "2023-02-10": "https://my.raceresult.com/204047",
     "2024-02-15": "https://my.raceresult.com/259072",
@@ -63,9 +54,64 @@ def main():
         name_col_index=1,
     )
 
-    EventScraper.scrape(miami2013_params)
-    EventScraper.scrape(miami2014_params)
-    EventScraper.scrape(miami2015_params)
+    miami2016_params = EventParams(
+        date="2016-02-26",
+        track=homestead_track,
+        url=events_url["2016-02-26"],
+        position_col_index=0,
+        name_col_index=2,
+    )
+
+    miami2017_params = EventParams(
+        date="2017-01-16",
+        track=homestead_track,
+        url=events_url["2017-01-16"],
+        position_col_index=1,
+        name_col_index=3,
+    )
+
+    miami2018_params = EventParams(
+        date="2018-01-10",
+        track=homestead_track,
+        url=events_url["2018-01-10"],
+        position_col_index=1,
+        name_col_index=3,
+    )
+
+    miami2019_params = EventParams(
+        date="2019-01-18",
+        track=homestead_track,
+        url=events_url["2019-01-18"],
+        position_col_index=1,
+        name_col_index=3,
+    )
+
+    miami2020_params = EventParams(
+        date="2020-01-17",
+        track=homestead_track,
+        url=events_url["2020-01-17"],
+        position_col_index=1,
+        name_col_index=3,
+    )
+
+    miami2021_params = EventParams(
+        date="2021-01-29",
+        track=homestead_track,
+        url=events_url["2021-01-29"],
+        position_col_index=1,
+        name_col_index=4,
+        athlete_link_col_index=2,
+    )
+
+    EventScraper.scrape(miami2013_params)  # OK
+    EventScraper.scrape(miami2014_params)  # OK
+    EventScraper.scrape(miami2015_params)  # OK
+    EventScraper.scrape(miami2016_params)  # OK
+    EventScraper.scrape(miami2017_params)  # OK
+    EventScraper.scrape(miami2018_params)  # OK
+    EventScraper.scrape(miami2019_params)  # OK
+    EventScraper.scrape(miami2020_params)  # OK
+    EventScraper.scrape(miami2021_params)  # OK
 
 
 if __name__ == "__main__":
