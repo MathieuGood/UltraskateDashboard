@@ -24,5 +24,11 @@ class Event:
         self.url: str = event_params.url
         self.performances = []
 
-    def scrape_performances(self):
-        pass
+    def add_performance(self, performance) -> None:
+        """
+        Add an athlete's performance to the event.
+
+        :param performance: The performance to add.
+        :type performance: Performance
+        """
+        self.performances.append(performance)

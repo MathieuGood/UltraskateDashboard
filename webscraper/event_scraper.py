@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 # from bs4.element import PageElement
 
 from models.event import Event
+from models.athlete import Athlete
+from models.performance import Performance
+from models.athlete_registry import AthleteRegistry
 from models.event_params import EventParams
 from webscraper.webscraper import Webscraper
 from utils import Utils
@@ -14,8 +17,109 @@ class EventScraper:
     Class responsible for scraping an entire event
     """
 
+    scraping_attemps: int = 5
+
     @classmethod
     def scrape(cls, event_params: EventParams) -> Event:
+        event = Event(event_params)
+
+        # Fetch all athlete performance URLs from the event ranking page
+        athletes_urls = cls.__fetch_all_athlete_performance_urls(event_params)
+        print(
+            f"\nNumber of athlete URLs found for {event_params.date.year}: {len(athletes_urls)}"
+        )
+
+        for athlete_url in athletes_urls:
+            performance = cls.__get_performance_from_athlete_url(
+                athlete_url, event_params
+            )
+            if performance:
+                event.add_performance(performance)
+
+        print(
+            f"Total athletes in registry: {len(AthleteRegistry.athletes)}/ {len(athletes_urls)}\n"
+        )
+
+        return event
+
+    @classmethod
+    def __get_performance_from_athlete_url(
+        cls, athlete_url: str, event_params: EventParams
+    ) -> Performance | None:
+        """
+        From an athlete URL, scrape the athlete info and performance data and return a Performance object
+        Args:
+            athlete_url (str): URL of the athlete's performance page
+            event_params (EventParams): Parameters of the event
+        Returns:
+            Performance | None: Performance object containing athlete info and performance data, or None if scraping fails
+        """
+        athlete_performance_soup = Webscraper.fetch_html(athlete_url)
+        if not athlete_performance_soup:
+            print(f"athlete_performance_soup is empty for URL: {athlete_url}")
+        athlete_info = athlete_performance_soup.find(
+            name="div", id="ctl00_Content_Main_divLeft"
+        )
+        # print(f"\nScraping athlete page: {athlete_url}")
+
+        if not athlete_info:
+            print(f"Could not find athlete info on page: {athlete_url}")
+            print(athlete_performance_soup)
+            return None
+
+        athlete_name = ""
+        athlete_gender = ""
+        athlete_city = ""
+        athlete_state = ""
+        athlete_country = ""
+
+        # Get athlete name from the specific span
+        athlete_name_span = athlete_info.find(
+            name="span", id="ctl00_Content_Main_lblName"
+        )
+        if athlete_name_span:
+            athlete_name = athlete_name_span.text.strip()
+
+        # Get other athlete info from the table rows
+        athlete_info_rows = athlete_info.find_all("tr")
+
+        for row in athlete_info_rows:
+            athlete_row_tds = row.find_all("td")
+            if len(athlete_row_tds) < 2:
+                continue
+            label = athlete_row_tds[0].text.strip().lower()
+            value = athlete_row_tds[1].text.strip()
+
+            if "gender" in label:
+                # print(f"Found athlete gender: {value}")
+                athlete_gender = value
+            elif "city" in label:
+                # print(f"Found athlete city: {value}")
+                athlete_city = value
+            elif "state" in label:
+                # print(f"Found athlete state: {value}")
+                athlete_state = value
+            elif "country" in label:
+                # print(f"Found athlete country: {value}")
+                athlete_country = value
+
+        athlete = Athlete(
+            name=athlete_name,
+            gender=athlete_gender,
+            city=athlete_city,
+            state=athlete_state,
+            country=athlete_country,
+        )
+
+        AthleteRegistry.add_athlete(athlete)
+        print(f"Created athlete: {athlete}")
+
+        return Performance(athlete=athlete, laps=[])
+
+    @classmethod
+    def __fetch_all_athlete_performance_urls(
+        cls, event_params: EventParams
+    ) -> list[str]:
         # Fetch home page of ranking as a BeautifulSoup object
         # Adding suffix to url in order to get the "advanced view" with page numbers
         ranking_home_soup = Webscraper.fetch_html(
@@ -44,21 +148,9 @@ class EventScraper:
                 all_ranking_pages.append(Webscraper.fetch_html(ranking_page_url))
 
         # Parse all the athlete individual performances urls across the rows
-        athletes_urls = cls.__parse_athlete_urls_from_ranking(
+        return cls.__parse_athlete_urls_from_ranking(
             all_ranking_pages_soup=all_ranking_pages, event_params=event_params
         )
-
-        # for url in athletes_urls:
-        #     print(url)
-
-        print(
-            f"\nNumber of athlete URLs found for {event_params.date.year}: {len(athletes_urls)}\n\n"
-        )
-
-        # For each athlete performance url, parse Athlete info and create Athlete object
-        # Find all the participants in the table
-
-        return Event(event_params)
 
     @classmethod
     def __parse_athlete_urls_from_ranking(

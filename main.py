@@ -2,6 +2,8 @@ from models.event import Event
 from models.event_params import EventParams
 from models.track import Track
 from webscraper.event_scraper import EventScraper
+from webscraper.browser_manager import BrowserManager
+from models.athlete_registry import AthleteRegistry
 
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
@@ -103,15 +105,23 @@ def main():
         athlete_link_col_index=2,
     )
 
-    EventScraper.scrape(miami2013_params)  # OK
-    EventScraper.scrape(miami2014_params)  # OK
-    EventScraper.scrape(miami2015_params)  # OK
-    EventScraper.scrape(miami2016_params)  # OK
-    EventScraper.scrape(miami2017_params)  # OK
-    EventScraper.scrape(miami2018_params)  # OK
-    EventScraper.scrape(miami2019_params)  # OK
-    EventScraper.scrape(miami2020_params)  # OK
-    EventScraper.scrape(miami2021_params)  # OK
+    BrowserManager.start()
+
+    try:
+        EventScraper.scrape(miami2013_params)
+        EventScraper.scrape(miami2014_params)
+        EventScraper.scrape(miami2015_params)
+        EventScraper.scrape(miami2016_params)
+        EventScraper.scrape(miami2017_params)
+        EventScraper.scrape(miami2018_params)
+        EventScraper.scrape(miami2019_params)
+        EventScraper.scrape(miami2020_params)
+        EventScraper.scrape(miami2021_params)
+    finally:
+        BrowserManager.shutdown()
+
+    for athlete in AthleteRegistry.athletes:
+        print(athlete)
 
 
 if __name__ == "__main__":
