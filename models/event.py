@@ -1,6 +1,7 @@
 from datetime import datetime
 from models.track import Track
 from models.event_params import EventParams
+from models.performance import Performance
 
 
 class Event:
@@ -21,7 +22,7 @@ class Event:
         """
         self.date: datetime = event_params.date
         self.track: Track = event_params.track
-        self.performances = []
+        self.performances: list[Performance] = []
 
     def add_performance(self, performance) -> None:
         """

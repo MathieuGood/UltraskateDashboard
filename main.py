@@ -109,7 +109,7 @@ def main():
         date="2021-01-29",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url=events_url["2014-01-20"],
+            ranking_url=events_url["2021-01-29"],
             position_col_index=1,
             name_col_index=4,
             athlete_link_col_index=2,
@@ -144,7 +144,7 @@ def main():
     ]
 
     for event in events:
-        if event is None:
+        if event is None or len(event.performances) == 0:
             continue
         print("-----")
         print(
