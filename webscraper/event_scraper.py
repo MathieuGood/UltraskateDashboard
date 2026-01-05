@@ -3,12 +3,15 @@ from bs4 import BeautifulSoup
 
 # from bs4.element import PageElement
 
+from models.lap_stats import LapStats
 from models.event import Event
 from models.athlete import Athlete
 from models.performance import Performance
 from models.athlete_registry import AthleteRegistry
 from models.event_params import EventParams
 from webscraper.webscraper import Webscraper
+from webscraper.jms_site_params import JmsSiteParams
+from webscraper.myraceresult_params import MyRaceResultParams
 from utils import Utils
 
 
@@ -20,7 +23,32 @@ class EventScraper:
     scraping_attemps: int = 5
 
     @classmethod
-    def scrape(cls, event_params: EventParams) -> Event:
+    def scrape(cls, event_params: EventParams) -> Event | None:
+        if isinstance(event_params.scraped_site_params, JmsSiteParams):
+            print(f"Scraping JMS site for event on {event_params.date}...")
+            return cls.__scrape_jms_event(event_params)
+        elif isinstance(event_params.scraped_site_params, MyRaceResultParams):
+            print(f"Scraping MyRaceResult site for event on {event_params.date}...")
+            return cls.__scrape_myraceresult_event(event_params)
+        else:
+            print(
+                f"Scraping site for event on {event_params.date} not implemented yet."
+            )
+            return None
+
+    @classmethod
+    def __scrape_myraceresult_event(cls, event_params: EventParams) -> Event:
+        event = Event(event_params)
+
+        # Fetch participants JSON data
+        participants_json = cls.fetch_particpants_json(event_params)
+        print(
+            f"\nNumber of participants found for {event_params.date.year}: {len(participants_json)}"
+        )
+        return event
+
+    @classmethod
+    def __scrape_jms_event(cls, event_params: EventParams) -> Event:
         event = Event(event_params)
 
         # Fetch all athlete performance URLs from the event ranking page
@@ -31,7 +59,7 @@ class EventScraper:
 
         for athlete_url in athletes_urls:
             performance = cls.__get_performance_from_athlete_url(
-                athlete_url, event_params
+                athlete_url=athlete_url, event=event
             )
             if performance:
                 event.add_performance(performance)
@@ -43,8 +71,21 @@ class EventScraper:
         return event
 
     @classmethod
+    def fetch_particpants_json(cls, event_params: EventParams) -> dict:
+        """
+        Build the URL to request the participants JSON data for a given event.
+
+        Args:
+            event_params (EventParams): Parameters of the event.
+        Returns:
+            dict: JSON data containing participants information.
+        """
+
+        return {}
+
+    @classmethod
     def __get_performance_from_athlete_url(
-        cls, athlete_url: str, event_params: EventParams
+        cls, athlete_url: str, event: Event
     ) -> Performance | None:
         """
         From an athlete URL, scrape the athlete info and performance data and return a Performance object
@@ -129,10 +170,10 @@ class EventScraper:
 
         AthleteRegistry.add_athlete(athlete)
 
-        return Performance(athlete=athlete, laps=laps)
+        return Performance(athlete=athlete, laps=laps, event=event)
 
     @classmethod
-    def __parse_athlete_lap_rows(cls, lap_rows) -> list[int]:
+    def __parse_athlete_lap_rows(cls, lap_rows) -> list[LapStats]:
         """
         Parse the lap rows of an athlete's performance table and extract lap times.
         """
@@ -141,9 +182,15 @@ class EventScraper:
             lap_row_cols = lap_row.find_all("td")
             lap_time = lap_row_cols[2]
             extracted_time = str(Utils.extract_time(lap_time.text))
-            lap_time = Utils.convert_time_str_to_ss(extracted_time)
-            laps.append(lap_time)
-            print(f"--- Lap {lap_index+1} -> {extracted_time}")
+            lap_time = Utils.convert_time_str_to_seconds(extracted_time)
+            if lap_time is None:
+                print(
+                    f"Could not convert lap time for lap {lap_index+1}: {extracted_time}"
+                )
+                continue
+            lap_stats = LapStats(lap_number=lap_index + 1, lap_time_ss=lap_time)
+            laps.append(lap_stats)
+            # print(f"{lap_stats}")
         return laps
 
     @classmethod
@@ -152,13 +199,21 @@ class EventScraper:
     ) -> list[str]:
         # Fetch home page of ranking as a BeautifulSoup object
         # Adding suffix to url in order to get the "advanced view" with page numbers
+        if not isinstance(event_params.scraped_site_params, JmsSiteParams):
+            print(
+                "EventScraper: Unsupported scraped site params for fetching athlete URLs."
+            )
+            return []
+
         ranking_home_soup = Webscraper.fetch_html(
-            event_params.url + "&EId=1&dt=0&adv=1"
+            event_params.scraped_site_params.ranking_url + "&EId=1&dt=0&adv=1"
         )
 
         # Extract the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
-        print(f"{event_params.track} {event_params.date.year} {event_params.url}")
+        print(
+            f"{event_params.track} {event_params.date.year} {event_params.scraped_site_params.ranking_url}"
+        )
         print(
             f"Number of pages of {event_params.track.name} {event_params.date.year} : {number_of_pages}"
         )
@@ -172,7 +227,8 @@ class EventScraper:
         else:
             # Build all the pages url
             ranking_pages_urls = cls.__build_all_ranking_pages_urls(
-                number_of_pages=number_of_pages, base_url=event_params.url
+                number_of_pages=number_of_pages,
+                base_url=event_params.scraped_site_params.ranking_url,
             )
             for ranking_page_url in ranking_pages_urls:
                 all_ranking_pages.append(Webscraper.fetch_html(ranking_page_url))
@@ -186,6 +242,12 @@ class EventScraper:
     def __parse_athlete_urls_from_ranking(
         cls, all_ranking_pages_soup: list[BeautifulSoup], event_params: EventParams
     ) -> list[str]:
+        if not isinstance(event_params.scraped_site_params, JmsSiteParams):
+            print(
+                "EventScraper: Unsupported scraped site params for parsing athlete URLs."
+            )
+            return []
+
         athletes_urls: list[str] = []
         for ranking_page in all_ranking_pages_soup:
             ranking_table = ranking_page.find(
@@ -199,9 +261,11 @@ class EventScraper:
                 row_tds = athlete_row.find_all("td")
                 row_links = athlete_row.find_all("a")
 
-                position_col_index = event_params.position_col_index
-                name_col_index = event_params.name_col_index
-                athlete_link_col_index = event_params.athlete_link_col_index
+                position_col_index = event_params.scraped_site_params.position_col_index
+                name_col_index = event_params.scraped_site_params.name_col_index
+                athlete_link_col_index = (
+                    event_params.scraped_site_params.athlete_link_col_index
+                )
 
                 # Extract the link and name of the skater
                 position = row_tds[position_col_index].text.strip()
@@ -213,7 +277,9 @@ class EventScraper:
                 name = row_tds[name_col_index].text.strip()
 
                 # Build the complete URL for the skater's personal stats page
-                base_url = Utils.extract_base_url(event_params.url)
+                base_url = Utils.extract_base_url(
+                    event_params.scraped_site_params.ranking_url
+                )
                 athlete_url_end = str(row_links[athlete_link_col_index]["href"])
                 if not base_url or not athlete_url_end:
                     # print(f"Skipping {base_url} + {athlete_url_end}")

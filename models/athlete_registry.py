@@ -23,5 +23,5 @@ class AthleteRegistry:
             return False
         cls.athletes.append(athlete)
         cls.athletes.sort(key=lambda a: a.name)
-        print(f"Added athlete: {athlete}")
+        print(f"Added : {athlete}")
         return True

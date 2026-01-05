@@ -7,7 +7,7 @@ class Utils:
     """
 
     @classmethod
-    def check_hhmmss_format(cls, str_time):
+    def is_hhmmss_format(cls, str_time):
         """
         Checks whether a string matches the HH:MM:SS time format.
 
@@ -20,7 +20,7 @@ class Utils:
         return re.match(r"^\d{2}:\d{2}:\d{2}$", str_time)
 
     @classmethod
-    def convert_time_str_to_ss(cls, str_time) -> int | None:
+    def convert_time_str_to_seconds(cls, str_time) -> int | None:
         """
         Converts a time string in HH:MM:SS format to seconds.
 
@@ -53,6 +53,22 @@ class Utils:
         if match:
             return match.group(0)
         return None
+
+    @classmethod
+    def seconds_to_hhmmss(cls, total_seconds: int) -> str:
+        """
+        Converts a total number of seconds to a HH:MM:SS formatted string.
+
+        Args:
+            total_seconds (int): The total number of seconds.
+
+        Returns:
+            str: The time in HH:MM:SS format.
+        """
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        seconds = total_seconds % 60
+        return f"{hours:02}:{minutes:02}:{seconds:02}"
 
     @classmethod
     def check_url_format(cls, url) -> bool:

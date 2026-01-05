@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 from webscraper.browser_manager import BrowserManager
 
-from utils import Utils
-
 
 class Webscraper:
     """

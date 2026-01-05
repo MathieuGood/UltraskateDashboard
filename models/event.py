@@ -21,7 +21,6 @@ class Event:
         """
         self.date: datetime = event_params.date
         self.track: Track = event_params.track
-        self.url: str = event_params.url
         self.performances = []
 
     def add_performance(self, performance) -> None:
