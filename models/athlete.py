@@ -1,6 +1,13 @@
 class Athlete:
 
-    def __init__(self, name, gender, city="", state="", country=""):
+    def __init__(
+        self,
+        name: str,
+        gender: str = "",
+        city: str = "",
+        state: str = "",
+        country: str = "",
+    ):
         self.name = name
         self.gender = gender
         self.city = city

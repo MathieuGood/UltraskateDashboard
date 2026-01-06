@@ -28,6 +28,7 @@ events_url = {
     "2022-02-19": "https://my.raceresult.com/192607",
     "2023-02-10": "https://my.raceresult.com/204047",
     "2024-02-15": "https://my.raceresult.com/259072",
+    "2025-02-25": "https://my.raceresult.com/310199/",
 }
 
 
@@ -122,45 +123,72 @@ def main():
         scraped_site_params=MyRaceResultParams(race_id=192607),
     )
 
+    miami2023_params = EventParams(
+        date="2023-02-10",
+        track=homestead_track,
+        scraped_site_params=MyRaceResultParams(race_id=204047),
+    )
+
+    miami2024_params = EventParams(
+        date="2024-02-15",
+        track=homestead_track,
+        scraped_site_params=MyRaceResultParams(race_id=259072),
+    )
+
+    miami2025_params = EventParams(
+        date="2025-02-25",
+        track=homestead_track,
+        scraped_site_params=MyRaceResultParams(race_id=310199),
+    )
+
     BrowserManager.start()
 
     try:
-        # miami2013 = EventScraper.scrape(miami2013_params)
-        # miami2014 = EventScraper.scrape(miami2014_params)
-        # miami2015 = EventScraper.scrape(miami2015_params)
-        # miami2016 = EventScraper.scrape(miami2016_params)
-        # miami2017 = EventScraper.scrape(miami2017_params)
-        # miami2018 = EventScraper.scrape(miami2018_params)
-        # miami2019 = EventScraper.scrape(miami2019_params)
-        # miami2020 = EventScraper.scrape(miami2020_params)
-        # miami2021 = EventScraper.scrape(miami2021_params)
+        miami2013 = EventScraper.scrape(miami2013_params)
+        miami2014 = EventScraper.scrape(miami2014_params)
+        miami2015 = EventScraper.scrape(miami2015_params)
+        miami2016 = EventScraper.scrape(miami2016_params)
+        miami2017 = EventScraper.scrape(miami2017_params)
+        miami2018 = EventScraper.scrape(miami2018_params)
+        miami2019 = EventScraper.scrape(miami2019_params)
+        miami2020 = EventScraper.scrape(miami2020_params)
+        miami2021 = EventScraper.scrape(miami2021_params)
         miami2022 = EventScraper.scrape(miami2022_params)
+        miami2023 = EventScraper.scrape(miami2023_params)
+        miami2024 = EventScraper.scrape(miami2024_params)
+        miami2025 = EventScraper.scrape(miami2025_params)
     finally:
         BrowserManager.shutdown()
 
-    # events = [
-    #     miami2013,
-    #     miami2014,
-    #     miami2015,
-    #     miami2016,
-    #     miami2017,
-    #     miami2018,
-    #     miami2019,
-    #     miami2020,
-    #     miami2021,
-    # ]
+    events = [
+        miami2013,
+        miami2014,
+        miami2015,
+        miami2016,
+        miami2017,
+        miami2018,
+        miami2019,
+        miami2020,
+        miami2021,
+        miami2022,
+        miami2023,
+        miami2024,
+        miami2025,
+    ]
 
-    # for event in events:
-    #     if event is None or len(event.performances) == 0:
-    #         continue
-    #     print("-----")
-    #     print(
-    #         f"Event on {event.date} at {event.track.name}, {event.track.city}, {event.track.country}"
-    #     )
-    #     print(event.performances[0])
-    #     print(event.performances[1])
-    #     print(event.performances[2])
-    #     print("-----\n")
+    for event in events:
+        if event is None or len(event.performances) == 0:
+            continue
+        print("-----")
+        print(
+            f"Event on {event.date} at {event.track.name}, {event.track.city}, {event.track.country}"
+        )
+        print(event.performances[0])
+        print(event.performances[1])
+        print(event.performances[2])
+        print("-----\n")
+        print("-----\n\n\n\n\n\n")
+        event.to_json_file("ultraskate_miami_" + str(event.date.year) + ".json")
 
     # print(f"{AthleteRegistry.athletes[0]}")
 

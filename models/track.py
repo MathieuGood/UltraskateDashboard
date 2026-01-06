@@ -17,7 +17,7 @@ class Track:
         self.name: str = name
         self.city: str = city
         self.country: str = country
-        self.length_km: float = length_miles
+        self.length_miles: float = length_miles
 
     def __str__(self) -> str:
         return f"Track {self.name} ({self.city}, {self.country})"

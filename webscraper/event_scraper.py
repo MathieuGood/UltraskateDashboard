@@ -3,8 +3,6 @@ import pprint
 import requests
 from bs4 import BeautifulSoup
 
-# from bs4.element import PageElement
-
 from models.lap_stats import LapStats
 from models.event import Event
 from models.athlete import Athlete
@@ -50,19 +48,66 @@ class EventScraper:
             )
             return event
 
-        pprint.pp(participants_json)
-        print(type(participants_json))
-        participants_data = participants_json["data"]["#1_Individual"]
-
+        participants_data: list[list[str]] = participants_json["data"]["#1_Individual"]
         for participant in participants_data:
             print(
                 f"ID : {participant[1]} / Name : {participant[3]} / Discipline : {participant[7]} / Age category : {participant[6]}"
             )
-
+            performance = cls.__fetch_participant_performance(
+                participant=participant, event=event
+            )
+            if performance:
+                event.add_performance(performance)
         print(
             f"\nNumber of participants found for {event_params.date.year}: {len(participants_data)}"
         )
         return event
+
+    @classmethod
+    def __fetch_participant_performance(cls, participant: list[str], event: Event):
+        participant_id: str = participant[1]
+        participant_name: str = participant[3]
+        participant_url = f"https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid={participant_id}"
+
+        response = requests.get(participant_url)
+        if response.status_code != 200:
+            print(
+                f"Failed to fetch participant JSON data. Status code: {response.status_code}"
+            )
+            return None
+
+        # pprint.pp(response.json())
+
+        laps_data = response.json()["data"]
+        all_laps_stats: list[LapStats] = []
+        for lap_index, lap_data in enumerate(laps_data):
+            lap_time = lap_data[4][:-3]
+            if len(lap_time) == 5:
+                lap_time_formatted = "00:" + str(lap_time)
+            elif len(lap_time) == 7:
+                lap_time_formatted = "0" + str(lap_time)
+
+            lap_time_seconds = Utils.convert_time_str_to_seconds(lap_time_formatted)  # pyright: ignore[reportPossiblyUnboundVariable]
+            if lap_time_seconds is None:
+                print(
+                    f"Could not convert lap time for lap {lap_index + 1}: {lap_time_formatted}"  # pyright: ignore[reportPossiblyUnboundVariable]
+                )
+                continue
+            lap_stats = LapStats(lap_number=lap_index + 1, lap_time_ss=lap_time_seconds)
+            all_laps_stats.append(lap_stats)
+
+        athlete = Athlete(name=participant_name)  # pyright: ignore[reportArgumentType]
+        AthleteRegistry.add_athlete(athlete)
+        athlete_performance = Performance(
+            athlete=athlete, laps=all_laps_stats, event=event
+        )
+        # If there are no lap values, skip this participant
+        if athlete_performance.get_total_laps() == 0:
+            print(f"No laps found for participant {participant_name}")
+            return None
+        # print(athlete_performance)
+        return athlete_performance
+        # https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid=421
 
     @classmethod
     def __scrape_jms_event(cls, event_params: EventParams) -> Event:
@@ -218,7 +263,7 @@ class EventScraper:
             lap_time = Utils.convert_time_str_to_seconds(extracted_time)
             if lap_time is None:
                 print(
-                    f"Could not convert lap time for lap {lap_index+1}: {extracted_time}"
+                    f"Could not convert lap time for lap {lap_index + 1}: {extracted_time}"
                 )
                 continue
             lap_stats = LapStats(lap_number=lap_index + 1, lap_time_ss=lap_time)

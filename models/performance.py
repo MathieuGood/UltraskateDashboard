@@ -24,5 +24,29 @@ class Performance:
     def __get_total_time_ss(self) -> int:
         return sum(lap.lap_time_ss for lap in self.laps)
 
+    def get_total_laps(self) -> int:
+        return len(self.laps)
+
+    def get_total_miles(self) -> float:
+        return self.event.track.length_miles * self.get_total_laps()
+
+    def get_total_km(self) -> float:
+        return self.get_total_miles() * 1.60934
+
+    def to_dict(self) -> dict:
+        return {
+            "athlete": {
+                "name": self.athlete.name,
+                "gender": self.athlete.gender,
+                "city": self.athlete.city,
+                "state": self.athlete.state,
+                "country": self.athlete.country,
+            },
+            "laps": [
+                {"number": lap.lap_number, "time": lap.get_lap_time_hhmmss()}
+                for lap in self.laps
+            ],
+        }
+
     def __str__(self) -> str:
-        return f"Performance by {self.athlete}\n -> {len(self.laps)} laps \n -> Total time : {self.get_total_time_hhmmss()}\n -> {len(self.laps)*1.46} miles\n -> {self.event.date.year} {self.event.track.name} at {self.event.track.city}, {self.event.track.country}"
+        return f"Performance by {self.athlete}\n -> {len(self.laps)} laps \n -> Total time : {self.get_total_time_hhmmss()}\n -> {len(self.laps) * 1.46} miles\n -> {self.event.date.year} {self.event.track.name} at {self.event.track.city}, {self.event.track.country}"

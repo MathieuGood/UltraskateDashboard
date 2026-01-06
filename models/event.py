@@ -1,8 +1,7 @@
+import json
 from datetime import datetime
 from models.track import Track
 from models.event_params import EventParams
-
-# from models.performance import Performance
 from typing import Any
 
 
@@ -34,3 +33,19 @@ class Event:
         :type performance: Performance
         """
         self.performances.append(performance)
+
+    def to_dict(self) -> dict:
+        performances_list: list[dict] = []
+        for performance in self.performances:
+            performances_list.append(performance.to_dict())
+        return {
+            "date": self.date.isoformat(),
+            "track": self.track.name,
+            "city": self.track.city,
+            "country": self.track.country,
+            "performances": performances_list,
+        }
+
+    def to_json_file(self, file_name: str) -> None:
+        with open(file_name, "w") as f:
+            json.dump(self.to_dict(), f, indent=4)
