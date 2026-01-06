@@ -116,46 +116,53 @@ def main():
         ),
     )
 
+    miami2022_params = EventParams(
+        date="2022-02-19",
+        track=homestead_track,
+        scraped_site_params=MyRaceResultParams(race_id=192607),
+    )
+
     BrowserManager.start()
 
     try:
-        miami2013 = EventScraper.scrape(miami2013_params)
-        miami2014 = EventScraper.scrape(miami2014_params)
-        miami2015 = EventScraper.scrape(miami2015_params)
-        miami2016 = EventScraper.scrape(miami2016_params)
-        miami2017 = EventScraper.scrape(miami2017_params)
-        miami2018 = EventScraper.scrape(miami2018_params)
-        miami2019 = EventScraper.scrape(miami2019_params)
-        miami2020 = EventScraper.scrape(miami2020_params)
-        miami2021 = EventScraper.scrape(miami2021_params)
+        # miami2013 = EventScraper.scrape(miami2013_params)
+        # miami2014 = EventScraper.scrape(miami2014_params)
+        # miami2015 = EventScraper.scrape(miami2015_params)
+        # miami2016 = EventScraper.scrape(miami2016_params)
+        # miami2017 = EventScraper.scrape(miami2017_params)
+        # miami2018 = EventScraper.scrape(miami2018_params)
+        # miami2019 = EventScraper.scrape(miami2019_params)
+        # miami2020 = EventScraper.scrape(miami2020_params)
+        # miami2021 = EventScraper.scrape(miami2021_params)
+        miami2022 = EventScraper.scrape(miami2022_params)
     finally:
         BrowserManager.shutdown()
 
-    events = [
-        miami2013,
-        miami2014,
-        miami2015,
-        miami2016,
-        miami2017,
-        miami2018,
-        miami2019,
-        miami2020,
-        miami2021,
-    ]
+    # events = [
+    #     miami2013,
+    #     miami2014,
+    #     miami2015,
+    #     miami2016,
+    #     miami2017,
+    #     miami2018,
+    #     miami2019,
+    #     miami2020,
+    #     miami2021,
+    # ]
 
-    for event in events:
-        if event is None or len(event.performances) == 0:
-            continue
-        print("-----")
-        print(
-            f"Event on {event.date} at {event.track.name}, {event.track.city}, {event.track.country}"
-        )
-        print(event.performances[0])
-        print(event.performances[1])
-        print(event.performances[2])
-        print("-----\n")
+    # for event in events:
+    #     if event is None or len(event.performances) == 0:
+    #         continue
+    #     print("-----")
+    #     print(
+    #         f"Event on {event.date} at {event.track.name}, {event.track.city}, {event.track.country}"
+    #     )
+    #     print(event.performances[0])
+    #     print(event.performances[1])
+    #     print(event.performances[2])
+    #     print("-----\n")
 
-    print(f"{AthleteRegistry.athletes[0]}")
+    # print(f"{AthleteRegistry.athletes[0]}")
 
     # for athlete in AthleteRegistry.athletes:
     #     print(athlete)

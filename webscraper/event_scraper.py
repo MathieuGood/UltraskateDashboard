@@ -1,4 +1,6 @@
 import re
+import pprint
+import requests
 from bs4 import BeautifulSoup
 
 # from bs4.element import PageElement
@@ -42,8 +44,23 @@ class EventScraper:
 
         # Fetch participants JSON data
         participants_json = cls.fetch_particpants_json(event_params)
+        if not participants_json:
+            print(
+                f"Could not fetch participants JSON data for event on {event_params.date}."
+            )
+            return event
+
+        pprint.pp(participants_json)
+        print(type(participants_json))
+        participants_data = participants_json["data"]["#1_Individual"]
+
+        for participant in participants_data:
+            print(
+                f"ID : {participant[1]} / Name : {participant[3]} / Discipline : {participant[7]} / Age category : {participant[6]}"
+            )
+
         print(
-            f"\nNumber of participants found for {event_params.date.year}: {len(participants_json)}"
+            f"\nNumber of participants found for {event_params.date.year}: {len(participants_data)}"
         )
         return event
 
@@ -71,7 +88,7 @@ class EventScraper:
         return event
 
     @classmethod
-    def fetch_particpants_json(cls, event_params: EventParams) -> dict:
+    def fetch_particpants_json(cls, event_params: EventParams) -> dict | None:
         """
         Build the URL to request the participants JSON data for a given event.
 
@@ -80,8 +97,24 @@ class EventScraper:
         Returns:
             dict: JSON data containing participants information.
         """
+        if not isinstance(event_params.scraped_site_params, MyRaceResultParams):
+            print(
+                "EventScraper: Unsupported scraped site params for fetching participants JSON."
+            )
+            return None
 
-        return {}
+        response = requests.get(event_params.scraped_site_params.participants_url)
+
+        # If the request was successful, parse and return the JSON data
+        if response.status_code != 200:
+            print(
+                f"Failed to fetch participants JSON data. Status code: {response.status_code}"
+            )
+            return None
+
+        return response.json()
+
+        # https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0
 
     @classmethod
     def __get_performance_from_athlete_url(
