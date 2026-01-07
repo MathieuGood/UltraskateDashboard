@@ -1,8 +1,14 @@
+from __future__ import annotations
+
 import json
 from datetime import datetime
+from typing import TYPE_CHECKING
+
 from models.track import Track
 from models.event_params import EventParams
-from typing import Any
+
+if TYPE_CHECKING:
+    from models.performance import Performance
 
 
 class Event:
@@ -23,9 +29,9 @@ class Event:
         """
         self.date: datetime = event_params.date
         self.track: Track = event_params.track
-        self.performances: list[Any] = []
+        self.performances: list[Performance] = []
 
-    def add_performance(self, performance) -> None:
+    def add_performance(self, performance: Performance) -> None:
         """
         Add an athlete's performance to the event.
 

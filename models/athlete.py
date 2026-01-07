@@ -1,5 +1,4 @@
 class Athlete:
-
     def __init__(
         self,
         name: str,
@@ -8,6 +7,8 @@ class Athlete:
         state: str = "",
         country: str = "",
     ):
+        if name == "":
+            raise ValueError("Athlete name cannot be empty")
         self.name = name
         self.gender = gender
         self.city = city

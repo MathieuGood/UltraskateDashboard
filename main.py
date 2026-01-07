@@ -18,7 +18,7 @@ https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8
 events_url = {
     "2013-01-07": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=13",
     "2014-01-20": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
-    "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
+    "2015-02-12": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",  # Age group available as 'category' column
     "2016-02-26": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
     "2017-01-16": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
     "2018-01-10": "https://jms.racetecresults.com/results.aspx?CId=16370&RId=294",
@@ -153,10 +153,10 @@ def main():
         miami2019 = EventScraper.scrape(miami2019_params)
         miami2020 = EventScraper.scrape(miami2020_params)
         miami2021 = EventScraper.scrape(miami2021_params)
-        miami2022 = EventScraper.scrape(miami2022_params)
-        miami2023 = EventScraper.scrape(miami2023_params)
-        miami2024 = EventScraper.scrape(miami2024_params)
-        miami2025 = EventScraper.scrape(miami2025_params)
+        # miami2022 = EventScraper.scrape(miami2022_params)
+        # miami2023 = EventScraper.scrape(miami2023_params)
+        # miami2024 = EventScraper.scrape(miami2024_params)
+        # miami2025 = EventScraper.scrape(miami2025_params)
     finally:
         BrowserManager.shutdown()
 
@@ -170,10 +170,10 @@ def main():
         miami2019,
         miami2020,
         miami2021,
-        miami2022,
-        miami2023,
-        miami2024,
-        miami2025,
+        # miami2022,
+        # miami2023,
+        # miami2024,
+        # miami2025,
     ]
 
     for event in events:
@@ -190,10 +190,10 @@ def main():
         print("-----\n\n\n\n\n\n")
         event.to_json_file("ultraskate_miami_" + str(event.date.year) + ".json")
 
-    # print(f"{AthleteRegistry.athletes[0]}")
+    print(f"{AthleteRegistry.athletes[0]}")
 
-    # for athlete in AthleteRegistry.athletes:
-    #     print(athlete)
+    for athlete in AthleteRegistry.athletes:
+        print(athlete)
 
 
 if __name__ == "__main__":

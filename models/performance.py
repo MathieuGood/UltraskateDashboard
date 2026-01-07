@@ -1,7 +1,12 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
 from models.athlete import Athlete
 from models.lap_stats import LapStats
-from models.event import Event
 from utils import Utils
+
+if TYPE_CHECKING:
+    from models.event import Event
 
 
 class Performance:
@@ -12,9 +17,13 @@ class Performance:
         athlete: Athlete,
         laps: list[LapStats],
         event: Event,
+        category: str = "",
+        age_group: str = "",
     ):
         self.athlete = athlete
         self.laps = laps
+        self.category = category
+        self.age_group = age_group
         self.event = event
         self.total_time_ss = self.__get_total_time_ss()
 
@@ -42,6 +51,12 @@ class Performance:
                 "state": self.athlete.state,
                 "country": self.athlete.country,
             },
+            "category": self.category,
+            "age_group": self.age_group,
+            "total_time_hhmmss": self.get_total_time_hhmmss(),
+            "total_laps": self.get_total_laps(),
+            "total_miles": self.get_total_miles(),
+            "total_km": self.get_total_km(),
             "laps": [
                 {"number": lap.lap_number, "time": lap.get_lap_time_hhmmss()}
                 for lap in self.laps

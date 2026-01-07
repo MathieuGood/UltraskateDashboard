@@ -20,8 +20,6 @@ class EventScraper:
     Class responsible for scraping an entire event
     """
 
-    scraping_attemps: int = 5
-
     @classmethod
     def scrape(cls, event_params: EventParams) -> Event | None:
         if isinstance(event_params.scraped_site_params, JmsSiteParams):
@@ -191,13 +189,16 @@ class EventScraper:
         athlete_city = ""
         athlete_state = ""
         athlete_country = ""
+        performance_age_group = ""
+        performance_category = ""
 
         # Get athlete name from the specific span
         athlete_name_span = athlete_info.find(
             name="span", id="ctl00_Content_Main_lblName"
         )
-        if athlete_name_span:
-            athlete_name = athlete_name_span.text.strip()
+        if not athlete_name_span:
+            return None
+        athlete_name = athlete_name_span.text.strip()
 
         # Get other athlete info from the table rows
         athlete_info_rows = athlete_info.find_all("tr")
@@ -221,6 +222,9 @@ class EventScraper:
             elif "country" in label:
                 # print(f"Found athlete country: {value}")
                 athlete_country = value
+            elif "category" in label:
+                # print(f"Found performance category: {value}")
+                performance_category = value
 
         athlete_laps_table = athlete_performance_soup.find(
             name="div", id="ctl00_Content_Main_divSplitGrid"
@@ -248,7 +252,13 @@ class EventScraper:
 
         AthleteRegistry.add_athlete(athlete)
 
-        return Performance(athlete=athlete, laps=laps, event=event)
+        return Performance(
+            athlete=athlete,
+            laps=laps,
+            event=event,
+            category=performance_category,
+            age_group=performance_age_group,
+        )
 
     @classmethod
     def __parse_athlete_lap_rows(cls, lap_rows) -> list[LapStats]:
