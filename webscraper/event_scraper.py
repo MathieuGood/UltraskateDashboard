@@ -1,5 +1,5 @@
-import re
 import pprint
+import re
 import requests
 from bs4 import BeautifulSoup
 
@@ -110,9 +110,26 @@ class EventScraper:
     @classmethod
     def __scrape_jms_event(cls, event_params: EventParams) -> Event:
         event = Event(event_params)
+        if not isinstance(event_params.scraped_site_params, JmsSiteParams):
+            print("EventScraper: Invalid scraped site params for JMS event scraping.")
+            return event
+
+        athletes_urls: list[str] = []
+        for category_index in event_params.scraped_site_params.categories_indexes:
+            print(f"Scraping category index: {category_index}")
+            athlete_performance_url = (
+                event_params.scraped_site_params.ranking_url
+                + f"&EId={category_index}&dt=0&adv=1"
+            )
+            athletes_urls.extend(
+                cls.__fetch_all_athlete_performance_urls(
+                    athlete_performance_url, event_params
+                )
+            )
 
         # Fetch all athlete performance URLs from the event ranking page
-        athletes_urls = cls.__fetch_all_athlete_performance_urls(event_params)
+        # athletes_urls = cls.__fetch_all_athlete_performance_urls(event_params)
+
         print(
             f"\nNumber of athlete URLs found for {event_params.date.year}: {len(athletes_urls)}"
         )
@@ -196,9 +213,13 @@ class EventScraper:
         athlete_name_span = athlete_info.find(
             name="span", id="ctl00_Content_Main_lblName"
         )
-        if not athlete_name_span:
+        performance_category_span = athlete_info.find(
+            name="span", id="ctl00_Content_Main_lblEvent"
+        )
+        if not athlete_name_span or not performance_category_span:
             return None
         athlete_name = athlete_name_span.text.strip()
+        performance_category = performance_category_span.text.strip()
 
         # Get other athlete info from the table rows
         athlete_info_rows = athlete_info.find_all("tr")
@@ -283,7 +304,7 @@ class EventScraper:
 
     @classmethod
     def __fetch_all_athlete_performance_urls(
-        cls, event_params: EventParams
+        cls, ranking_page_url: str, event_params: EventParams
     ) -> list[str]:
         # Fetch home page of ranking as a BeautifulSoup object
         # Adding suffix to url in order to get the "advanced view" with page numbers
@@ -293,9 +314,7 @@ class EventScraper:
             )
             return []
 
-        ranking_home_soup = Webscraper.fetch_html(
-            event_params.scraped_site_params.ranking_url + "&EId=1&dt=0&adv=1"
-        )
+        ranking_home_soup = Webscraper.fetch_html(ranking_page_url)
 
         # Extract the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
@@ -345,7 +364,7 @@ class EventScraper:
                 continue
             athlete_rows = ranking_table.find_all("tr")
 
-            for row_index, athlete_row in enumerate(athlete_rows):
+            for athlete_row in athlete_rows:
                 row_tds = athlete_row.find_all("td")
                 row_links = athlete_row.find_all("a")
 

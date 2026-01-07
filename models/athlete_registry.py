@@ -2,7 +2,6 @@ from models.athlete import Athlete
 
 
 class AthleteRegistry:
-
     athletes: list[Athlete] = []
 
     @classmethod
