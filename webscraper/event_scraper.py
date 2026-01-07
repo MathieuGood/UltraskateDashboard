@@ -304,7 +304,7 @@ class EventScraper:
 
     @classmethod
     def __fetch_all_athlete_performance_urls(
-        cls, ranking_page_url: str, event_params: EventParams
+        cls, ranking_url: str, event_params: EventParams
     ) -> list[str]:
         # Fetch home page of ranking as a BeautifulSoup object
         # Adding suffix to url in order to get the "advanced view" with page numbers
@@ -314,7 +314,7 @@ class EventScraper:
             )
             return []
 
-        ranking_home_soup = Webscraper.fetch_html(ranking_page_url)
+        ranking_home_soup = Webscraper.fetch_html(ranking_url)
 
         # Extract the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
@@ -335,7 +335,7 @@ class EventScraper:
             # Build all the pages url
             ranking_pages_urls = cls.__build_all_ranking_pages_urls(
                 number_of_pages=number_of_pages,
-                base_url=event_params.scraped_site_params.ranking_url,
+                base_url=ranking_url,
             )
             for ranking_page_url in ranking_pages_urls:
                 all_ranking_pages.append(Webscraper.fetch_html(ranking_page_url))
