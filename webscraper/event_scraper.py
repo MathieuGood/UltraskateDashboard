@@ -46,6 +46,8 @@ class EventScraper:
             )
             return event
 
+        no_laps_performances = 0  # DEBUG
+
         participants_data: list[list[str]] = participants_json["data"]["#1_Individual"]
         for participant in participants_data:
             print(
@@ -56,9 +58,13 @@ class EventScraper:
             )
             if performance:
                 event.add_performance(performance)
+            else:
+                no_laps_performances += 1
         print(
             f"\nNumber of participants found for {event_params.date.year}: {len(participants_data)}"
         )
+        print(f"Number of performances scraped: {len(event.performances)}")
+        print(f"Number of performances with no laps: {no_laps_performances}\n")
         return event
 
     @classmethod
