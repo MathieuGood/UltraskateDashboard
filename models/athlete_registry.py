@@ -15,11 +15,11 @@ class AthleteRegistry:
         Returns:
             bool: True if the athlete was added, False if already present.
         """
-        if athlete in cls.athletes:
-            print(
-                f" !!! Athlete {athlete.name} already in registry, skipping addition."
-            )
-            return False
+        # if athlete in cls.athletes:
+        #     print(
+        #         f" !!! Athlete {athlete.name} already in registry, skipping addition."
+        #     )
+        #     return False
         cls.athletes.append(athlete)
         cls.athletes.sort(key=lambda a: a.name)
         print(f"Added : {athlete}")

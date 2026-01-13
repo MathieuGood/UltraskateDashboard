@@ -12,6 +12,9 @@ from event_params_data import miami_event_params
 All participants :
 https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0
 
+
+https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0
+
 Lap details for a given athlete (pid=421 here) :
 https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid=421
 """
@@ -40,14 +43,14 @@ def main():
     BrowserManager.start()
 
     try:
-        miami2013 = EventScraper.scrape(miami_event_params[2013])
-        miami2014 = EventScraper.scrape(miami_event_params[2014])
-        miami2015 = EventScraper.scrape(miami_event_params[2015])
-        miami2016 = EventScraper.scrape(miami_event_params[2016])
-        miami2017 = EventScraper.scrape(miami_event_params[2017])
-        miami2018 = EventScraper.scrape(miami_event_params[2018])
-        miami2019 = EventScraper.scrape(miami_event_params[2019])
-        miami2020 = EventScraper.scrape(miami_event_params[2020])
+        # miami2013 = EventScraper.scrape(miami_event_params[2013])
+        # miami2014 = EventScraper.scrape(miami_event_params[2014])
+        # miami2015 = EventScraper.scrape(miami_event_params[2015])
+        # miami2016 = EventScraper.scrape(miami_event_params[2016])
+        # miami2017 = EventScraper.scrape(miami_event_params[2017])
+        # miami2018 = EventScraper.scrape(miami_event_params[2018])
+        # miami2019 = EventScraper.scrape(miami_event_params[2019])
+        # miami2020 = EventScraper.scrape(miami_event_params[2020])
         miami2021 = EventScraper.scrape(miami_event_params[2021])
         # miami2022 = EventScraper.scrape(miami_event_params[2022])
         # miami2023 = EventScraper.scrape(miami_event_params[2023])
@@ -57,14 +60,14 @@ def main():
         BrowserManager.shutdown()
 
     events = [
-        miami2013,
-        miami2014,
-        miami2015,
-        miami2016,
-        miami2017,
-        miami2018,
-        miami2019,
-        miami2020,
+        # miami2013,
+        # miami2014,
+        # miami2015,
+        # miami2016,
+        # miami2017,
+        # miami2018,
+        # miami2019,
+        # miami2020,
         miami2021,
         # miami2022,
         # miami2023,
@@ -82,12 +85,11 @@ def main():
         print(event.performances[0])
         print(event.performances[1])
         print(event.performances[2])
+        print(f"Total performances scraped: {len(event.performances)}")
         print("-----\n")
         print("-----\n\n\n\n\n\n")
         event.to_json_file(
-            path.join(
-                "scraped_events", "ultraskate_miami_" + str(event.date.year) + ".json"
-            )
+            path.join("ultraskate_miami_" + str(event.date.year) + ".json")
         )
 
 

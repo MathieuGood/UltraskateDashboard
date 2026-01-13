@@ -65,6 +65,9 @@ class EventScraper:
     def __fetch_participant_performance(cls, participant: list[str], event: Event):
         participant_id: str = participant[1]
         participant_name: str = participant[3]
+        participant_age_category: str = participant[6]
+        participant_discipline: str = participant[7]
+        participant_gender: str = participant[8]
         participant_url = f"https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid={participant_id}"
 
         response = requests.get(participant_url)
@@ -94,16 +97,23 @@ class EventScraper:
             lap_stats = LapStats(lap_number=lap_index + 1, lap_time_ss=lap_time_seconds)
             all_laps_stats.append(lap_stats)
 
-        athlete = Athlete(name=participant_name)  # pyright: ignore[reportArgumentType]
-        AthleteRegistry.add_athlete(athlete)
+        athlete = Athlete(name=participant_name, gender=participant_gender)  # pyright: ignore[reportArgumentType]
+
         athlete_performance = Performance(
-            athlete=athlete, laps=all_laps_stats, event=event
+            athlete=athlete,
+            age_category=participant_age_category,
+            discipline=participant_discipline,
+            laps=all_laps_stats,
+            event=event,
         )
         # If there are no lap values, skip this participant
         if athlete_performance.get_total_laps() == 0:
             print(f"No laps found for participant {participant_name}")
             return None
         # print(athlete_performance)
+
+        AthleteRegistry.add_athlete(athlete)
+
         return athlete_performance
         # https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid=421
 
@@ -121,6 +131,7 @@ class EventScraper:
                 event_params.scraped_site_params.ranking_url
                 + f"&EId={category_index}&dt=0&adv=1"
             )
+            print(f"Fetching athlete performance URLs from: {athlete_performance_url}")
             athletes_urls.extend(
                 cls.__fetch_all_athlete_performance_urls(
                     athlete_performance_url, event_params
@@ -164,6 +175,8 @@ class EventScraper:
             return None
 
         response = requests.get(event_params.scraped_site_params.participants_url)
+
+        pprint.pp(response.json())
 
         # If the request was successful, parse and return the JSON data
         if response.status_code != 200:
@@ -243,9 +256,14 @@ class EventScraper:
             elif "country" in label:
                 # print(f"Found athlete country: {value}")
                 athlete_country = value
-            elif "category" in label:
-                # print(f"Found performance category: {value}")
+            elif "category" in label and label != "secondary category :":
+                print(
+                    f"LABEL DIFFERENT FROM 'secondary category:'{label != 'secondary category:'}"
+                )
+                print(f"Found athlete age category: `{label}` `{value}`")
                 performance_category = value
+
+            print(f"Performance category: {performance_category}")
 
         athlete_laps_table = athlete_performance_soup.find(
             name="div", id="ctl00_Content_Main_divSplitGrid"
@@ -277,8 +295,8 @@ class EventScraper:
             athlete=athlete,
             laps=laps,
             event=event,
-            category=performance_category,
-            age_group=performance_age_group,
+            discipline=performance_category,
+            age_category=performance_age_group,
         )
 
     @classmethod
@@ -318,9 +336,7 @@ class EventScraper:
 
         # Extract the number of pages from the ranking page
         number_of_pages = cls.__get_number_of_pages(ranking_home_soup)
-        print(
-            f"{event_params.track} {event_params.date.year} {event_params.scraped_site_params.ranking_url}"
-        )
+
         print(
             f"Number of pages of {event_params.track.name} {event_params.date.year} : {number_of_pages}"
         )
@@ -396,6 +412,7 @@ class EventScraper:
                 # print(
                 #     f"Row {row_index} -> POS {position} / NAME {name} / URL {athlete_full_url}"
                 # )
+        print(f"--> Athletes urls found: {len(athletes_urls)}")
 
         return athletes_urls
 

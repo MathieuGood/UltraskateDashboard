@@ -22,7 +22,7 @@ miami_event_params: dict[int, EventParams] = {
         date="2014-01-20",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
+            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=67",
             categories_indexes=[1, 2, 3, 4],
             position_col_index=0,
             name_col_index=2,
@@ -32,7 +32,7 @@ miami_event_params: dict[int, EventParams] = {
         date="2015-02-12",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
+            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=121",
             categories_indexes=[1, 2, 3, 4],
             position_col_index=0,
             name_col_index=1,
@@ -42,9 +42,9 @@ miami_event_params: dict[int, EventParams] = {
         date="2016-02-26",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
-            categories_indexes=[1, 3, 4],
-            position_col_index=0,
+            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=179",
+            categories_indexes=[1, 2, 3, 4],
+            position_col_index=1,
             name_col_index=2,
         ),
     ),
@@ -52,7 +52,7 @@ miami_event_params: dict[int, EventParams] = {
         date="2017-01-16",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=294",
+            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=240",
             categories_indexes=[1, 3, 4],
             position_col_index=1,
             name_col_index=3,
@@ -62,8 +62,8 @@ miami_event_params: dict[int, EventParams] = {
         date="2018-01-10",
         track=homestead_track,
         scraped_site_params=JmsSiteParams(
-            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=352",
-            categories_indexes=[1, 2, 3, 4],
+            ranking_url="https://jms.racetecresults.com/results.aspx?CId=16370&RId=294",
+            categories_indexes=[1, 3, 4],
             position_col_index=1,
             name_col_index=3,
         ),

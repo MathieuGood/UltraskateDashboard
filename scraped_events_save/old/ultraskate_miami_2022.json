@@ -7,11 +7,17 @@
         {
             "athlete": {
                 "name": "Leffler, Gianna",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "14:34:14",
+            "total_laps": 36,
+            "total_miles": 52.56,
+            "total_km": 84.58691040000001,
             "laps": [
                 {
                     "number": 1,
@@ -162,11 +168,17 @@
         {
             "athlete": {
                 "name": "Bugg, Parker",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:35:37",
+            "total_laps": 220,
+            "total_miles": 321.2,
+            "total_km": 516.9200079999999,
             "laps": [
                 {
                     "number": 1,
@@ -1053,11 +1065,17 @@
         {
             "athlete": {
                 "name": "Shah, Arnav Sonic",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:52:26",
+            "total_laps": 186,
+            "total_miles": 271.56,
+            "total_km": 437.0323704,
             "laps": [
                 {
                     "number": 1,
@@ -1808,11 +1826,17 @@
         {
             "athlete": {
                 "name": "Shyu, Jen",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:57:00",
+            "total_laps": 146,
+            "total_miles": 213.16,
+            "total_km": 343.0469144,
             "laps": [
                 {
                     "number": 1,
@@ -2403,11 +2427,17 @@
         {
             "athlete": {
                 "name": "Cleveland, Kacie",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "21:53:26",
+            "total_laps": 190,
+            "total_miles": 277.4,
+            "total_km": 446.43091599999997,
             "laps": [
                 {
                     "number": 1,
@@ -3174,11 +3204,17 @@
         {
             "athlete": {
                 "name": "Fistel, Sam",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "50-59",
+            "total_time_hhmmss": "11:07:08",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -3597,11 +3633,17 @@
         {
             "athlete": {
                 "name": "Torkelson, Chad",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "09:33:02",
+            "total_laps": 79,
+            "total_miles": 115.34,
+            "total_km": 185.62127560000002,
             "laps": [
                 {
                     "number": 1,
@@ -3924,11 +3966,17 @@
         {
             "athlete": {
                 "name": "Guzman, Sebastian",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:55:34",
+            "total_laps": 191,
+            "total_miles": 278.86,
+            "total_km": 448.78055240000003,
             "laps": [
                 {
                     "number": 1,
@@ -4699,11 +4747,17 @@
         {
             "athlete": {
                 "name": "RAMIREZ, FRANCISCO",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "40-49",
+            "total_time_hhmmss": "22:34:13",
+            "total_laps": 249,
+            "total_miles": 363.53999999999996,
+            "total_km": 585.0594636,
             "laps": [
                 {
                     "number": 1,
@@ -5706,11 +5760,17 @@
         {
             "athlete": {
                 "name": "Anderson, Mathew",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "14:19:34",
+            "total_laps": 108,
+            "total_miles": 157.68,
+            "total_km": 253.7607312,
             "laps": [
                 {
                     "number": 1,
@@ -6149,11 +6209,17 @@
         {
             "athlete": {
                 "name": "Polewchak, Nolan",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "14-18",
+            "total_time_hhmmss": "23:43:09",
+            "total_laps": 52,
+            "total_miles": 75.92,
+            "total_km": 122.1810928,
             "laps": [
                 {
                     "number": 1,
@@ -6368,11 +6434,17 @@
         {
             "athlete": {
                 "name": "Polewchak, Reagan",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "14-18",
+            "total_time_hhmmss": "23:47:08",
+            "total_laps": 29,
+            "total_miles": 42.339999999999996,
+            "total_km": 68.13945559999999,
             "laps": [
                 {
                     "number": 1,
@@ -6495,11 +6567,17 @@
         {
             "athlete": {
                 "name": "Reinoso, Juan Fernando",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:06:01",
+            "total_laps": 110,
+            "total_miles": 160.6,
+            "total_km": 258.46000399999997,
             "laps": [
                 {
                     "number": 1,
@@ -6946,11 +7024,17 @@
         {
             "athlete": {
                 "name": "Silva, Emanuelle",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:31:24",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -7233,11 +7317,17 @@
         {
             "athlete": {
                 "name": "Tapia, Daniela",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:26:00",
+            "total_laps": 227,
+            "total_miles": 331.42,
+            "total_km": 533.3674628,
             "laps": [
                 {
                     "number": 1,
@@ -8152,11 +8242,17 @@
         {
             "athlete": {
                 "name": "Uribe, Daniel",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "17:30:07",
+            "total_laps": 91,
+            "total_miles": 132.85999999999999,
+            "total_km": 213.81691239999998,
             "laps": [
                 {
                     "number": 1,
@@ -8527,11 +8623,17 @@
         {
             "athlete": {
                 "name": "Giarusso, Richard",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "14-18",
+            "total_time_hhmmss": "17:55:18",
+            "total_laps": 44,
+            "total_miles": 64.24,
+            "total_km": 103.38400159999999,
             "laps": [
                 {
                     "number": 1,
@@ -8714,11 +8816,17 @@
         {
             "athlete": {
                 "name": "carbot, nick",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "14-18",
+            "total_time_hhmmss": "22:04:17",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -9001,11 +9109,17 @@
         {
             "athlete": {
                 "name": "Brion, Emmanuel",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "22:40:53",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -9424,11 +9538,17 @@
         {
             "athlete": {
                 "name": "Pinson, Nicolas",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "22:33:23",
+            "total_laps": 107,
+            "total_miles": 156.22,
+            "total_km": 251.4110948,
             "laps": [
                 {
                     "number": 1,
@@ -9863,11 +9983,17 @@
         {
             "athlete": {
                 "name": "Barant, Thierry",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:43:08",
+            "total_laps": 109,
+            "total_miles": 159.14,
+            "total_km": 256.11036759999996,
             "laps": [
                 {
                     "number": 1,
@@ -10310,11 +10436,17 @@
         {
             "athlete": {
                 "name": "Fernandez, Tyler",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "13 & under",
+            "total_time_hhmmss": "23:34:08",
+            "total_laps": 71,
+            "total_miles": 103.66,
+            "total_km": 166.8241844,
             "laps": [
                 {
                     "number": 1,
@@ -10605,11 +10737,17 @@
         {
             "athlete": {
                 "name": "Ennis, Ferrell",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "14-18",
+            "total_time_hhmmss": "13:09:25",
+            "total_laps": 7,
+            "total_miles": 10.219999999999999,
+            "total_km": 16.4474548,
             "laps": [
                 {
                     "number": 1,
@@ -10644,11 +10782,17 @@
         {
             "athlete": {
                 "name": "ODonnell, Lauren",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "14-18",
+            "total_time_hhmmss": "23:52:43",
+            "total_laps": 110,
+            "total_miles": 160.6,
+            "total_km": 258.46000399999997,
             "laps": [
                 {
                     "number": 1,
@@ -11095,11 +11239,17 @@
         {
             "athlete": {
                 "name": "Poteet, Lucille",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "14-18",
+            "total_time_hhmmss": "23:49:34",
+            "total_laps": 85,
+            "total_miles": 124.1,
+            "total_km": 199.71909399999998,
             "laps": [
                 {
                     "number": 1,
@@ -11446,11 +11596,17 @@
         {
             "athlete": {
                 "name": "Navarrete, Gabriella",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Quad Skate",
+            "age_group": "30-39",
+            "total_time_hhmmss": "11:50:35",
+            "total_laps": 37,
+            "total_miles": 54.019999999999996,
+            "total_km": 86.93654679999999,
             "laps": [
                 {
                     "number": 1,
@@ -11605,11 +11761,17 @@
         {
             "athlete": {
                 "name": "Closs, Paul",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Quad Skate",
+            "age_group": "50-59",
+            "total_time_hhmmss": "20:39:15",
+            "total_laps": 85,
+            "total_miles": 124.1,
+            "total_km": 199.71909399999998,
             "laps": [
                 {
                     "number": 1,
@@ -11956,11 +12118,17 @@
         {
             "athlete": {
                 "name": "Kampen, Kathi",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Quad Skate",
+            "age_group": "40-49",
+            "total_time_hhmmss": "18:27:56",
+            "total_laps": 81,
+            "total_miles": 118.25999999999999,
+            "total_km": 190.32054839999998,
             "laps": [
                 {
                     "number": 1,
@@ -12291,11 +12459,17 @@
         {
             "athlete": {
                 "name": "ODonnell, John",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Quad Skate",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:53:07",
+            "total_laps": 58,
+            "total_miles": 84.67999999999999,
+            "total_km": 136.27891119999998,
             "laps": [
                 {
                     "number": 1,
@@ -12534,11 +12708,17 @@
         {
             "athlete": {
                 "name": "Polewchak, William",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Quad Skate",
+            "age_group": "60+",
+            "total_time_hhmmss": "23:46:08",
+            "total_laps": 55,
+            "total_miles": 80.3,
+            "total_km": 129.23000199999998,
             "laps": [
                 {
                     "number": 1,
@@ -12765,11 +12945,17 @@
         {
             "athlete": {
                 "name": "Bailey, Benjamin",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "50-59",
+            "total_time_hhmmss": "21:38:38",
+            "total_laps": 92,
+            "total_miles": 134.32,
+            "total_km": 216.1665488,
             "laps": [
                 {
                     "number": 1,
@@ -13144,11 +13330,17 @@
         {
             "athlete": {
                 "name": "Andras, Andrew",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:55:29",
+            "total_laps": 159,
+            "total_miles": 232.14,
+            "total_km": 373.5921876,
             "laps": [
                 {
                     "number": 1,
@@ -13791,11 +13983,17 @@
         {
             "athlete": {
                 "name": "Quintana, Victor",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "30-39",
+            "total_time_hhmmss": "14:30:53",
+            "total_laps": 63,
+            "total_miles": 91.98,
+            "total_km": 148.0270932,
             "laps": [
                 {
                     "number": 1,
@@ -14054,11 +14252,17 @@
         {
             "athlete": {
                 "name": "Seifer-Smith, Julia",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:15:42",
+            "total_laps": 72,
+            "total_miles": 105.12,
+            "total_km": 169.17382080000002,
             "laps": [
                 {
                     "number": 1,
@@ -14353,11 +14557,17 @@
         {
             "athlete": {
                 "name": "Carbot, Tony",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "50-59",
+            "total_time_hhmmss": "19:29:11",
+            "total_laps": 72,
+            "total_miles": 105.12,
+            "total_km": 169.17382080000002,
             "laps": [
                 {
                     "number": 1,
@@ -14652,11 +14862,17 @@
         {
             "athlete": {
                 "name": "BASSOS, ALEC",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:51:33",
+            "total_laps": 56,
+            "total_miles": 81.75999999999999,
+            "total_km": 131.5796384,
             "laps": [
                 {
                     "number": 1,
@@ -14887,11 +15103,17 @@
         {
             "athlete": {
                 "name": "Easley, Joshua",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "30-39",
+            "total_time_hhmmss": "20:18:07",
+            "total_laps": 105,
+            "total_miles": 153.29999999999998,
+            "total_km": 246.71182199999998,
             "laps": [
                 {
                     "number": 1,
@@ -15318,11 +15540,17 @@
         {
             "athlete": {
                 "name": "Carney, Robert",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:45:49",
+            "total_laps": 81,
+            "total_miles": 118.25999999999999,
+            "total_km": 190.32054839999998,
             "laps": [
                 {
                     "number": 1,
@@ -15653,11 +15881,17 @@
         {
             "athlete": {
                 "name": "Leffler, Lorenzo",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "11:22:40",
+            "total_laps": 23,
+            "total_miles": 33.58,
+            "total_km": 54.0416372,
             "laps": [
                 {
                     "number": 1,
@@ -15756,11 +15990,17 @@
         {
             "athlete": {
                 "name": "Payne, Timothy",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "60+",
+            "total_time_hhmmss": "23:41:39",
+            "total_laps": 74,
+            "total_miles": 108.03999999999999,
+            "total_km": 173.87309359999998,
             "laps": [
                 {
                     "number": 1,
@@ -16063,11 +16303,17 @@
         {
             "athlete": {
                 "name": "Scearce, Phillip",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "23:29:43",
+            "total_laps": 137,
+            "total_miles": 200.01999999999998,
+            "total_km": 321.9001868,
             "laps": [
                 {
                     "number": 1,
@@ -16622,11 +16868,17 @@
         {
             "athlete": {
                 "name": "Gage, Amy",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "23:15:46",
+            "total_laps": 50,
+            "total_miles": 73.0,
+            "total_km": 117.48182,
             "laps": [
                 {
                     "number": 1,
@@ -16833,11 +17085,17 @@
         {
             "athlete": {
                 "name": "WHITENER, DAVID",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "14:21:08",
+            "total_laps": 72,
+            "total_miles": 105.12,
+            "total_km": 169.17382080000002,
             "laps": [
                 {
                     "number": 1,
@@ -17132,11 +17390,17 @@
         {
             "athlete": {
                 "name": "Pascua, Jeremiah",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:45:45",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -17555,11 +17819,17 @@
         {
             "athlete": {
                 "name": "Smith, Charles",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "50-59",
+            "total_time_hhmmss": "16:00:56",
+            "total_laps": 24,
+            "total_miles": 35.04,
+            "total_km": 56.3912736,
             "laps": [
                 {
                     "number": 1,
@@ -17662,11 +17932,17 @@
         {
             "athlete": {
                 "name": "Cohen, David",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "07:30:52",
+            "total_laps": 16,
+            "total_miles": 23.36,
+            "total_km": 37.5941824,
             "laps": [
                 {
                     "number": 1,
@@ -17737,11 +18013,17 @@
         {
             "athlete": {
                 "name": "Kent, Paul",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "18:42:47",
+            "total_laps": 139,
+            "total_miles": 202.94,
+            "total_km": 326.5994596,
             "laps": [
                 {
                     "number": 1,
@@ -18304,11 +18586,17 @@
         {
             "athlete": {
                 "name": "Mooney, Herb",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "17:55:36",
+            "total_laps": 39,
+            "total_miles": 56.94,
+            "total_km": 91.63581959999999,
             "laps": [
                 {
                     "number": 1,
@@ -18471,11 +18759,17 @@
         {
             "athlete": {
                 "name": "Lewis, Ronald",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "21:21:24",
+            "total_laps": 44,
+            "total_miles": 64.24,
+            "total_km": 103.38400159999999,
             "laps": [
                 {
                     "number": 1,
@@ -18658,11 +18952,17 @@
         {
             "athlete": {
                 "name": "Ennis, William",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle",
+            "age_group": "40-49",
+            "total_time_hhmmss": "15:23:37",
+            "total_laps": 35,
+            "total_miles": 51.1,
+            "total_km": 82.237274,
             "laps": [
                 {
                     "number": 1,
@@ -18809,11 +19109,17 @@
         {
             "athlete": {
                 "name": "Ziegler, Scott",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "21:54:48",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -19232,11 +19538,17 @@
         {
             "athlete": {
                 "name": "Mao, Anthony",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:41:54",
+            "total_laps": 108,
+            "total_miles": 157.68,
+            "total_km": 253.7607312,
             "laps": [
                 {
                     "number": 1,
@@ -19675,11 +19987,17 @@
         {
             "athlete": {
                 "name": "Conti, Gavin",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:55:24",
+            "total_laps": 115,
+            "total_miles": 167.9,
+            "total_km": 270.208186,
             "laps": [
                 {
                     "number": 1,
@@ -20146,11 +20464,17 @@
         {
             "athlete": {
                 "name": "Gerin, Joe",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "12:32:21",
+            "total_laps": 79,
+            "total_miles": 115.34,
+            "total_km": 185.62127560000002,
             "laps": [
                 {
                     "number": 1,
@@ -20473,11 +20797,17 @@
         {
             "athlete": {
                 "name": "Merz, Ralf",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:52:44",
+            "total_laps": 145,
+            "total_miles": 211.7,
+            "total_km": 340.697278,
             "laps": [
                 {
                     "number": 1,
@@ -21064,11 +21394,17 @@
         {
             "athlete": {
                 "name": "Gay, Conan",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:53:29",
+            "total_laps": 148,
+            "total_miles": 216.07999999999998,
+            "total_km": 347.74618719999995,
             "laps": [
                 {
                     "number": 1,
@@ -21667,11 +22003,17 @@
         {
             "athlete": {
                 "name": "Latoria, Amanda",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "20:28:17",
+            "total_laps": 73,
+            "total_miles": 106.58,
+            "total_km": 171.5234572,
             "laps": [
                 {
                     "number": 1,
@@ -21970,11 +22312,17 @@
         {
             "athlete": {
                 "name": "Schumacher, Oliver",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "19:12:03",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -22393,11 +22741,17 @@
         {
             "athlete": {
                 "name": "Gro\u00df, Robin",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:53:01",
+            "total_laps": 104,
+            "total_miles": 151.84,
+            "total_km": 244.3621856,
             "laps": [
                 {
                     "number": 1,
@@ -22820,11 +23174,17 @@
         {
             "athlete": {
                 "name": "Bon, Mathieu",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:40:32",
+            "total_laps": 137,
+            "total_miles": 200.01999999999998,
+            "total_km": 321.9001868,
             "laps": [
                 {
                     "number": 1,
@@ -23379,11 +23739,17 @@
         {
             "athlete": {
                 "name": "Beyda, Gil",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "08:15:56",
+            "total_laps": 38,
+            "total_miles": 55.48,
+            "total_km": 89.2861832,
             "laps": [
                 {
                     "number": 1,
@@ -23542,11 +23908,17 @@
         {
             "athlete": {
                 "name": "Machado, Eduardo",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:07:08",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -23965,11 +24337,17 @@
         {
             "athlete": {
                 "name": "Rootes, Thomas",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "07:55:15",
+            "total_laps": 35,
+            "total_miles": 51.1,
+            "total_km": 82.237274,
             "laps": [
                 {
                     "number": 1,
@@ -24116,11 +24494,17 @@
         {
             "athlete": {
                 "name": "Frank, Maxwell",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:53:36",
+            "total_laps": 140,
+            "total_miles": 204.4,
+            "total_km": 328.949096,
             "laps": [
                 {
                     "number": 1,
@@ -24687,11 +25071,17 @@
         {
             "athlete": {
                 "name": "Mahan-Fredrick, Geran",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "22:54:40",
+            "total_laps": 109,
+            "total_miles": 159.14,
+            "total_km": 256.11036759999996,
             "laps": [
                 {
                     "number": 1,
@@ -25134,11 +25524,17 @@
         {
             "athlete": {
                 "name": "Weiner, Barry",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "23:23:01",
+            "total_laps": 90,
+            "total_miles": 131.4,
+            "total_km": 211.467276,
             "laps": [
                 {
                     "number": 1,
@@ -25505,11 +25901,17 @@
         {
             "athlete": {
                 "name": "Yanez, Dallas",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:30:27",
+            "total_laps": 74,
+            "total_miles": 108.03999999999999,
+            "total_km": 173.87309359999998,
             "laps": [
                 {
                     "number": 1,
@@ -25812,11 +26214,17 @@
         {
             "athlete": {
                 "name": "Andras, Ruby",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "13 & under",
+            "total_time_hhmmss": "15:41:36",
+            "total_laps": 47,
+            "total_miles": 68.62,
+            "total_km": 110.4329108,
             "laps": [
                 {
                     "number": 1,
@@ -26011,11 +26419,17 @@
         {
             "athlete": {
                 "name": "Lee, Jonathan",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:50:41",
+            "total_laps": 155,
+            "total_miles": 226.29999999999998,
+            "total_km": 364.19364199999995,
             "laps": [
                 {
                     "number": 1,
@@ -26642,11 +27056,17 @@
         {
             "athlete": {
                 "name": "Frank, William",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:55:37",
+            "total_laps": 173,
+            "total_miles": 252.57999999999998,
+            "total_km": 406.4870972,
             "laps": [
                 {
                     "number": 1,
@@ -27345,11 +27765,17 @@
         {
             "athlete": {
                 "name": "Warrior, Scott",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "60+",
+            "total_time_hhmmss": "07:33:26",
+            "total_laps": 19,
+            "total_miles": 27.74,
+            "total_km": 44.6430916,
             "laps": [
                 {
                     "number": 1,
@@ -27432,11 +27858,17 @@
         {
             "athlete": {
                 "name": "Sistrunk, Damen",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:34:17",
+            "total_laps": 104,
+            "total_miles": 151.84,
+            "total_km": 244.3621856,
             "laps": [
                 {
                     "number": 1,
@@ -27859,11 +28291,17 @@
         {
             "athlete": {
                 "name": "Fisher, John",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "23:55:48",
+            "total_laps": 150,
+            "total_miles": 219.0,
+            "total_km": 352.44546,
             "laps": [
                 {
                     "number": 1,
@@ -28470,11 +28908,17 @@
         {
             "athlete": {
                 "name": "corona, sadott",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:32:39",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -28893,11 +29337,17 @@
         {
             "athlete": {
                 "name": "Sands, James",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "16:12:28",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -29180,11 +29630,17 @@
         {
             "athlete": {
                 "name": "Dingman, Salty",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:58:47",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -29603,11 +30059,17 @@
         {
             "athlete": {
                 "name": "Whyte, Ian",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "23:55:00",
+            "total_laps": 144,
+            "total_miles": 210.24,
+            "total_km": 338.34764160000003,
             "laps": [
                 {
                     "number": 1,
@@ -30190,11 +30652,17 @@
         {
             "athlete": {
                 "name": "adler, doug",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "07:14:29",
+            "total_laps": 39,
+            "total_miles": 56.94,
+            "total_km": 91.63581959999999,
             "laps": [
                 {
                     "number": 1,
@@ -30357,11 +30825,17 @@
         {
             "athlete": {
                 "name": "Balls, Jeff",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "20:49:29",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -30780,11 +31254,17 @@
         {
             "athlete": {
                 "name": "Cokley, Atlanta",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:53:30",
+            "total_laps": 42,
+            "total_miles": 61.32,
+            "total_km": 98.6847288,
             "laps": [
                 {
                     "number": 1,
@@ -30959,11 +31439,17 @@
         {
             "athlete": {
                 "name": "Palmer, Eric",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:53:44",
+            "total_laps": 182,
+            "total_miles": 265.71999999999997,
+            "total_km": 427.63382479999996,
             "laps": [
                 {
                     "number": 1,
@@ -31698,11 +32184,17 @@
         {
             "athlete": {
                 "name": "Herrera, Michael",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:44:55",
+            "total_laps": 92,
+            "total_miles": 134.32,
+            "total_km": 216.1665488,
             "laps": [
                 {
                     "number": 1,
@@ -32077,11 +32569,17 @@
         {
             "athlete": {
                 "name": "Ornelles, Adam",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:53:38",
+            "total_laps": 192,
+            "total_miles": 280.32,
+            "total_km": 451.1301888,
             "laps": [
                 {
                     "number": 1,
@@ -32856,11 +33354,17 @@
         {
             "athlete": {
                 "name": "Faugere, William",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:12:09",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -33143,11 +33647,17 @@
         {
             "athlete": {
                 "name": "Bright, Justin",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "20:26:41",
+            "total_laps": 110,
+            "total_miles": 160.6,
+            "total_km": 258.46000399999997,
             "laps": [
                 {
                     "number": 1,
@@ -33594,11 +34104,17 @@
         {
             "athlete": {
                 "name": "Francis, Titus",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:54:13",
+            "total_laps": 142,
+            "total_miles": 207.32,
+            "total_km": 333.6483688,
             "laps": [
                 {
                     "number": 1,
@@ -34173,11 +34689,17 @@
         {
             "athlete": {
                 "name": "Nkanta, Ekemini",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:49:05",
+            "total_laps": 61,
+            "total_miles": 89.06,
+            "total_km": 143.3278204,
             "laps": [
                 {
                     "number": 1,
@@ -34428,11 +34950,17 @@
         {
             "athlete": {
                 "name": "Poteet, Ella",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:49:29",
+            "total_laps": 85,
+            "total_miles": 124.1,
+            "total_km": 199.71909399999998,
             "laps": [
                 {
                     "number": 1,
@@ -34779,11 +35307,17 @@
         {
             "athlete": {
                 "name": "WhoLaughs, Batman",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:35:28",
+            "total_laps": 70,
+            "total_miles": 102.2,
+            "total_km": 164.474548,
             "laps": [
                 {
                     "number": 1,
@@ -35070,11 +35604,17 @@
         {
             "athlete": {
                 "name": "Hurdleston, Scott",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:08:07",
+            "total_laps": 173,
+            "total_miles": 252.57999999999998,
+            "total_km": 406.4870972,
             "laps": [
                 {
                     "number": 1,
@@ -35773,11 +36313,17 @@
         {
             "athlete": {
                 "name": "Adams, Raveena",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:15:22",
+            "total_laps": 91,
+            "total_miles": 132.85999999999999,
+            "total_km": 213.81691239999998,
             "laps": [
                 {
                     "number": 1,
@@ -36148,11 +36694,17 @@
         {
             "athlete": {
                 "name": "George, Zachary",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:34:57",
+            "total_laps": 106,
+            "total_miles": 154.76,
+            "total_km": 249.0614584,
             "laps": [
                 {
                     "number": 1,
@@ -36583,11 +37135,17 @@
         {
             "athlete": {
                 "name": "Weinstock, Jeffrey",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "22:31:57",
+            "total_laps": 103,
+            "total_miles": 150.38,
+            "total_km": 242.0125492,
             "laps": [
                 {
                     "number": 1,
@@ -37006,11 +37564,17 @@
         {
             "athlete": {
                 "name": "Claytor, Reb",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "19:00:31",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -37293,11 +37857,17 @@
         {
             "athlete": {
                 "name": "Robinson, Samuel",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "12:52:08",
+            "total_laps": 74,
+            "total_miles": 108.03999999999999,
+            "total_km": 173.87309359999998,
             "laps": [
                 {
                     "number": 1,
@@ -37600,11 +38170,17 @@
         {
             "athlete": {
                 "name": "Spranzo, Kenny",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "14:25:01",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -37887,11 +38463,17 @@
         {
             "athlete": {
                 "name": "Vasylevskyi, Andrii",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "16:48:59",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -38174,11 +38756,17 @@
         {
             "athlete": {
                 "name": "Waggoner, Harley",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:27:44",
+            "total_laps": 54,
+            "total_miles": 78.84,
+            "total_km": 126.8803656,
             "laps": [
                 {
                     "number": 1,
@@ -38401,11 +38989,17 @@
         {
             "athlete": {
                 "name": "Ch, Max",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "16:00:57",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -38688,11 +39282,17 @@
         {
             "athlete": {
                 "name": "Waggoner, Kelso",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "14-18",
+            "total_time_hhmmss": "16:42:36",
+            "total_laps": 38,
+            "total_miles": 55.48,
+            "total_km": 89.2861832,
             "laps": [
                 {
                     "number": 1,
@@ -38851,11 +39451,17 @@
         {
             "athlete": {
                 "name": "Harris, Mark",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:43:07",
+            "total_laps": 84,
+            "total_miles": 122.64,
+            "total_km": 197.3694576,
             "laps": [
                 {
                     "number": 1,
@@ -39198,11 +39804,17 @@
         {
             "athlete": {
                 "name": "Joseph, Brian",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "19-29",
+            "total_time_hhmmss": "22:01:17",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -39485,11 +40097,17 @@
         {
             "athlete": {
                 "name": "Andras, Sirena",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "09:40:56",
+            "total_laps": 17,
+            "total_miles": 24.82,
+            "total_km": 39.9438188,
             "laps": [
                 {
                     "number": 1,
@@ -39564,11 +40182,17 @@
         {
             "athlete": {
                 "name": "Andras, Jonni",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "14-18",
+            "total_time_hhmmss": "15:41:36",
+            "total_laps": 47,
+            "total_miles": 68.62,
+            "total_km": 110.4329108,
             "laps": [
                 {
                     "number": 1,
@@ -39763,11 +40387,17 @@
         {
             "athlete": {
                 "name": "Andras, Axel",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "13 & under",
+            "total_time_hhmmss": "11:00:31",
+            "total_laps": 11,
+            "total_miles": 16.06,
+            "total_km": 25.846000399999998,
             "laps": [
                 {
                     "number": 1,
@@ -39818,11 +40448,17 @@
         {
             "athlete": {
                 "name": "Witzel, Holger",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "50-59",
+            "total_time_hhmmss": "23:54:50",
+            "total_laps": 150,
+            "total_miles": 219.0,
+            "total_km": 352.44546,
             "laps": [
                 {
                     "number": 1,
@@ -40429,11 +41065,17 @@
         {
             "athlete": {
                 "name": "Gransow, Stefan",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:10:35",
+            "total_laps": 158,
+            "total_miles": 230.68,
+            "total_km": 371.24255120000004,
             "laps": [
                 {
                     "number": 1,
@@ -41072,11 +41714,17 @@
         {
             "athlete": {
                 "name": "Perkins, Jared",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "18:09:02",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -41359,11 +42007,17 @@
         {
             "athlete": {
                 "name": "DiMassa, Daniel",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "13:43:19",
+            "total_laps": 59,
+            "total_miles": 86.14,
+            "total_km": 138.6285476,
             "laps": [
                 {
                     "number": 1,
@@ -41606,11 +42260,17 @@
         {
             "athlete": {
                 "name": "K, Zack",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "00:31:36",
+            "total_laps": 2,
+            "total_miles": 2.92,
+            "total_km": 4.6992728,
             "laps": [
                 {
                     "number": 1,
@@ -41625,11 +42285,17 @@
         {
             "athlete": {
                 "name": "Hippensteel, Michael",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "17:24:54",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -41912,11 +42578,17 @@
         {
             "athlete": {
                 "name": "Mohammadi, Ehren",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "11:31:57",
+            "total_laps": 41,
+            "total_miles": 59.86,
+            "total_km": 96.3350924,
             "laps": [
                 {
                     "number": 1,
@@ -42087,11 +42759,17 @@
         {
             "athlete": {
                 "name": "ayres, matthew",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "13:34:24",
+            "total_laps": 87,
+            "total_miles": 127.02,
+            "total_km": 204.4183668,
             "laps": [
                 {
                     "number": 1,
@@ -42446,11 +43124,17 @@
         {
             "athlete": {
                 "name": "Kipper, Miles",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:55:04",
+            "total_laps": 165,
+            "total_miles": 240.9,
+            "total_km": 387.690006,
             "laps": [
                 {
                     "number": 1,
@@ -43117,11 +43801,17 @@
         {
             "athlete": {
                 "name": "Floyd, Brian",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "40-49",
+            "total_time_hhmmss": "22:38:05",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -43404,11 +44094,17 @@
         {
             "athlete": {
                 "name": "Strauss, Henri",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "13 & under",
+            "total_time_hhmmss": "22:05:15",
+            "total_laps": 39,
+            "total_miles": 56.94,
+            "total_km": 91.63581959999999,
             "laps": [
                 {
                     "number": 1,
@@ -43571,11 +44267,17 @@
         {
             "athlete": {
                 "name": "Vyain, Jeff",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "20:13:17",
+            "total_laps": 110,
+            "total_miles": 160.6,
+            "total_km": 258.46000399999997,
             "laps": [
                 {
                     "number": 1,
@@ -44022,11 +44724,17 @@
         {
             "athlete": {
                 "name": "Best, Camille",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "11:04:49",
+            "total_laps": 44,
+            "total_miles": 64.24,
+            "total_km": 103.38400159999999,
             "laps": [
                 {
                     "number": 1,
@@ -44209,11 +44917,17 @@
         {
             "athlete": {
                 "name": "Garcia, Matthew",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "18:22:55",
+            "total_laps": 46,
+            "total_miles": 67.16,
+            "total_km": 108.0832744,
             "laps": [
                 {
                     "number": 1,
@@ -44404,11 +45118,17 @@
         {
             "athlete": {
                 "name": "Strauss, Siena",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Push",
+            "age_group": "13 & under",
+            "total_time_hhmmss": "22:05:47",
+            "total_laps": 49,
+            "total_miles": 71.53999999999999,
+            "total_km": 115.13218359999999,
             "laps": [
                 {
                     "number": 1,
@@ -44611,11 +45331,17 @@
         {
             "athlete": {
                 "name": "Blumenstein, Clark",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Skateboard Paddle/Push",
+            "age_group": "30-39",
+            "total_time_hhmmss": "23:35:59",
+            "total_laps": 69,
+            "total_miles": 100.74,
+            "total_km": 162.1249116,
             "laps": [
                 {
                     "number": 1,
@@ -44898,11 +45624,17 @@
         {
             "athlete": {
                 "name": "Posada, Diego",
-                "gender": "",
+                "gender": "Open",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "30-39",
+            "total_time_hhmmss": "22:04:07",
+            "total_laps": 194,
+            "total_miles": 283.24,
+            "total_km": 455.8294616,
             "laps": [
                 {
                     "number": 1,
@@ -45685,11 +46417,17 @@
         {
             "athlete": {
                 "name": "Navarro, Valentina",
-                "gender": "",
+                "gender": "Female",
                 "city": "",
                 "state": "",
                 "country": ""
             },
+            "category": "Inline Speed Skating",
+            "age_group": "19-29",
+            "total_time_hhmmss": "23:14:43",
+            "total_laps": 85,
+            "total_miles": 124.1,
+            "total_km": 199.71909399999998,
             "laps": [
                 {
                     "number": 1,

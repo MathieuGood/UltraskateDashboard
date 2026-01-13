@@ -17,13 +17,13 @@ class Performance:
         athlete: Athlete,
         laps: list[LapStats],
         event: Event,
-        category: str = "",
-        age_group: str = "",
+        discipline: str = "",
+        age_category: str = "",
     ):
         self.athlete = athlete
         self.laps = laps
-        self.category = category
-        self.age_group = age_group
+        self.discipline = discipline
+        self.age_category = age_category
         self.event = event
         self.total_time_ss = self.__get_total_time_ss()
 
@@ -51,8 +51,8 @@ class Performance:
                 "state": self.athlete.state,
                 "country": self.athlete.country,
             },
-            "category": self.category,
-            "age_group": self.age_group,
+            "category": self.discipline,
+            "age_group": self.age_category,
             "total_time_hhmmss": self.get_total_time_hhmmss(),
             "total_laps": self.get_total_laps(),
             "total_miles": self.get_total_miles(),
