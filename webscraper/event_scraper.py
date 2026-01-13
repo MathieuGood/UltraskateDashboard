@@ -257,13 +257,7 @@ class EventScraper:
                 # print(f"Found athlete country: {value}")
                 athlete_country = value
             elif "category" in label and label != "secondary category :":
-                print(
-                    f"LABEL DIFFERENT FROM 'secondary category:'{label != 'secondary category:'}"
-                )
-                print(f"Found athlete age category: `{label}` `{value}`")
                 performance_category = value
-
-            print(f"Performance category: {performance_category}")
 
         athlete_laps_table = athlete_performance_soup.find(
             name="div", id="ctl00_Content_Main_divSplitGrid"

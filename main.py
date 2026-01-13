@@ -51,8 +51,8 @@ def main():
         # miami2018 = EventScraper.scrape(miami_event_params[2018])
         # miami2019 = EventScraper.scrape(miami_event_params[2019])
         # miami2020 = EventScraper.scrape(miami_event_params[2020])
-        miami2021 = EventScraper.scrape(miami_event_params[2021])
-        # miami2022 = EventScraper.scrape(miami_event_params[2022])
+        # miami2021 = EventScraper.scrape(miami_event_params[2021])
+        miami2022 = EventScraper.scrape(miami_event_params[2022])
         # miami2023 = EventScraper.scrape(miami_event_params[2023])
         # miami2024 = EventScraper.scrape(miami_event_params[2024])
         # miami2025 = EventScraper.scrape(miami_event_params[2025])
@@ -68,8 +68,8 @@ def main():
         # miami2018,
         # miami2019,
         # miami2020,
-        miami2021,
-        # miami2022,
+        # miami2021,
+        miami2022,
         # miami2023,
         # miami2024,
         # miami2025,
