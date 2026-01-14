@@ -102,21 +102,33 @@ miami_event_params: dict[int, EventParams] = {
     2022: EventParams(
         date="2022-02-19",
         track=homestead_track,
-        scraped_site_params=MyRaceResultParams(race_id=192607),
+        scraped_site_params=MyRaceResultParams(
+            race_id=192607,
+            all_participants_url="https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0",
+        ),
     ),
     2023: EventParams(
         date="2023-02-10",
         track=homestead_track,
-        scraped_site_params=MyRaceResultParams(race_id=204047),
+        scraped_site_params=MyRaceResultParams(
+            race_id=204047,
+            all_participants_url="https://my4.raceresult.com/204047/RRPublish/data/list?key=b02d8bcb6d81d09372a43de65f7f7d48&listname=Participants%7CIndividual%20Skaters&page=participants&contest=0&r=all&l=0",
+        ),
     ),
     2024: EventParams(
         date="2024-02-15",
         track=homestead_track,
-        scraped_site_params=MyRaceResultParams(race_id=259072),
+        scraped_site_params=MyRaceResultParams(
+            race_id=259072,
+            all_participants_url="https://my1.raceresult.com/259072/RRPublish/data/list?key=eca2e3d1510caee33b7710a250a6f2c1&listname=Participants%7CIndividual%20Skaters&page=participants&contest=0&r=all&l=0",
+        ),
     ),
     2025: EventParams(
         date="2025-02-25",
         track=homestead_track,
-        scraped_site_params=MyRaceResultParams(race_id=310199),
+        scraped_site_params=MyRaceResultParams(
+            race_id=310199,
+            all_participants_url="https://my4.raceresult.com/310199/RRPublish/data/list?key=8d488f25d22b08ed0dc395c939995c3d&listname=Participants%7CIndividual%20Skaters&page=participants&contest=0&r=all&l=0",
+        ),
     ),
 }

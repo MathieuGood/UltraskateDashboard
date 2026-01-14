@@ -1,10 +1,6 @@
 from os import path
-from models.event_params import EventParams
-from models.track import Track
 from webscraper.event_scraper import EventScraper
 from webscraper.browser_manager import BrowserManager
-from webscraper.jms_site_params import JmsSiteParams
-from webscraper.myraceresult_params import MyRaceResultParams
 from event_params_data import miami_event_params
 
 """
@@ -33,12 +29,12 @@ https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8
 # Miami 2024 https://my.raceresult.com/259072
 # Miami 2025 https://my.raceresult.com/310199/
 
+# MIAMI = ("Homestead Speedway", "Homestead", 1.46)
+# SPAARNDAM = ("Wheelerplanet", "Spaarndam", 2.0)
+
 
 def main():
     print("Hello from ultraskatedashboard!")
-
-    MIAMI = ("Homestead Speedway", "Homestead", 1.46)
-    SPAARNDAM = ("Wheelerplanet", "Spaarndam", 2.0)
 
     BrowserManager.start()
 

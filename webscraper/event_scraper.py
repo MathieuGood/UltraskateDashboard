@@ -48,13 +48,24 @@ class EventScraper:
 
         no_laps_performances = 0  # DEBUG
 
-        participants_data: list[list[str]] = participants_json["data"]["#1_Individual"]
+        keys = [1, 2]
+        for key in keys:
+            try:
+                participants_data = participants_json["data"][f"#{key}_Individual"]
+                break
+            except KeyError:
+                continue
+        else:
+            print("Could not find participants data in JSON.")
+            return event
+
+        # participants_data: list[list[str]] = participants_json["data"]["#1_Individual"]
         for participant in participants_data:
             print(
                 f"ID : {participant[1]} / Name : {participant[3]} / Discipline : {participant[7]} / Age category : {participant[6]}"
             )
             performance = cls.__fetch_participant_performance(
-                participant=participant, event=event
+                participant=participant, event=event, event_params=event_params
             )
             if performance:
                 event.add_performance(performance)
@@ -68,13 +79,32 @@ class EventScraper:
         return event
 
     @classmethod
-    def __fetch_participant_performance(cls, participant: list[str], event: Event):
+    def __format_myraceresult_name(cls, name: str) -> str:
+        """
+        Format a MyRaceResult participant name to "Last, First" format to "First Last"
+        Args:
+            name (str): Name string from MyRaceResult participant data
+        Returns:
+            str: Formatted name string
+        """
+        name_parts = name.split(", ")
+        if len(name_parts) == 2:
+            formatted_name = f"{name_parts[1]} {name_parts[0]}"
+            return formatted_name
+        return name
+
+    @classmethod
+    def __fetch_participant_performance(
+        cls, participant: list[str], event: Event, event_params: EventParams
+    ) -> Performance | None:
         participant_id: str = participant[1]
-        participant_name: str = participant[3]
+        participant_name: str = cls.__format_myraceresult_name(participant[3])
         participant_age_category: str = participant[6]
         participant_discipline: str = participant[7]
         participant_gender: str = participant[8]
-        participant_url = f"https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid={participant_id}"
+        participant_url = f"https://my4.raceresult.com/{event_params.scraped_site_params.race_id}/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid={participant_id}"
+
+        print(participant_url)
 
         response = requests.get(participant_url)
         if response.status_code != 200:
@@ -179,7 +209,7 @@ class EventScraper:
                 "EventScraper: Unsupported scraped site params for fetching participants JSON."
             )
             return None
-
+        print(f"Participants URL: {event_params.scraped_site_params.participants_url}")
         response = requests.get(event_params.scraped_site_params.participants_url)
 
         pprint.pp(response.json())
@@ -397,7 +427,7 @@ class EventScraper:
                 if not position.isdigit():
                     continue
 
-                name = row_tds[name_col_index].text.strip()
+                name = row_tds[name_col_index].text.strip()  # noqa: F841
 
                 # Build the complete URL for the skater's personal stats page
                 base_url = Utils.extract_base_url(
