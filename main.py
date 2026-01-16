@@ -3,35 +3,6 @@ from webscraper.event_scraper import EventScraper
 from webscraper.browser_manager import BrowserManager
 from event_params_data import miami_event_params
 
-"""
-
-All participants :
-https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0
-
-
-https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Participants%7CParticipants%20List%20123&page=participants&contest=0&r=all&l=0
-
-Lap details for a given athlete (pid=421 here) :
-https://my4.raceresult.com/192607/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid=421
-"""
-
-# Miami 2013 https://jms.racetecresults.com/results.aspx?CId=16370&RId=13
-# Miami 2014 https://jms.racetecresults.com/results.aspx?CId=16370&RId=67
-# Miami 2015 https://jms.racetecresults.com/results.aspx?CId=16370&RId=121  # Age group available as 'category' column
-# Miami 2016 https://jms.racetecresults.com/results.aspx?CId=16370&RId=179
-# Miami 2017 https://jms.racetecresults.com/results.aspx?CId=16370&RId=240
-# Miami 2018 https://jms.racetecresults.com/results.aspx?CId=16370&RId=294
-# Miami 2019 https://jms.racetecresults.com/results.aspx?CId=16370&RId=352
-# Miami 2020 https://jms.racetecresults.com/results.aspx?CId=16370&RId=400
-# Miami 2021 https://jms.racetecresults.com/results.aspx?CId=16370&RId=413
-# Miami 2022 https://my.raceresult.com/192607
-# Miami 2023 https://my.raceresult.com/204047
-# Miami 2024 https://my.raceresult.com/259072
-# Miami 2025 https://my.raceresult.com/310199/
-
-# MIAMI = ("Homestead Speedway", "Homestead", 1.46)
-# SPAARNDAM = ("Wheelerplanet", "Spaarndam", 2.0)
-
 
 def main():
     print("Hello from ultraskatedashboard!")
@@ -48,10 +19,10 @@ def main():
         # miami2019 = EventScraper.scrape(miami_event_params[2019])
         # miami2020 = EventScraper.scrape(miami_event_params[2020])
         # miami2021 = EventScraper.scrape(miami_event_params[2021])
-        miami2022 = EventScraper.scrape(miami_event_params[2022])
+        # miami2022 = EventScraper.scrape(miami_event_params[2022])
         # miami2023 = EventScraper.scrape(miami_event_params[2023])
-        # miami2024 = EventScraper.scrape(miami_event_params[2024])
-        # miami2025 = EventScraper.scrape(miami_event_params[2025])
+        miami2024 = EventScraper.scrape(miami_event_params[2024])
+        miami2025 = EventScraper.scrape(miami_event_params[2025])
     finally:
         BrowserManager.shutdown()
 
@@ -65,10 +36,10 @@ def main():
         # miami2019,
         # miami2020,
         # miami2021,
-        miami2022,
+        # miami2022,
         # miami2023,
         # miami2024,
-        # miami2025,
+        miami2025,
     ]
 
     for event in events:

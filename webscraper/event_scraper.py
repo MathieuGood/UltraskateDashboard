@@ -97,12 +97,28 @@ class EventScraper:
     def __fetch_participant_performance(
         cls, participant: list[str], event: Event, event_params: EventParams
     ) -> Performance | None:
+        if not isinstance(event_params.scraped_site_params, MyRaceResultParams):
+            print(
+                "EventScraper: Unsupported scraped site params for fetching participant performance."
+            )
+            return None
+
         participant_id: str = participant[1]
         participant_name: str = cls.__format_myraceresult_name(participant[3])
-        participant_age_category: str = participant[6]
-        participant_discipline: str = participant[7]
-        participant_gender: str = participant[8]
-        participant_url = f"https://my4.raceresult.com/{event_params.scraped_site_params.race_id}/RRPublish/data/list?key=9d484a9a9259ff0ae1a4a8570861bc3b&listname=Online%7CLap%20Details&page=live&contest=0&r=pid&pid={participant_id}"
+        participant_age_category: str = participant[
+            event_params.scraped_site_params.age_group_col_index
+        ]
+        participant_discipline: str = participant[
+            event_params.scraped_site_params.category_col_index
+        ]
+        participant_gender: str = participant[
+            event_params.scraped_site_params.gender_col_index
+        ]
+        if participant_gender == "Open":
+            participant_gender = "Male"
+        participant_url = (
+            f"{event_params.scraped_site_params.athlete_url}{participant_id}"
+        )
 
         print(participant_url)
 
@@ -123,6 +139,8 @@ class EventScraper:
                 lap_time_formatted = "00:" + str(lap_time)
             elif len(lap_time) == 7:
                 lap_time_formatted = "0" + str(lap_time)
+            elif len(lap_time) >= 8:
+                lap_time_formatted = str(lap_time)
 
             lap_time_seconds = Utils.convert_time_str_to_seconds(lap_time_formatted)  # pyright: ignore[reportPossiblyUnboundVariable]
             if lap_time_seconds is None:
@@ -164,7 +182,7 @@ class EventScraper:
         for category_index in event_params.scraped_site_params.categories_indexes:
             print(f"Scraping category index: {category_index}")
             athlete_performance_url = (
-                event_params.scraped_site_params.ranking_url
+                event_params.scraped_site_params.ranking_home_url
                 + f"&EId={category_index}&dt=0&adv=1"
             )
             print(f"Fetching athlete performance URLs from: {athlete_performance_url}")
@@ -209,8 +227,8 @@ class EventScraper:
                 "EventScraper: Unsupported scraped site params for fetching participants JSON."
             )
             return None
-        print(f"Participants URL: {event_params.scraped_site_params.participants_url}")
-        response = requests.get(event_params.scraped_site_params.participants_url)
+        print(f"Participants URL: {event_params.scraped_site_params.ranking_home_url}")
+        response = requests.get(event_params.scraped_site_params.ranking_home_url)
 
         pprint.pp(response.json())
 
@@ -431,7 +449,7 @@ class EventScraper:
 
                 # Build the complete URL for the skater's personal stats page
                 base_url = Utils.extract_base_url(
-                    event_params.scraped_site_params.ranking_url
+                    event_params.scraped_site_params.ranking_home_url
                 )
                 athlete_url_end = str(row_links[athlete_link_col_index]["href"])
                 if not base_url or not athlete_url_end:
