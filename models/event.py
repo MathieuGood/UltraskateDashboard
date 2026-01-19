@@ -16,12 +16,7 @@ class Event:
     Class representing an event
     """
 
-    def __init__(
-        self,
-        event_params: EventParams | None = None,
-        date: datetime | None = None,
-        track: Track | None = None,
-    ) -> None:
+    def __init__(self, event_params: EventParams | None = None) -> None:
         """
         Initialize an Event instance.
 
@@ -35,8 +30,8 @@ class Event:
         self.performances: list[Performance] = []
 
         if event_params is not None:
-            self.date: datetime = event_params.date if event_params else date
-            self.track: Track = event_params.track if event_params else track
+            self.date: datetime = event_params.date
+            self.track: Track = event_params.track
 
     def add_performance(self, performance: Performance) -> None:
         """
@@ -65,20 +60,16 @@ class Event:
 
     @classmethod
     def from_json_file(cls, file_name: str) -> Event:
-        with open(file_name, "r") as f:
-            data = json.load(f)
-            print(data)
+        with open(file_name, "r") as json_file:
+            event_data = json.load(json_file)
+            print(event_data)
 
-        track = Track(
-            name=data["track"],
-            city=data["city"],
-            country=data["country"],
-            length_miles=0.0,  # Length is not stored in JSON; set to 0.0 or handle accordingly
-        )
+        track = Track.from_dict(track_data=event_data["track"])
 
-        event = cls(
-            event_params=None, date=datetime.fromisoformat(data["date"]), track=track
-        )
+        event = cls(event_params=None)
+        event.track = track
+        event.date = datetime.fromisoformat(event_data["date"])
+
         print(event)
 
         return event

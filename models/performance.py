@@ -44,13 +44,7 @@ class Performance:
 
     def to_dict(self) -> dict:
         return {
-            "athlete": {
-                "name": self.athlete.name,
-                "gender": self.athlete.gender,
-                "city": self.athlete.city,
-                "state": self.athlete.state,
-                "country": self.athlete.country,
-            },
+            "athlete": self.athlete.to_dict(),
             "category": self.discipline,
             "age_group": self.age_category,
             "total_time_hhmmss": self.get_total_time_hhmmss(),
@@ -62,6 +56,27 @@ class Performance:
                 for lap in self.laps
             ],
         }
+
+    @classmethod
+    def from_dict(cls, performance_data: dict, event: Event) -> Performance:
+        athlete = Athlete.from_dict(performance_data["athlete"])
+        laps = []
+        for lap_data in performance_data["laps"]:
+            lap_time = Utils.convert_time_str_to_seconds(lap_data["time"])
+            if lap_time is not None:
+                laps.append(
+                    LapStats(
+                        lap_number=lap_data["number"],
+                        lap_time_ss=lap_time,
+                    )
+                )
+        return cls(
+            athlete=athlete,
+            laps=laps,
+            event=event,
+            discipline=performance_data["discipline"],
+            age_category=performance_data["age_category"],
+        )
 
     def __str__(self) -> str:
         return f"Performance by {self.athlete}\n -> {len(self.laps)} laps \n -> Total time : {self.get_total_time_hhmmss()}\n -> {len(self.laps) * 1.46} miles\n -> {self.event.date.year} {self.event.track.name} at {self.event.track.city}, {self.event.track.country}"

@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Athlete:
     def __init__(
         self,
@@ -14,6 +17,25 @@ class Athlete:
         self.city = city
         self.state = state
         self.country = country
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            "name": self.name,
+            "gender": self.gender,
+            "city": self.city,
+            "state": self.state,
+            "country": self.country,
+        }
+
+    @classmethod
+    def from_dict(cls, athlete_data: dict[str, str]) -> Athlete:
+        return cls(
+            name=athlete_data["name"],
+            gender=athlete_data["gender"],
+            city=athlete_data["city"],
+            state=athlete_data["state"],
+            country=athlete_data["country"],
+        )
 
     def __str__(self) -> str:
         return f"Athlete(name={self.name}, gender={self.gender}, city={self.city}, state={self.state}, country={self.country})"

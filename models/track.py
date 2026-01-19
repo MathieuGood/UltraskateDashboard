@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Track:
     """
     Class representing a track
@@ -21,3 +24,20 @@ class Track:
 
     def __str__(self) -> str:
         return f"Track {self.name} ({self.city}, {self.country})"
+
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "city": self.city,
+            "country": self.country,
+            "length_miles": self.length_miles,
+        }
+
+    @classmethod
+    def from_dict(cls, track_data: dict) -> Track:
+        return cls(
+            name=track_data["name"],
+            city=track_data["city"],
+            country=track_data["country"],
+            length_miles=track_data["length_miles"],
+        )
