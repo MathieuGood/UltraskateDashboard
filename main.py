@@ -5,8 +5,7 @@ from event_params_data import miami_event_params
 from models.event import Event
 
 
-def main():
-    print("Hello from ultraskatedashboard!")
+def scrape_events():
 
     BrowserManager.start()
 
@@ -24,33 +23,45 @@ def main():
             # EventScraper.scrape(miami_event_params[2022]),
             # EventScraper.scrape(miami_event_params[2023]),
             # EventScraper.scrape(miami_event_params[2024]),
-            EventScraper.scrape(miami_event_params[2025]),
+            # EventScraper.scrape(miami_event_params[2025]),
         ]
     finally:
         BrowserManager.shutdown()
 
-    # events = [
-    #     Event.from_json_file("scraped_events_save/ultraskate_miami_2013.json"),
-    # ]
-
     for event in events:
         if event is None or len(event.performances) == 0:
             continue
-        print("-----")
-        print(
-            f"Event on {event.date} at {event.track.name}, {event.track.city}, {event.track.country}"
-        )
-        print(event.performances[0])
-        print(event.performances[1])
-        print(event.performances[2])
-        print(f"Total performances scraped: {len(event.performances)}")
-        print("-----\n")
-        print("-----\n\n\n\n\n\n")
 
-        # Save event to JSON file
         event.to_json_file(
             path.join("ultraskate_miami_" + str(event.date.year) + ".json")
         )
+
+
+def main():
+    print("Hello from ultraskatedashboard!")
+
+    # scrape_events()
+
+    events = [
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2013.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2014.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2015.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2016.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2017.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2018.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2019.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2020.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2021.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2022.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2023.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2024.json"),
+        Event.from_json_file("scraped_events_save/ultraskate_miami_2025.json"),
+    ]
+
+    for event in events:
+        # if event is None or len(event.performances) == 0:
+        #     continue
+        print(event.summary())
 
 
 if __name__ == "__main__":

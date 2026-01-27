@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 from models.track import Track
 from models.event_params import EventParams
 
-if TYPE_CHECKING:
-    from models.performance import Performance
+
+from models.performance import Performance
 
 
 class Event:
@@ -60,14 +60,34 @@ class Event:
     def from_json_file(cls, file_name: str) -> Event:
         with open(file_name, "r") as json_file:
             event_data = json.load(json_file)
-            print(event_data)
-
-        track = Track.from_dict(track_data=event_data["track"])
 
         event = cls(event_params=None)
-        event.track = track
+        event.track = Track.from_dict(track_data=event_data["track"])
         event.date = datetime.fromisoformat(event_data["date"])
-
-        print(event)
+        for performance_data in event_data["performances"]:
+            performance = Performance.from_dict(
+                performance_data=performance_data, event=event
+            )
+            event.add_performance(performance)
 
         return event
+
+    def summary(self) -> str:
+        summary_lines = [
+            "-----",
+            f"Event on {self.date} at {self.track.name}, {self.track.city}, {self.track.country}",
+        ]
+
+        if len(self.performances) == 0:
+            summary_lines.append("No performances recorded for this event.")
+            summary_lines.append("-----\n")
+            return "\n".join(summary_lines)
+
+        summary_lines.append(f"🥇 {self.performances[0].summary()}")
+        if len(self.performances) > 1:
+            summary_lines.append(f"🥈 {self.performances[1].summary()}")
+        if len(self.performances) > 2:
+            summary_lines.append(f"🥉 {self.performances[2].summary()}")
+        summary_lines.append("-----\n")
+
+        return "\n".join(summary_lines)

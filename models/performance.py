@@ -74,9 +74,12 @@ class Performance:
             athlete=athlete,
             laps=laps,
             event=event,
-            discipline=performance_data["discipline"],
-            age_category=performance_data["age_category"],
+            discipline=performance_data["category"],
+            age_category=performance_data["age_group"],
         )
+
+    def summary(self) -> str:
+        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps"
 
     def __str__(self) -> str:
         return f"Performance by {self.athlete}\n -> {len(self.laps)} laps \n -> Total time : {self.get_total_time_hhmmss()}\n -> {len(self.laps) * 1.46} miles\n -> {self.event.date.year} {self.event.track.name} at {self.event.track.city}, {self.event.track.country}"
