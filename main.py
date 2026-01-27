@@ -61,7 +61,8 @@ def main():
     for event in events:
         # if event is None or len(event.performances) == 0:
         #     continue
-        print(event.summary())
+        print(event)
+        print(event.performances[0].get_average_speed_kph_at_lap(100))
 
 
 if __name__ == "__main__":

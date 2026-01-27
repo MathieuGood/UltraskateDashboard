@@ -72,7 +72,7 @@ class Event:
 
         return event
 
-    def summary(self) -> str:
+    def __str__(self) -> str:
         summary_lines = [
             "-----",
             f"Event on {self.date} at {self.track.name}, {self.track.city}, {self.track.country}",
@@ -83,11 +83,11 @@ class Event:
             summary_lines.append("-----\n")
             return "\n".join(summary_lines)
 
-        summary_lines.append(f"🥇 {self.performances[0].summary()}")
+        summary_lines.append(f"🥇 {self.performances[0]}")
         if len(self.performances) > 1:
-            summary_lines.append(f"🥈 {self.performances[1].summary()}")
+            summary_lines.append(f"🥈 {self.performances[1]}")
         if len(self.performances) > 2:
-            summary_lines.append(f"🥉 {self.performances[2].summary()}")
+            summary_lines.append(f"🥉 {self.performances[2]}")
         summary_lines.append("-----\n")
 
         return "\n".join(summary_lines)
