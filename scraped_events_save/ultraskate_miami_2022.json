@@ -1,8 +1,11 @@
 {
     "date": "2022-02-19T00:00:00",
-    "track": "Homestead Speedway",
-    "city": "Homestead",
-    "country": "USA",
+    "track": {
+        "name": "Homestead Speedway",
+        "city": "Homestead",
+        "country": "USA",
+        "length_miles": 1.46
+    },
     "performances": [
         {
             "athlete": {
@@ -168,7 +171,7 @@
         {
             "athlete": {
                 "name": "Parker Bugg",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -1065,7 +1068,7 @@
         {
             "athlete": {
                 "name": "Arnav Sonic Shah",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -3204,7 +3207,7 @@
         {
             "athlete": {
                 "name": "Sam Fistel",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -3633,7 +3636,7 @@
         {
             "athlete": {
                 "name": "Chad Torkelson",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -3966,7 +3969,7 @@
         {
             "athlete": {
                 "name": "Sebastian Guzman",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -4747,7 +4750,7 @@
         {
             "athlete": {
                 "name": "FRANCISCO RAMIREZ",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -5760,7 +5763,7 @@
         {
             "athlete": {
                 "name": "Mathew Anderson",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -6209,7 +6212,7 @@
         {
             "athlete": {
                 "name": "Nolan Polewchak",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -6567,7 +6570,7 @@
         {
             "athlete": {
                 "name": "Juan Fernando Reinoso",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -7024,7 +7027,7 @@
         {
             "athlete": {
                 "name": "Emanuelle Silva",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -8242,7 +8245,7 @@
         {
             "athlete": {
                 "name": "Daniel Uribe",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -8623,7 +8626,7 @@
         {
             "athlete": {
                 "name": "Richard Giarusso",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -8816,7 +8819,7 @@
         {
             "athlete": {
                 "name": "nick carbot",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -9109,7 +9112,7 @@
         {
             "athlete": {
                 "name": "Emmanuel Brion",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -9538,7 +9541,7 @@
         {
             "athlete": {
                 "name": "Nicolas Pinson",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -9983,7 +9986,7 @@
         {
             "athlete": {
                 "name": "Thierry Barant",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -10436,7 +10439,7 @@
         {
             "athlete": {
                 "name": "Tyler Fernandez",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -10737,7 +10740,7 @@
         {
             "athlete": {
                 "name": "Ferrell Ennis",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -10782,7 +10785,7 @@
         {
             "athlete": {
                 "name": "Lauren ODonnell",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -11239,7 +11242,7 @@
         {
             "athlete": {
                 "name": "Lucille Poteet",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -11761,7 +11764,7 @@
         {
             "athlete": {
                 "name": "Paul Closs",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -12459,7 +12462,7 @@
         {
             "athlete": {
                 "name": "John ODonnell",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -12708,7 +12711,7 @@
         {
             "athlete": {
                 "name": "William Polewchak",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -12945,7 +12948,7 @@
         {
             "athlete": {
                 "name": "Benjamin Bailey",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -13330,7 +13333,7 @@
         {
             "athlete": {
                 "name": "Andrew Andras",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -13983,7 +13986,7 @@
         {
             "athlete": {
                 "name": "Victor Quintana",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -14557,7 +14560,7 @@
         {
             "athlete": {
                 "name": "Tony Carbot",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -14862,7 +14865,7 @@
         {
             "athlete": {
                 "name": "ALEC BASSOS",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -15103,7 +15106,7 @@
         {
             "athlete": {
                 "name": "Joshua Easley",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -15540,7 +15543,7 @@
         {
             "athlete": {
                 "name": "Robert Carney",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -15881,14 +15884,14 @@
         {
             "athlete": {
                 "name": "Lorenzo Leffler",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
             },
             "category": "Skateboard Paddle/Push",
             "age_group": "19-29",
-            "total_time_hhmmss": "11:22:40",
+            "total_time_hhmmss": "19:41:21",
             "total_laps": 23,
             "total_miles": 33.58,
             "total_km": 54.0416372,
@@ -15983,14 +15986,14 @@
                 },
                 {
                     "number": 23,
-                    "time": "01:44:48"
+                    "time": "10:03:29"
                 }
             ]
         },
         {
             "athlete": {
                 "name": "Timothy Payne",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -16303,7 +16306,7 @@
         {
             "athlete": {
                 "name": "Phillip Scearce",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -16868,7 +16871,7 @@
         {
             "athlete": {
                 "name": "Amy Gage",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -17085,7 +17088,7 @@
         {
             "athlete": {
                 "name": "DAVID WHITENER",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -17390,7 +17393,7 @@
         {
             "athlete": {
                 "name": "Jeremiah Pascua",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -17819,7 +17822,7 @@
         {
             "athlete": {
                 "name": "Charles Smith",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -17932,7 +17935,7 @@
         {
             "athlete": {
                 "name": "David Cohen",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -18013,7 +18016,7 @@
         {
             "athlete": {
                 "name": "Paul Kent",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -18586,7 +18589,7 @@
         {
             "athlete": {
                 "name": "Herb Mooney",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -18759,7 +18762,7 @@
         {
             "athlete": {
                 "name": "Ronald Lewis",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -18952,7 +18955,7 @@
         {
             "athlete": {
                 "name": "William Ennis",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -19109,7 +19112,7 @@
         {
             "athlete": {
                 "name": "Scott Ziegler",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -19538,7 +19541,7 @@
         {
             "athlete": {
                 "name": "Anthony Mao",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -19987,7 +19990,7 @@
         {
             "athlete": {
                 "name": "Gavin Conti",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -20464,7 +20467,7 @@
         {
             "athlete": {
                 "name": "Joe Gerin",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -20797,7 +20800,7 @@
         {
             "athlete": {
                 "name": "Ralf Merz",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -21394,7 +21397,7 @@
         {
             "athlete": {
                 "name": "Conan Gay",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -22312,7 +22315,7 @@
         {
             "athlete": {
                 "name": "Oliver Schumacher",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -22741,7 +22744,7 @@
         {
             "athlete": {
                 "name": "Robin Gro\u00df",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -23174,7 +23177,7 @@
         {
             "athlete": {
                 "name": "Mathieu Bon",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -23739,7 +23742,7 @@
         {
             "athlete": {
                 "name": "Gil Beyda",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -23908,7 +23911,7 @@
         {
             "athlete": {
                 "name": "Eduardo Machado",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -24337,7 +24340,7 @@
         {
             "athlete": {
                 "name": "Thomas Rootes",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -24494,7 +24497,7 @@
         {
             "athlete": {
                 "name": "Maxwell Frank",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -25071,7 +25074,7 @@
         {
             "athlete": {
                 "name": "Geran Mahan-Fredrick",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -25524,7 +25527,7 @@
         {
             "athlete": {
                 "name": "Barry Weiner",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -25901,7 +25904,7 @@
         {
             "athlete": {
                 "name": "Dallas Yanez",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -26214,7 +26217,7 @@
         {
             "athlete": {
                 "name": "Ruby Andras",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -26419,7 +26422,7 @@
         {
             "athlete": {
                 "name": "Jonathan Lee",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -27056,7 +27059,7 @@
         {
             "athlete": {
                 "name": "William Frank",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -27765,7 +27768,7 @@
         {
             "athlete": {
                 "name": "Scott Warrior",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -27858,7 +27861,7 @@
         {
             "athlete": {
                 "name": "Damen Sistrunk",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -28291,7 +28294,7 @@
         {
             "athlete": {
                 "name": "John Fisher",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -28908,7 +28911,7 @@
         {
             "athlete": {
                 "name": "sadott corona",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -29337,7 +29340,7 @@
         {
             "athlete": {
                 "name": "James Sands",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -29630,7 +29633,7 @@
         {
             "athlete": {
                 "name": "Salty Dingman",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -30059,7 +30062,7 @@
         {
             "athlete": {
                 "name": "Ian Whyte",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -30652,7 +30655,7 @@
         {
             "athlete": {
                 "name": "doug adler",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -30825,7 +30828,7 @@
         {
             "athlete": {
                 "name": "Jeff Balls",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -31439,7 +31442,7 @@
         {
             "athlete": {
                 "name": "Eric Palmer",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -32184,7 +32187,7 @@
         {
             "athlete": {
                 "name": "Michael Herrera",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -32569,7 +32572,7 @@
         {
             "athlete": {
                 "name": "Adam Ornelles",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -33354,7 +33357,7 @@
         {
             "athlete": {
                 "name": "William Faugere",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -33647,7 +33650,7 @@
         {
             "athlete": {
                 "name": "Justin Bright",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -34104,7 +34107,7 @@
         {
             "athlete": {
                 "name": "Titus Francis",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -35604,7 +35607,7 @@
         {
             "athlete": {
                 "name": "Scott Hurdleston",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -36694,7 +36697,7 @@
         {
             "athlete": {
                 "name": "Zachary George",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -37135,7 +37138,7 @@
         {
             "athlete": {
                 "name": "Jeffrey Weinstock",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -37857,7 +37860,7 @@
         {
             "athlete": {
                 "name": "Samuel Robinson",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -38170,7 +38173,7 @@
         {
             "athlete": {
                 "name": "Kenny Spranzo",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -38463,7 +38466,7 @@
         {
             "athlete": {
                 "name": "Andrii Vasylevskyi",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -38756,7 +38759,7 @@
         {
             "athlete": {
                 "name": "Harley Waggoner",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -38989,7 +38992,7 @@
         {
             "athlete": {
                 "name": "Max Ch",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -39282,7 +39285,7 @@
         {
             "athlete": {
                 "name": "Kelso Waggoner",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -39451,7 +39454,7 @@
         {
             "athlete": {
                 "name": "Mark Harris",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -39804,7 +39807,7 @@
         {
             "athlete": {
                 "name": "Brian Joseph",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -40182,7 +40185,7 @@
         {
             "athlete": {
                 "name": "Jonni Andras",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -40387,7 +40390,7 @@
         {
             "athlete": {
                 "name": "Axel Andras",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -40448,7 +40451,7 @@
         {
             "athlete": {
                 "name": "Holger Witzel",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -41065,7 +41068,7 @@
         {
             "athlete": {
                 "name": "Stefan Gransow",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -41714,7 +41717,7 @@
         {
             "athlete": {
                 "name": "Jared Perkins",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -42007,7 +42010,7 @@
         {
             "athlete": {
                 "name": "Daniel DiMassa",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -42260,14 +42263,14 @@
         {
             "athlete": {
                 "name": "Zack K",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
             },
             "category": "Skateboard Push",
             "age_group": "40-49",
-            "total_time_hhmmss": "00:31:36",
+            "total_time_hhmmss": "13:51:34",
             "total_laps": 2,
             "total_miles": 2.92,
             "total_km": 4.6992728,
@@ -42278,14 +42281,14 @@
                 },
                 {
                     "number": 2,
-                    "time": "00:15:48"
+                    "time": "13:35:46"
                 }
             ]
         },
         {
             "athlete": {
                 "name": "Michael Hippensteel",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -42578,7 +42581,7 @@
         {
             "athlete": {
                 "name": "Ehren Mohammadi",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -42759,7 +42762,7 @@
         {
             "athlete": {
                 "name": "matthew ayres",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -43124,7 +43127,7 @@
         {
             "athlete": {
                 "name": "Miles Kipper",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -43801,7 +43804,7 @@
         {
             "athlete": {
                 "name": "Brian Floyd",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -44094,7 +44097,7 @@
         {
             "athlete": {
                 "name": "Henri Strauss",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -44267,7 +44270,7 @@
         {
             "athlete": {
                 "name": "Jeff Vyain",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -44917,7 +44920,7 @@
         {
             "athlete": {
                 "name": "Matthew Garcia",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -45118,7 +45121,7 @@
         {
             "athlete": {
                 "name": "Siena Strauss",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -45331,7 +45334,7 @@
         {
             "athlete": {
                 "name": "Clark Blumenstein",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""
@@ -45624,7 +45627,7 @@
         {
             "athlete": {
                 "name": "Diego Posada",
-                "gender": "Open",
+                "gender": "Male",
                 "city": "",
                 "state": "",
                 "country": ""

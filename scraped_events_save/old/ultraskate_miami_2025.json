@@ -1,11 +1,8 @@
 {
     "date": "2025-02-25T00:00:00",
-    "track": {
-        "name": "Homestead Speedway",
-        "city": "Homestead",
-        "country": "USA",
-        "length_miles": 1.46
-    },
+    "track": "Homestead Speedway",
+    "city": "Homestead",
+    "country": "USA",
     "performances": [
         {
             "athlete": {

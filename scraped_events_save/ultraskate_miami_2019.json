@@ -1,8 +1,11 @@
 {
     "date": "2019-01-18T00:00:00",
-    "track": "Homestead Speedway",
-    "city": "Homestead",
-    "country": "USA",
+    "track": {
+        "name": "Homestead Speedway",
+        "city": "Homestead",
+        "country": "USA",
+        "length_miles": 1.46
+    },
     "performances": [
         {
             "athlete": {

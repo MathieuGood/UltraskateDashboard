@@ -48,9 +48,7 @@ class Event:
             performances_list.append(performance.to_dict())
         return {
             "date": self.date.isoformat(),
-            "track": self.track.name,
-            "city": self.track.city,
-            "country": self.track.country,
+            "track": self.track.to_dict(),
             "performances": performances_list,
         }
 
