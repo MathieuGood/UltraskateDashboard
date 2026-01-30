@@ -32,7 +32,7 @@ class Performance:
         Get the total performance time formatted as HH:MM:SS.
 
         Returns:
-            Total time in HH:MM:SS format
+            str: Total time in HH:MM:SS format
         """
         return Utils.seconds_to_hhmmss(self.total_time_ss)
 
@@ -41,7 +41,7 @@ class Performance:
         Calculate the total performance time in seconds by summing all lap times.
 
         Returns:
-            Total time in seconds
+            int: Total time in seconds
         """
         return sum(lap.lap_time_ss for lap in self.laps)
 
@@ -50,7 +50,7 @@ class Performance:
         Get the total number of laps completed.
 
         Returns:
-            Number of laps
+            int: Number of laps
         """
         return len(self.laps)
 
@@ -59,7 +59,7 @@ class Performance:
         Get the total distance covered in miles.
 
         Returns:
-            Total distance in miles
+            float: Total distance in miles
         """
         return self.event.track.length_miles * self.get_total_laps()
 
@@ -68,7 +68,7 @@ class Performance:
         Get the total distance covered in kilometers.
 
         Returns:
-            Total distance in kilometers
+            float: Total distance in kilometers
         """
         return self.get_total_miles() * 1.60934
 
@@ -77,9 +77,9 @@ class Performance:
         Get the total distance covered in miles up to and including the specified lap.
 
         Args:
-            lap_number: The lap number to calculate distance through (1-indexed)
+            lap_number (int): The lap number to calculate distance through (1-indexed)
         Returns:
-            Total distance in miles up to the specified lap
+            float: Total distance in miles up to the specified lap
         """
         if lap_number > self.get_total_laps() or lap_number <= 0:
             return 0.0
@@ -90,9 +90,9 @@ class Performance:
         Get the total distance covered in kilometers up to and including the specified lap.
 
         Args:
-            lap_number: The lap number to calculate distance through (1-indexed)
+            lap_number (int): The lap number to calculate distance through (1-indexed)
         Returns:
-            Total distance in kilometers up to the specified lap
+            float: Total distance in kilometers up to the specified lap
         """
         if lap_number > self.get_total_laps() or lap_number <= 0:
             return 0.0
@@ -103,7 +103,7 @@ class Performance:
         Get the average time per lap in seconds.
 
         Returns:
-            Average lap time in seconds, or 0.0 if no laps completed
+            float: Average lap time in seconds, or 0.0 if no laps completed
         """
         if self.get_total_laps() == 0:
             return 0.0
@@ -116,12 +116,12 @@ class Performance:
         Calculate average speed given distance and time.
 
         Args:
-            total_miles: Total distance covered in miles
-            total_time_ss: Total time in seconds
-            unit: Speed unit, either "mph" or "kph" (default: "mph")
+            total_miles (float): Total distance covered in miles
+            total_time_ss (int): Total time in seconds
+            unit (str): Speed unit, either "mph" or "kph" (default: "mph")
 
         Returns:
-            Average speed in the specified unit, or 0.0 if time is zero
+            float: Average speed in the specified unit, or 0.0 if time is zero
         """
         total_hours = total_time_ss / 3600
         if total_hours == 0:
@@ -135,7 +135,7 @@ class Performance:
         Get the average speed for the entire performance in miles per hour.
 
         Returns:
-            Average speed in mph, or 0.0 if no time elapsed
+            float: Average speed in mph, or 0.0 if no time elapsed
         """
         return self._calculate_average_speed(
             self.get_total_miles(), self.total_time_ss, "mph"
@@ -146,7 +146,7 @@ class Performance:
         Get the average speed for the entire performance in kilometers per hour.
 
         Returns:
-            Average speed in kph, or 0.0 if no time elapsed
+            float: Average speed in kph, or 0.0 if no time elapsed
         """
         return self._calculate_average_speed(
             self.get_total_miles(), self.total_time_ss, "kph"
@@ -157,10 +157,10 @@ class Performance:
         Get the cumulative average speed up to and including the specified lap.
 
         Args:
-            lap_number: The lap number to calculate cumulative average speed through (1-indexed)
+            lap_number (int): The lap number to calculate cumulative average speed through (1-indexed)
 
         Returns:
-            Cumulative average speed in kph, or 0.0 if lap_number is invalid
+            float: Cumulative average speed in kph, or 0.0 if lap_number is invalid
         """
         if lap_number > self.get_total_laps() or lap_number <= 0:
             return 0.0
@@ -173,10 +173,10 @@ class Performance:
         Get the average speed for a specific single lap in kilometers per hour.
 
         Args:
-            lap_number: The lap number to get average speed for (1-indexed)
+            lap_number (int): The lap number to get average speed for (1-indexed)
 
         Returns:
-            Average speed for that lap in kph, or 0.0 if lap_number is invalid
+            float: Average speed for that lap in kph, or 0.0 if lap_number is invalid
         """
         if lap_number > self.get_total_laps() or lap_number <= 0:
             return 0.0
