@@ -47,13 +47,24 @@ def main():
         EventRegistry.add_event(event)
 
     for event in EventRegistry.events:
-        print("\n", event.track.city, event.date.year)
-        event_stats = EventStats(event)
-        top3 = event_stats.get_top3()
-        if not top3:
-            continue
-        for performance in top3:
-            print(performance)
+        if event.date.year == 2023:
+            print("\n", event.track.city, event.date.year)
+
+            # Print all the unique sports in this event
+            unique_sports = set()
+            for performance in event.performances:
+                unique_sports.add(performance.sport)
+            print("Unique sports in this event:")
+            for sport in sorted(unique_sports):
+                print("-", sport)
+
+            event_stats = EventStats(event)
+            event_stats.print_all(
+                event_stats.top(3, event_stats.by_sport("skateboard"))
+            )
+
+            event_stats2 = EventStats(event)
+            event_stats2.print_all(event_stats2.top(3))
 
 
 if __name__ == "__main__":

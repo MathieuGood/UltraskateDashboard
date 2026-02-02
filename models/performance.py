@@ -26,6 +26,25 @@ class Performance:
         self.age_category = age_category
         self.event = event
         self.total_time_ss = self.__get_total_time_ss()
+        self.__set_sport()
+
+    def __str__(self) -> str:
+        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph - {self.sport}"
+
+    def __set_sport(self):
+        excluded_categories = ["quad", "paddle"]
+        if "team" in self.discipline.lower():
+            self.athlete.team = True
+            self.sport = self.discipline
+        elif "inline" in self.discipline.lower():
+            self.sport = "Inline Skating"
+        elif any(
+            excluded_category in self.discipline.lower()
+            for excluded_category in excluded_categories
+        ):
+            self.sport = self.discipline
+        else:
+            self.sport = "Skateboard"
 
     def get_total_time_hhmmss(self) -> str:
         """
@@ -219,6 +238,3 @@ class Performance:
             discipline=performance_data["category"],
             age_category=performance_data["age_group"],
         )
-
-    def __str__(self) -> str:
-        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph"

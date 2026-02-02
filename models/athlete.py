@@ -17,6 +17,7 @@ class Athlete:
         self.city = city
         self.state = state
         self.country = country
+        self.team = False
 
     def to_dict(self) -> dict[str, str]:
         return {

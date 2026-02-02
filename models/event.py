@@ -40,8 +40,11 @@ class Event:
         :param performance: The performance to add.
         :type performance: Performance
         """
+        # Append the performance but do NOT sort the list in-place here.
+        # In-place sorting surprised callers by mutating the underlying
+        # `performances` list. Use views (e.g. EventStats._sorted_performances)
+        # to obtain sorted copies when needed.
         self.performances.append(performance)
-        self.performances.sort(key=lambda p: p.get_total_miles(), reverse=True)
 
     def to_dict(self) -> dict:
         performances_list: list[dict] = []
