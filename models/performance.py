@@ -29,7 +29,7 @@ class Performance:
         self.__set_sport()
 
     def __str__(self) -> str:
-        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph - {self.sport}"
+        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph - {self.sport} - {self.discipline} - {self.age_category}"
 
     def __set_sport(self):
         excluded_categories = ["quad", "paddle"]
