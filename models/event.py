@@ -41,6 +41,7 @@ class Event:
         :type performance: Performance
         """
         self.performances.append(performance)
+        self.performances.sort(key=lambda p: p.get_total_miles(), reverse=True)
 
     def to_dict(self) -> dict:
         performances_list: list[dict] = []

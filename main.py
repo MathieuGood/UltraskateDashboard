@@ -1,8 +1,9 @@
-from os import path
+import os
 from webscraper.event_scraper import EventScraper
 from webscraper.browser_manager import BrowserManager
 from event_params_data import miami_event_params
 from models.event import Event
+from models.event_registry import EventRegistry
 
 
 def scrape_events():
@@ -33,7 +34,7 @@ def scrape_events():
             continue
 
         event.to_json_file(
-            path.join("ultraskate_miami_" + str(event.date.year) + ".json")
+            os.path.join("ultraskate_miami_" + str(event.date.year) + ".json")
         )
 
 
@@ -42,27 +43,22 @@ def main():
 
     # scrape_events()
 
-    events = [
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2013.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2014.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2015.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2016.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2017.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2018.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2019.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2020.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2021.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2022.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2023.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2024.json"),
-        Event.from_json_file("scraped_events_save/ultraskate_miami_2025.json"),
-    ]
+    # Get all the filenames in the scraped_events_save directory
+    scraped_events_dir = "scraped_events_save"
+    files = os.listdir(scraped_events_dir)
 
-    for event in events:
+    print(files)
+
+    for file in files:
+        if file.endswith(".json"):
+            event = Event.from_json_file(os.path.join(scraped_events_dir, file))
+            EventRegistry.add_event(event)
+
+    for event in EventRegistry.events:
         # if event is None or len(event.performances) == 0:
         #     continue
         print(event)
-        print(event.performances[0].get_average_speed_kph_at_lap(100))
+        # print(event.performances[0].get_average_speed_kph_at_lap(100))
 
 
 if __name__ == "__main__":
