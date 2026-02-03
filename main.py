@@ -47,37 +47,42 @@ def main():
         EventRegistry.add_event(event)
 
     unique_sports = set()
+    unique_categories = set()
+    unique_age_groups = set()
+
     for event in EventRegistry.events:
         if event.date.year:
             print("\n", event.track.city, event.date.year)
-
-            # Print all the unique sports in all events
             
             for performance in event.performances:
                 unique_sports.add(performance.sport)
+                unique_categories.add(performance.discipline)
+                unique_age_groups.add(performance.age_category)
     
-
-            # event_stats = EventStats(event)
-            # event_stats.print_all(
-            #     event_stats.top(3, event_stats.by_sport("skateboard"))
-            # )
-
-            event_stats2 = EventStats(event)
-            event_stats2.print_all(event_stats2.top(100))
+            event_stats = EventStats(event)
+            # event_stats.print_all(event_stats.top(100))
 
             # Output to CSV
             with open("event_stats_" + str(event.date.year) + ".csv", "w") as f:
                 f.write(
                     "Name,Sport,Discipline,Age Category,Total Miles,Total Laps,Average Speed (kph),Total Time (HH:MM:SS)\n"
                 )
-                for performance in event_stats2.get_all():
+                for performance in event_stats.get_all():
                     f.write(
-                        f"{performance.athlete.name},{performance.sport},{performance.discipline},{performance.age_category},{performance.get_total_miles():.2f},{performance.get_total_laps()},{performance.get_average_speed_kph():.2f},{performance.get_total_time_hhmmss()}\n"
+                        f"{performance.athlete.name},{performance.sport},{performance.discipline},{performance.discipline},{performance.get_total_miles():.2f},{performance.get_total_laps()},{performance.get_average_speed_kph():.2f},{performance.get_total_time_hhmmss()}\n"
                     )
     
-    print("Unique sports in all events:")
+    print("\nUnique sports in all events:")
     for sport in sorted(unique_sports):
         print("-", sport)
+    
+    print("\nUnique categories in all events:")
+    for category in sorted(unique_categories):
+        print("-", category)\
+        
+    print("\nUnique age groups in all events:")
+    for age_group in sorted(unique_age_groups):
+        print("-", age_group)
 
 
 if __name__ == "__main__":
