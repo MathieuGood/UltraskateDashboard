@@ -27,22 +27,24 @@ class Performance:
         self.event = event
         self.total_time_ss = self.__get_total_time_ss()
         self.__set_sport()
+        self.__set_team()
 
     def __str__(self) -> str:
         return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph - {self.sport} - {self.discipline} - {self.age_category}"
-
-    def __set_sport(self):
-        excluded_categories = ["quad", "paddle"]
+    
+    def __set_team(self):
         if "team" in self.discipline.lower():
             self.athlete.team = True
-            self.sport = self.discipline
-        elif "inline" in self.discipline.lower():
+
+    def __set_sport(self):
+        if "paddle" in self.discipline.lower() and "push" in self.discipline.lower():
+            self.sport = "Paddle Push"
+        if "paddle" in self.discipline.lower():
+            self.sport = "Paddle"
+        elif "inline" in self.discipline.lower() or "roller" in self.discipline.lower():
             self.sport = "Inline Skating"
-        elif any(
-            excluded_category in self.discipline.lower()
-            for excluded_category in excluded_categories
-        ):
-            self.sport = self.discipline
+        elif "quad" in self.discipline.lower() :
+            self.sport = "Quad Skating"
         else:
             self.sport = "Skateboard"
 
