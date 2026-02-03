@@ -142,7 +142,9 @@ class EventScraper:
             elif len(lap_time) >= 8:
                 lap_time_formatted = str(lap_time)
 
-            lap_time_seconds = Utils.convert_time_str_to_seconds(lap_time_formatted)  # pyright: ignore[reportPossiblyUnboundVariable]
+            lap_time_seconds = Utils.convert_time_str_to_seconds(
+                lap_time_formatted
+            )  # pyright: ignore[reportPossiblyUnboundVariable]
             if lap_time_seconds is None:
                 print(
                     f"Could not convert lap time for lap {lap_index + 1}: {lap_time_formatted}"  # pyright: ignore[reportPossiblyUnboundVariable]
@@ -151,7 +153,9 @@ class EventScraper:
             lap_stats = LapStats(lap_number=lap_index + 1, lap_time_ss=lap_time_seconds)
             all_laps_stats.append(lap_stats)
 
-        athlete = Athlete(name=participant_name, gender=participant_gender)  # pyright: ignore[reportArgumentType]
+        athlete = Athlete(
+            name=participant_name, gender=participant_gender
+        )  # pyright: ignore[reportArgumentType]
 
         athlete_performance = Performance(
             athlete=athlete,
@@ -161,7 +165,7 @@ class EventScraper:
             event=event,
         )
         # If there are no lap values, skip this participant
-        if athlete_performance.get_total_laps() == 0:
+        if athlete_performance.total_laps() == 0:
             print(f"No laps found for participant {participant_name}")
             return None
         # print(athlete_performance)

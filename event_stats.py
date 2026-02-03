@@ -11,7 +11,7 @@ class EventStats:
     def _sorted_performances(self) -> list[Performance]:
         return sorted(
             self.event.performances,
-            key=lambda performance: performance.get_total_miles(),
+            key=lambda performance: performance.total_miles(),
             reverse=True,
         )
 

@@ -1,11 +1,11 @@
 from models.event import Event
 
+
 class EventRegistry:
-    events : list[Event] = []
+    events: list[Event] = []
 
     @classmethod
-    def add_event(cls, event : Event) -> bool:
+    def add_event(cls, event: Event) -> bool:
         cls.events.append(event)
         cls.events.sort(key=lambda e: e.date)
-        print(f"Added event : {event.track.city} {event.date.year}")
         return True

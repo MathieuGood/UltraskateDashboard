@@ -22,33 +22,42 @@ class Performance:
     ):
         self.athlete = athlete
         self.laps = laps
-        self.discipline = discipline
-        self.age_category = age_category
+        self.category = discipline
+        self.age_group = age_category
         self.event = event
-        self.total_time_ss = self.__get_total_time_ss()
+        self.total_time_ss = self._total_time_ss()
         self.__set_sport()
         self.__set_team()
 
     def __str__(self) -> str:
-        return f"{self.athlete.name} - {self.get_total_miles():.2f} miles - {self.get_total_laps()} laps - {self.get_average_speed_kph():.2f} kph - {self.sport} - {self.discipline} - {self.age_category}"
-    
+        return f"{self.athlete.name} - {self.total_miles():.2f} miles - {self.total_laps()} laps - {self.average_speed_kph():.2f} kph - {self.sport} - {self.category} - {self.age_group}"
+
     def __set_team(self):
-        if "team" in self.discipline.lower():
+        if "team" in self.category.lower():
             self.athlete.team = True
 
     def __set_sport(self):
-        if "paddle" in self.discipline.lower() and "push" in self.discipline.lower():
+        if "ages" in self.category.lower():
+            self.age_group = self.category
+            self.category = "Skateboard"
+            self.sport = "Skateboard"
+            return
+        if "paddle" in self.category.lower() and "push" in self.category.lower():
             self.sport = "Paddle Push"
-        if "paddle" in self.discipline.lower():
+            return
+        if "paddle" in self.category.lower():
             self.sport = "Paddle"
-        elif "inline" in self.discipline.lower() or "roller" in self.discipline.lower():
+            return
+        elif "inline" in self.category.lower() or "roller" in self.category.lower():
             self.sport = "Inline Skating"
-        elif "quad" in self.discipline.lower() :
+            return
+        elif "quad" in self.category.lower():
             self.sport = "Quad Skating"
+            return
         else:
             self.sport = "Skateboard"
 
-    def get_total_time_hhmmss(self) -> str:
+    def total_time_hhmmss(self) -> str:
         """
         Get the total performance time formatted as HH:MM:SS.
 
@@ -57,7 +66,7 @@ class Performance:
         """
         return Utils.seconds_to_hhmmss(self.total_time_ss)
 
-    def __get_total_time_ss(self) -> int:
+    def _total_time_ss(self) -> int:
         """
         Calculate the total performance time in seconds by summing all lap times.
 
@@ -66,7 +75,7 @@ class Performance:
         """
         return sum(lap.lap_time_ss for lap in self.laps)
 
-    def get_total_laps(self) -> int:
+    def total_laps(self) -> int:
         """
         Get the total number of laps completed.
 
@@ -75,25 +84,25 @@ class Performance:
         """
         return len(self.laps)
 
-    def get_total_miles(self) -> float:
+    def total_miles(self) -> float:
         """
         Get the total distance covered in miles.
 
         Returns:
             float: Total distance in miles
         """
-        return self.event.track.length_miles * self.get_total_laps()
+        return self.event.track.length_miles * self.total_laps()
 
-    def get_total_km(self) -> float:
+    def total_km(self) -> float:
         """
         Get the total distance covered in kilometers.
 
         Returns:
             float: Total distance in kilometers
         """
-        return self.get_total_miles() * 1.60934
+        return self.total_miles() * 1.60934
 
-    def get_total_miles_at_lap(self, lap_number: int) -> float:
+    def total_miles_at_lap(self, lap_number: int) -> float:
         """
         Get the total distance covered in miles up to and including the specified lap.
 
@@ -102,11 +111,11 @@ class Performance:
         Returns:
             float: Total distance in miles up to the specified lap
         """
-        if lap_number > self.get_total_laps() or lap_number <= 0:
+        if lap_number > self.total_laps() or lap_number <= 0:
             return 0.0
         return self.event.track.length_miles * lap_number
 
-    def get_total_km_at_lap(self, lap_number: int) -> float:
+    def total_km_at_lap(self, lap_number: int) -> float:
         """
         Get the total distance covered in kilometers up to and including the specified lap.
 
@@ -115,20 +124,18 @@ class Performance:
         Returns:
             float: Total distance in kilometers up to the specified lap
         """
-        if lap_number > self.get_total_laps() or lap_number <= 0:
-            return 0.0
-        return self.get_total_miles_at_lap(lap_number) * 1.60934
+        return self.total_miles_at_lap(lap_number) * 1.60934
 
-    def get_average_lap_time_ss(self) -> float:
+    def average_lap_time_ss(self) -> float:
         """
         Get the average time per lap in seconds.
 
         Returns:
             float: Average lap time in seconds, or 0.0 if no laps completed
         """
-        if self.get_total_laps() == 0:
+        if self.total_laps() == 0:
             return 0.0
-        return self.total_time_ss / self.get_total_laps()
+        return self.total_time_ss / self.total_laps()
 
     def _calculate_average_speed(
         self, total_miles: float, total_time_ss: int, unit: str = "mph"
@@ -151,7 +158,7 @@ class Performance:
         speed_mph = total_miles / total_hours
         return speed_mph if unit == "mph" else speed_mph * 1.60934
 
-    def get_average_speed_mph(self) -> float:
+    def average_speed_mph(self) -> float:
         """
         Get the average speed for the entire performance in miles per hour.
 
@@ -159,10 +166,10 @@ class Performance:
             float: Average speed in mph, or 0.0 if no time elapsed
         """
         return self._calculate_average_speed(
-            self.get_total_miles(), self.total_time_ss, "mph"
+            self.total_miles(), self.total_time_ss, "mph"
         )
 
-    def get_average_speed_kph(self) -> float:
+    def average_speed_kph(self) -> float:
         """
         Get the average speed for the entire performance in kilometers per hour.
 
@@ -170,10 +177,10 @@ class Performance:
             float: Average speed in kph, or 0.0 if no time elapsed
         """
         return self._calculate_average_speed(
-            self.get_total_miles(), self.total_time_ss, "kph"
+            self.total_miles(), self.total_time_ss, "kph"
         )
 
-    def get_average_speed_kph_at_lap(self, lap_number: int) -> float:
+    def average_speed_kph_at_lap(self, lap_number: int) -> float:
         """
         Get the cumulative average speed up to and including the specified lap.
 
@@ -183,13 +190,13 @@ class Performance:
         Returns:
             float: Cumulative average speed in kph, or 0.0 if lap_number is invalid
         """
-        if lap_number > self.get_total_laps() or lap_number <= 0:
+        if lap_number > self.total_laps() or lap_number <= 0:
             return 0.0
         total_time_ss = sum(self.laps[i].lap_time_ss for i in range(lap_number))
         total_miles = self.event.track.length_miles * lap_number
         return self._calculate_average_speed(total_miles, total_time_ss, "kph")
 
-    def get_average_speed_kph_for_lap(self, lap_number: int) -> float:
+    def average_speed_kph_for_lap(self, lap_number: int) -> float:
         """
         Get the average speed for a specific single lap in kilometers per hour.
 
@@ -199,7 +206,7 @@ class Performance:
         Returns:
             float: Average speed for that lap in kph, or 0.0 if lap_number is invalid
         """
-        if lap_number > self.get_total_laps() or lap_number <= 0:
+        if lap_number > self.total_laps() or lap_number <= 0:
             return 0.0
         lap_time_ss = self.laps[lap_number - 1].lap_time_ss
         total_miles = self.event.track.length_miles
@@ -208,12 +215,12 @@ class Performance:
     def to_dict(self) -> dict:
         return {
             "athlete": self.athlete.to_dict(),
-            "category": self.discipline,
-            "age_group": self.age_category,
-            "total_time_hhmmss": self.get_total_time_hhmmss(),
-            "total_laps": self.get_total_laps(),
-            "total_miles": self.get_total_miles(),
-            "total_km": self.get_total_km(),
+            "category": self.category,
+            "age_group": self.age_group,
+            "total_time_hhmmss": self.total_time_hhmmss(),
+            "total_laps": self.total_laps(),
+            "total_miles": self.total_miles(),
+            "total_km": self.total_km(),
             "laps": [
                 {"number": lap.lap_number, "time": lap.get_lap_time_hhmmss()}
                 for lap in self.laps

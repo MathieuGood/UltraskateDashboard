@@ -34,16 +34,6 @@ class Event:
             self.track: Track = event_params.track
 
     def add_performance(self, performance: Performance) -> None:
-        """
-        Add an athlete's performance to the event.
-
-        :param performance: The performance to add.
-        :type performance: Performance
-        """
-        # Append the performance but do NOT sort the list in-place here.
-        # In-place sorting surprised callers by mutating the underlying
-        # `performances` list. Use views (e.g. EventStats._sorted_performances)
-        # to obtain sorted copies when needed.
         self.performances.append(performance)
 
     def to_dict(self) -> dict:
