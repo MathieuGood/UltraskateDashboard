@@ -17,26 +17,30 @@ class Performance:
         athlete: Athlete,
         laps: list[LapStats],
         event: Event,
-        discipline: str = "",
-        age_category: str = "",
+        category: str = "",
+        age_group: str = "",
     ):
         self.athlete = athlete
         self.laps = laps
-        self.category = discipline
-        self.age_group = age_category
+        self.category = category
+        self.age_group = age_group
         self.event = event
         self.total_time_ss = self._total_time_ss()
-        self.__set_sport()
         self.__set_team()
+        self.__set_sport()
 
     def __str__(self) -> str:
         return f"{self.athlete.name} - {self.total_miles():.2f} miles - {self.total_laps()} laps - {self.average_speed_kph():.2f} kph - {self.sport} - {self.category} - {self.age_group}"
 
     def __set_team(self):
-        if "team" in self.category.lower():
+        if "team" in self.category.lower() or "team" in self.athlete.name.lower():
             self.athlete.team = True
 
     def __set_sport(self):
+        if self.category == "24 Hour":
+            self.category = "Skateboard"
+            self.sport = "Skateboard"
+            return
         if "ages" in self.category.lower():
             self.age_group = self.category
             self.category = "Skateboard"
@@ -244,6 +248,6 @@ class Performance:
             athlete=athlete,
             laps=laps,
             event=event,
-            discipline=performance_data["category"],
-            age_category=performance_data["age_group"],
+            category=performance_data["category"],
+            age_group=performance_data["age_group"],
         )

@@ -39,7 +39,7 @@ def main():
                 )
                 for performance in event_stats.get_all():
                     f.write(
-                        f"{performance.athlete.name},{performance.sport},{performance.category},{performance.category},{performance.total_miles():.2f},{performance.total_laps()},{performance.average_speed_kph():.2f},{performance.total_time_hhmmss()}\n"
+                        f"{performance.athlete.name},{performance.sport},{performance.category},{performance.age_group}, {performance.athlete.team}\n"
                     )
 
     print("\nUnique sports in all events:")

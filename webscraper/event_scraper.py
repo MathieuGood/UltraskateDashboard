@@ -159,8 +159,8 @@ class EventScraper:
 
         athlete_performance = Performance(
             athlete=athlete,
-            age_category=participant_age_category,
-            discipline=participant_discipline,
+            age_group=participant_age_category,
+            category=participant_discipline,
             laps=all_laps_stats,
             event=event,
         )
@@ -347,8 +347,8 @@ class EventScraper:
             athlete=athlete,
             laps=laps,
             event=event,
-            discipline=performance_category,
-            age_category=performance_age_group,
+            category=performance_category,
+            age_group=performance_age_group,
         )
 
     @classmethod
